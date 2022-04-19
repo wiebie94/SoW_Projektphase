@@ -13,16 +13,21 @@ public class TelekineseScript : MonoBehaviour
     InputDevice RightControllerDevice;
     Vector3 LeftControllerVelocity;
     Vector3 RightControllerVelocity;
-
+    public GameObject clearHighLightObject;
+    public Material normalMaterial;
+    public Material highLightMaterial;
+    public int normalLayer;
+    public int highLightLayer;
+    public Texture test;
 
     public Vector3 Velocity { get; private set; } = Vector3.zero;
     public Vector3 Acceleration { get; private set; } = Vector3.zero;
     public float range = 15.0f;
     void Start()
     {
-        controller = GetComponent<ActionBasedController>();
-        controller.selectAction.action.performed += Action_performed;
-        controller.selectAction.action.canceled += Action_canceled;
+        //controller = GetComponent<ActionBasedController>();
+       // controller.selectAction.action.performed += Action_performed;
+        //controller.selectAction.action.canceled += Action_canceled;
         LeftControllerDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         RightControllerDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
@@ -33,18 +38,40 @@ public class TelekineseScript : MonoBehaviour
 
     private void Action_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("GripCancelled");
+        
     }
 
     private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("GripAction");
+        
 
     }
 
-    
 
-   
+    void HighLightObject(GameObject gObj)
+    {
+        if (clearHighLightObject != gObj)
+        {
+            ClearHighLight();
+            normalMaterial = gObj.GetComponent<MeshRenderer>().sharedMaterial;
+            gObj.GetComponent<MeshRenderer>().sharedMaterial = highLightMaterial;
+            gObj.GetComponent<Renderer>().material.SetTexture("_BaseMap", normalMaterial.mainTexture);
+            clearHighLightObject = gObj;
+        }
+    }
+
+    void ClearHighLight()
+    {
+        if (clearHighLightObject != null)
+        {
+            
+            clearHighLightObject.GetComponent<MeshRenderer>().sharedMaterial = normalMaterial;
+            clearHighLightObject = null;
+        }
+    }
+
+
+
 
 
 
@@ -58,8 +85,6 @@ public class TelekineseScript : MonoBehaviour
         RightControllerDevice.TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out RightControllerVelocity);
         Quaternion leftRotation;
         RightControllerDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out leftRotation);
-        Debug.Log("Rotation" + leftRotation);
-        Debug.Log("Velo" + RightControllerVelocity);
         RightControllerDevice.SendHapticImpulse(0u, 0.7f, 2f);
 
         if (Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hit, range))
@@ -68,12 +93,12 @@ public class TelekineseScript : MonoBehaviour
             {
                 // hit.collider.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-                //HightLightObject(hit.collider.gameObject);
+               HighLightObject(hit.collider.gameObject);
 
             }
             else
             {
-               // ClearHighLight();
+               ClearHighLight();
             }
 
 
