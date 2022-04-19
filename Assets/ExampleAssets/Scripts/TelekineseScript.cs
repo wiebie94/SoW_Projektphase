@@ -8,10 +8,7 @@ public class TelekineseScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject rightHand;
-    public GameObject clearHighLightObject;
-    public Material normalMaterial;
     ActionBasedController controller;
-    public Material highLightMaterial;
     InputDevice LeftControllerDevice;
     InputDevice RightControllerDevice;
     Vector3 LeftControllerVelocity;
@@ -45,27 +42,9 @@ public class TelekineseScript : MonoBehaviour
 
     }
 
-    void HightLightObject(GameObject gObj)
-    {
-        if (clearHighLightObject != gObj)
-        {
-            ClearHighLight();
-            normalMaterial = gObj.GetComponent<MeshRenderer>().sharedMaterial;
-            Debug.Log("Normal Material" + normalMaterial);
-            gObj.GetComponent<MeshRenderer>().sharedMaterial = highLightMaterial;
-            clearHighLightObject = gObj;
-        }
-    }
+    
 
-    void ClearHighLight()
-    {
-        if (clearHighLightObject != null)
-        {
-            Debug.Log("Setting Normal Material");
-            clearHighLightObject.GetComponent<MeshRenderer>().sharedMaterial = normalMaterial;
-            clearHighLightObject = null;
-        }
-    }
+   
 
 
 
@@ -89,12 +68,12 @@ public class TelekineseScript : MonoBehaviour
             {
                 // hit.collider.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-                HightLightObject(hit.collider.gameObject);
+                //HightLightObject(hit.collider.gameObject);
 
             }
             else
             {
-                ClearHighLight();
+               // ClearHighLight();
             }
 
 
