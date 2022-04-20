@@ -13,24 +13,21 @@ public class TelekineseScript : MonoBehaviour
     InputDevice RightControllerDevice;
     Vector3 LeftControllerVelocity;
     Vector3 RightControllerVelocity;
-    public GameObject clearHighLightObject;
-    public Material normalMaterial;
-    public Material highLightMaterial;
-    public int normalLayer;
-    public int highLightLayer;
-    public Texture test;
+    public GameObject highlightedObj;
+    private Material normalMaterial;
+    [SerializeField] Material highLightMaterial;
 
     public Vector3 Velocity { get; private set; } = Vector3.zero;
     public Vector3 Acceleration { get; private set; } = Vector3.zero;
     public float range = 15.0f;
     void Start()
     {
-        //controller = GetComponent<ActionBasedController>();
-       // controller.selectAction.action.performed += Action_performed;
-        //controller.selectAction.action.canceled += Action_canceled;
+        ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
+        ActionBasedController controller = controllerArray[0];
+        controller.selectAction.action.performed += Action_performed;
+        controller.selectAction.action.canceled += Action_canceled;
         LeftControllerDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         RightControllerDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-
 
     }
 
@@ -43,30 +40,50 @@ public class TelekineseScript : MonoBehaviour
 
     private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        
+        Debug.Log("Action performed" + obj.performed);
+        Debug.Log("Action performed" + obj.action.name);
 
     }
 
 
     void HighLightObject(GameObject gObj)
     {
-        if (clearHighLightObject != gObj)
+
+        //    
+        //    normalMaterial = gObj.GetComponent<MeshRenderer>().sharedMaterial;
+        //    if(normalMaterial != null)
+        //    {
+        //        //highLightMaterial.SetTexture("_BaseMap", normalMaterial.mainTexture);
+        //        gObj.GetComponent<MeshRenderer>().sharedMaterial = highLightMaterial;
+
+        //        
+        //    }
+
+        //}
+        if (highlightedObj != gObj)
         {
             ClearHighLight();
-            normalMaterial = gObj.GetComponent<MeshRenderer>().sharedMaterial;
-            gObj.GetComponent<MeshRenderer>().sharedMaterial = highLightMaterial;
-            gObj.GetComponent<Renderer>().material.SetTexture("_BaseMap", normalMaterial.mainTexture);
-            clearHighLightObject = gObj;
+
+
+            Material[] materials = new Material[2];
+            materials[0] = gObj.GetComponent<Renderer>().materials[0];
+            
+            materials[1] = highLightMaterial;
+            gObj.GetComponent<Renderer>().materials = materials;
+            highlightedObj = gObj;
         }
     }
 
     void ClearHighLight()
     {
-        if (clearHighLightObject != null)
+        if (highlightedObj != null)
         {
-            
-            clearHighLightObject.GetComponent<MeshRenderer>().sharedMaterial = normalMaterial;
-            clearHighLightObject = null;
+            //highLightMaterial.SetTexture("_BaseMap", null);
+            Material[] materials = new Material[1];
+            materials[0] = highlightedObj.GetComponent<Renderer>().materials[0];
+            highlightedObj.GetComponent<Renderer>().materials = materials;
+            highlightedObj = null;
+            Debug.Log("HIGHLIGHT" + highLightMaterial);
         }
     }
 
@@ -91,7 +108,6 @@ public class TelekineseScript : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "PullableObject")
             {
-                // hit.collider.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
                HighLightObject(hit.collider.gameObject);
 
