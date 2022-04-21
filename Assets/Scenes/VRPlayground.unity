@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 216760697}
   - component: {fileID: 216760694}
   - component: {fileID: 216760693}
+  - component: {fileID: 216760695}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -433,7 +434,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1466440559}
   m_Father: {fileID: 395352860}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -552,6 +554,26 @@ MonoBehaviour:
   m_PlayHapticsOnHoverCanceled: 0
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
+--- !u!114 &216760695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216760691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939579ecc4e2d2443b887777ab342e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highLightMaterial: {fileID: 2100000, guid: 2368dc14c53145c498b25ec086f77890, type: 2}
+  range: 15
+  followTarget: {fileID: 1466440559}
+  followPositionOffset: {x: 0, y: 0, z: 0}
+  followRotationOffset: {x: 0, y: 0, z: 0}
+  followSpeed: 3
+  rotateSpeed: 2
+  activationTime: 1
 --- !u!114 &216760696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,9 +779,9 @@ GameObject:
   - component: {fileID: 260266090}
   - component: {fileID: 260266089}
   - component: {fileID: 260266088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: w (1)
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3113,9 +3135,9 @@ GameObject:
   - component: {fileID: 1234559196}
   - component: {fileID: 1234559195}
   - component: {fileID: 1234559194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: w
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3341,9 +3363,9 @@ GameObject:
   - component: {fileID: 1238776818}
   - component: {fileID: 1238776817}
   - component: {fileID: 1238776816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: w (4)
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3749,9 +3771,9 @@ GameObject:
   - component: {fileID: 1287965218}
   - component: {fileID: 1287965217}
   - component: {fileID: 1287965216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: w (2)
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4124,9 +4146,9 @@ GameObject:
   - component: {fileID: 1444980260}
   - component: {fileID: 1444980259}
   - component: {fileID: 1444980258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere (1)
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4337,6 +4359,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 405833097}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1466440558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1466440559}
+  m_Layer: 0
+  m_Name: telekineseTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1466440559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466440558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 216760692}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493560090
 GameObject:
@@ -5772,9 +5824,9 @@ GameObject:
   - component: {fileID: 1978570066}
   - component: {fileID: 1978570065}
   - component: {fileID: 1978570064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: w (3)
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6000,9 +6052,9 @@ GameObject:
   - component: {fileID: 1987145183}
   - component: {fileID: 1987145182}
   - component: {fileID: 1987145181}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
