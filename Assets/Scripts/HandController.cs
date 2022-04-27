@@ -21,12 +21,12 @@ public class HandController : MonoBehaviour
 
     private void SelectCancel(InputAction.CallbackContext obj)
     {
-        Debug.Log("Select pressd");
+        //Debug.Log("Select pressd");
     }
 
     private void SelectWas(InputAction.CallbackContext obj)
     {
-        Debug.Log("Select pressed");
+        //Debug.Log("Select pressed");
     }
 
     private void Update()

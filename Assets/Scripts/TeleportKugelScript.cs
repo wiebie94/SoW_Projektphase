@@ -1,19 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TeleportKugelScript : MonoBehaviour
 {
     [SerializeField] private bool isEnable = true;
     [SerializeField] private bool destroy = true;
+    [SerializeField] private bool tagTeleport = true;
+
     [SerializeField] private string playerGameObjectName = "XR Origin";
+    [SerializeField] private string leftHandGameObjectName = "LeftHand Controller";
+    [SerializeField] private string rightHandGameObjectName = "RightHand Controller";
+
+    private ActionBasedController controller;
 
     private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player =  GameObject.Find(playerGameObjectName);
+        this.player =  GameObject.Find(playerGameObjectName);
+        if (player != null)
+        {
+            GameObject leftHandGameobject = GameObject.Find(leftHandGameObjectName);
+            GameObject rightHandGameobject = GameObject.Find(rightHandGameObjectName);
+
+            this.controller = rightHandGameobject.GetComponent<ActionBasedController>();   
+            this.controller.selectAction.action.canceled += enable;
+
+            this.controller = rightHandGameobject.GetComponent<ActionBasedController>();
+            this.controller.selectAction.action.canceled += enable;
+        }
+        else 
+        {
+            Debug.Log("Objektname vom Spieler ist Falsch oder nicht angegeben");
+        }
     }
 
     // Update is called once per frame
@@ -23,20 +45,33 @@ public class TeleportKugelScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        GameObject collisionGameObject = collision.gameObject;
         if (!isEnable) return;
-        Debug.Log("Trigger");
-        Debug.Log(collision.contacts[0].point);
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }
-        // Überarebiten
-        this.player.transform.position = collision.contacts[0].point + Vector3.up * this.player.GetComponent<Collider>().bounds.extents.y;
 
+        if (collisionGameObject.tag == "Hand" || collisionGameObject.tag == "Player") return;
+
+        if (this.tagTeleport && collisionGameObject.tag != "Teleport") return;
+
+        this.teleportation(collision.contacts[0].point);
         this.isEnable = false;
-        if (destroy) 
-        {
-            DestroyObject(this.gameObject);
-        }
+        Debug.Log("Teleport");
+        if (destroy) Object.Destroy(this.gameObject);
+        
+    }
+
+    private void teleportation(Vector3 point) 
+    {
+        // Funktioniert noch nicht aus Gründen
+        //yield return new WaitForSeconds(2f);
+        Debug.Log("test");
+        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y;
+
+        this.player.transform.position = point + Vector3.up * playerColiderOffsetY;
+
+    }
+
+    private void enable(InputAction.CallbackContext obj)
+    {
+        this.isEnable = true;
     }
 }
