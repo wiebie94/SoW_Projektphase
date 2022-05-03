@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 216760695}
   m_Layer: 0
   m_Name: LeftHand Controller
-  m_TagString: Untagged
+  m_TagString: LeftHandController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -569,11 +569,15 @@ MonoBehaviour:
   highLightMaterial: {fileID: 2100000, guid: 2368dc14c53145c498b25ec086f77890, type: 2}
   range: 15
   followTarget: {fileID: 1466440559}
+  telekineseDragObject: {fileID: 1995848377}
   followPositionOffset: {x: 0, y: 0, z: 0}
   followRotationOffset: {x: 0, y: 0, z: 0}
   followSpeed: 3
   rotateSpeed: 2
   activationTime: 1
+  pullAndPushSpeed: 0.1
+  telekineseMinRange: 0.5
+  telekineseMaxRange: 10
 --- !u!114 &216760696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,7 +1217,7 @@ GameObject:
   - component: {fileID: 446931758}
   m_Layer: 0
   m_Name: RightHand Controller
-  m_TagString: Untagged
+  m_TagString: RightHandController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1903,6 +1907,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -6876283200194998784, guid: ae15297bfc0bd834d9884dee0acbe08f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: -6682861210513475885, guid: ae15297bfc0bd834d9884dee0acbe08f,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -1942,6 +1951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6360305241519122540, guid: ae15297bfc0bd834d9884dee0acbe08f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -6169698842116934046, guid: ae15297bfc0bd834d9884dee0acbe08f,
         type: 3}
@@ -2102,6 +2116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae15297bfc0bd834d9884dee0acbe08f,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightHand
       objectReference: {fileID: 0}
     - target: {fileID: 1897133222196087274, guid: ae15297bfc0bd834d9884dee0acbe08f,
         type: 3}
@@ -2845,7 +2864,7 @@ GameObject:
   - component: {fileID: 925044629}
   m_Layer: 7
   m_Name: palm_collider
-  m_TagString: Untagged
+  m_TagString: RightHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4384,7 +4403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466440558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 216760692}
@@ -4983,6 +5002,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae15297bfc0bd834d9884dee0acbe08f,
+        type: 3}
+      propertyPath: m_TagString
+      value: LeftHand
+      objectReference: {fileID: 0}
     - target: {fileID: 1897133222196087274, guid: ae15297bfc0bd834d9884dee0acbe08f,
         type: 3}
       propertyPath: m_Layer
@@ -5357,7 +5381,7 @@ GameObject:
   - component: {fileID: 1818826283}
   m_Layer: 7
   m_Name: palm_collider
-  m_TagString: Untagged
+  m_TagString: LeftHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6266,6 +6290,69 @@ Transform:
   m_Father: {fileID: 405833097}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1995848377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995848378}
+  - component: {fileID: 1995848380}
+  - component: {fileID: 1995848379}
+  m_Layer: 0
+  m_Name: TelekineseDrag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995848378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995848377}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.9365, y: 1.376, z: -3.5991998}
+  m_LocalScale: {x: 1.3, y: 0.88, z: 1.54}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995848379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995848377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f464b22afb2f641b929a5ddd07fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followObj: {fileID: 216760691}
+  followObjOffset: {x: 0, y: 0, z: 0}
+  leftHandRef: {fileID: 605106227}
+  interactionObjectRef: {fileID: 0}
+  enteredDragCollider: 0
+  telekineseScript: {fileID: 216760695}
+--- !u!65 &1995848380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995848377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2000777893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4729290118545964333, guid: ae15297bfc0bd834d9884dee0acbe08f,

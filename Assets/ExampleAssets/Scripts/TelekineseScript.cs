@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR;
+using UnityEngine.InputSystem;
 
 public class TelekineseScript : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class TelekineseScript : MonoBehaviour
     private Rigidbody telekineseRigidbody;
     private string neeededTag = "GrabInteractable";
     private bool isItemGrabbed = false;
-
+    private bool isItemPushAndPull = false;
+    public GameObject telekineseDragObject;
     [SerializeField] Vector3 followPositionOffset;
     [SerializeField] Vector3 followRotationOffset;
     [SerializeField] float followSpeed;
@@ -25,24 +27,46 @@ public class TelekineseScript : MonoBehaviour
 
     [SerializeField] float activationTime = 1;
 
+    [SerializeField] float pullAndPushSpeed = 1;
+
+    [SerializeField] float telekineseMinRange = 1;
+    [SerializeField] float telekineseMaxRange = 10;
+
     void Start()
     {
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        ActionBasedController controller = controllerArray[0];
-        controller.selectAction.action.performed += Action_performed;
-        controller.selectAction.action.canceled += Action_canceled;
+        ActionBasedController controllerLeft = controllerArray[0];
+        ActionBasedController controllerRight = controllerArray[1];
+        controllerLeft.selectAction.action.performed += Action_performed_left;
+        controllerLeft.selectAction.action.canceled += Action_canceled_left;
+        controllerRight.selectAction.action.performed += Action_performed_right;
+        controllerRight.selectAction.action.canceled += Action_canceled_right;
 
         StartCoroutine(TelekineseRayCast(0.1f));
     }
 
-    private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Action_performed_right(InputAction.CallbackContext obj)
     {
+        Debug.Log("ControllerRight" + obj.control.name);
+        isItemPushAndPull = true;
+    }
+
+    private void Action_canceled_right(InputAction.CallbackContext obj)
+    {
+        Debug.Log("ControllerRight" + obj.control.name);
+        isItemPushAndPull = false;
+    }
+
+    private void Action_performed_left(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        Debug.Log("ControllerLeft"+obj.control.name);
         if (telekineseObj != null)
             TelekineseBegin();
     }
 
-    private void Action_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Action_canceled_left(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        Debug.Log("ControllerLeft" + obj.control.name);
         if (isItemGrabbed)
             TelekineseEnd();
     }
@@ -53,7 +77,7 @@ public class TelekineseScript : MonoBehaviour
         Debug.Log("TelekineseBegin");
 
         isItemGrabbed = true;
-
+        telekineseDragObject.SetActive(true);
         telekineseRigidbody = telekineseObj.GetComponent<Rigidbody>();
         followTarget.position = telekineseRigidbody.position;
 
@@ -66,7 +90,7 @@ public class TelekineseScript : MonoBehaviour
         Debug.Log("TelekineseEnd");
 
         isItemGrabbed = false;
-
+        telekineseDragObject.SetActive(false);
         telekineseRigidbody = null;
         ClearHighLight();
     }
@@ -78,15 +102,11 @@ public class TelekineseScript : MonoBehaviour
 
     IEnumerator ObjectHitTimer()
     {
-        Debug.Log("1");
-
         while(true)
         {
             timeAfterHit += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
-
-        Debug.Log("2");
     }
 
     void HighLightObject(GameObject gObj)
@@ -116,8 +136,6 @@ public class TelekineseScript : MonoBehaviour
         StopCoroutine(timerCoroutine);
         timerCoroutine = null;
         timeAfterHit = 0;
-
-        Debug.Log("Canceled");
     }
 
 
@@ -167,6 +185,19 @@ public class TelekineseScript : MonoBehaviour
 
             yield return new WaitForSeconds(interval);
         }
+    }
+
+
+    public void PushAndPullObject(float dragForce)
+    {
+        Vector3 distance = followTarget.transform.localPosition + Vector3.forward * dragForce * pullAndPushSpeed;
+        
+        followTarget.transform.localPosition = new Vector3(distance.x,distance.y,Mathf.Clamp(distance.z, telekineseMinRange, telekineseMaxRange));
+    }
+
+    public bool getIsItemPullAndPush()
+    {
+        return isItemPushAndPull;
     }
 }
 
