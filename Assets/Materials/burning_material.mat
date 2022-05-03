@@ -68,12 +68,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DLOD_79e85431dd7540b49301bd7b89fb7a2c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 331276f94be82df4190745afe158374e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_10a394d1b42547058a73bb51f7ed96f2_Texture_1:
         m_Texture: {fileID: 2800000, guid: bc34c8b5b537af642b7e3869a8a355b9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4fd923a423c247a8a0aaf5c14bc43c87_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 11e34d76fce7843be984510eca5c9139, type: 3}
+        m_Texture: {fileID: 2800000, guid: aa78f40597b7f474299a2b81d76eb80a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_9fb2092670c84526b5f71ce37b0f5fed_Texture_1:
@@ -108,6 +112,7 @@ Material:
     - Vector1_a1be84a2dd80479aba775f99acfcb76a: 0
     - Vector1_bf9eda4b51844c8a9acc710e83283ff4: 1
     - Vector1_c0dccff7ac4b45789e700f6c577a2e56: 0.1
+    - Vector1_ce179ded174847a087db7327a4192d42: 0.1
     - Vector1_d204fdee20424329814a5bd403d9b1d3: 2
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -127,8 +132,8 @@ Material:
     - _UVSec: 0
     - _Vanishing: 0
     - _ZWrite: 1
-    - prop_burn: 0
-    - prop_dissolve: 0
+    - prop_burn: 0.7496043
+    - prop_dissolve: 71.14427
     - prop_distortion: 0.394
     - prop_divide: 1.1
     - prop_heat: 0.683
