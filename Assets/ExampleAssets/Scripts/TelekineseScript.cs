@@ -15,7 +15,6 @@ public class TelekineseScript : MonoBehaviour
     private Rigidbody telekineseRigidbody;
     private string neeededTag = "GrabInteractable";
     private bool isItemGrabbed = false;
-    private bool isItemPushAndPull = false;
     public GameObject telekineseDragObject;
     [SerializeField] Vector3 followPositionOffset;
     [SerializeField] Vector3 followRotationOffset;
@@ -32,29 +31,15 @@ public class TelekineseScript : MonoBehaviour
     [SerializeField] float telekineseMinRange = 1;
     [SerializeField] float telekineseMaxRange = 10;
 
+    [SerializeField] HandType hand;
+
     void Start()
     {
-        ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        ActionBasedController controllerLeft = controllerArray[0];
-        ActionBasedController controllerRight = controllerArray[1];
-        controllerLeft.selectAction.action.performed += Action_performed_left;
-        controllerLeft.selectAction.action.canceled += Action_canceled_left;
-        controllerRight.selectAction.action.performed += Action_performed_right;
-        controllerRight.selectAction.action.canceled += Action_canceled_right;
+        ActionBasedController controller = GetComponent<ActionBasedController>();
+        controller.selectAction.action.performed += Action_performed_left;
+        controller.selectAction.action.canceled += Action_canceled_left;
 
         StartCoroutine(TelekineseRayCast(0.1f));
-    }
-
-    private void Action_performed_right(InputAction.CallbackContext obj)
-    {
-        Debug.Log("ControllerRight" + obj.control.name);
-        isItemPushAndPull = true;
-    }
-
-    private void Action_canceled_right(InputAction.CallbackContext obj)
-    {
-        Debug.Log("ControllerRight" + obj.control.name);
-        isItemPushAndPull = false;
     }
 
     private void Action_performed_left(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -78,6 +63,7 @@ public class TelekineseScript : MonoBehaviour
 
         isItemGrabbed = true;
         telekineseDragObject.SetActive(true);
+        telekineseDragObject.GetComponent<TelekineseDragAndPull>().SetTelekineseHand(hand);
         telekineseRigidbody = telekineseObj.GetComponent<Rigidbody>();
         followTarget.position = telekineseRigidbody.position;
 
@@ -190,14 +176,9 @@ public class TelekineseScript : MonoBehaviour
 
     public void PushAndPullObject(float dragForce)
     {
-        Vector3 distance = followTarget.transform.localPosition + Vector3.forward * dragForce * pullAndPushSpeed;
+        Vector3 distance = followTarget.transform.localPosition - Vector3.forward * dragForce * pullAndPushSpeed;
         
         followTarget.transform.localPosition = new Vector3(distance.x,distance.y,Mathf.Clamp(distance.z, telekineseMinRange, telekineseMaxRange));
-    }
-
-    public bool getIsItemPullAndPush()
-    {
-        return isItemPushAndPull;
     }
 }
 
