@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ice
-  m_Shader: {fileID: -6465566751694194690, guid: 2dbfb8e39ebb7bf46abeb93b67d10c0d,
+  m_Name: fireball
+  m_Shader: {fileID: -6465566751694194690, guid: 58d8d1db64af3844c86f20c68834c58f,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,8 +20,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SampleTexture2D_fbfe7c1093e54e48ab43e7b3f7d45344_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 6d6ff524f7ba5fc42b50539979cc4804, type: 3}
+    - Texture2D_f78a7f115e854079a211c569d6ea1714:
+        m_Texture: {fileID: 2800000, guid: 99cfbf1a17ab2c64188050a1d509d24b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -37,11 +37,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_06a975e5265447769c53692c63dcaef0: 0.71
-    - Vector1_23f0bba20bbf40a3b5f8584ef7a5dc2a: 3.53
-    - Vector1_9a3ba5093e6a4a40ad6be93a0f459027: 5
-    - _outline_strenght: 1
-    m_Colors:
-    - Color_8cfa38eeab454d568e8aba7ae8a2c404: {r: 0.3160377, g: 0.8391563, b: 1, a: 0}
-    - Color_d49f6219b9854229a831728ce79ca778: {r: 0.7058824, g: 3.090196, b: 4, a: 0}
+    - Vector1_4723546d77db493d92c958a287f7553f: 1
+    - Vector1_828350b998634eaa8dd2903a8a38b592: 0.12
+    - Vector1_97ee640b2f85416bbc70449cd0f0dc77: 1.2
+    m_Colors: []
   m_BuildTextureStacks: []
