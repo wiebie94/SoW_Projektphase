@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579438086}
   m_LocalRotation: {x: 0.27875796, y: -0, z: -0, w: 0.9603614}
-  m_LocalPosition: {x: 0, y: 1.21, z: -2}
+  m_LocalPosition: {x: 0, y: 1.563, z: -2.557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5214,6 +5214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Telekinesis Orb
       objectReference: {fileID: 0}
+    - target: {fileID: 663456143325496288, guid: 4fca7a45e82d4ae41b9dced063b4b591,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
         type: 3}
       propertyPath: m_RootOrder
@@ -5271,6 +5276,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fca7a45e82d4ae41b9dced063b4b591, type: 3}
+--- !u!1001 &3406788493135980172
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969883, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Orb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d90acc6315de4fb409e981e18ef993d1, type: 3}
 --- !u!1001 &5900389184414980977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5283,6 +5357,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleport Orb
       objectReference: {fileID: 0}
+    - target: {fileID: 5900389184934313000, guid: dfa5ed40b6c3e3f4d90628da570136d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_RootOrder
@@ -5291,7 +5370,7 @@ PrefabInstance:
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
