@@ -8,14 +8,21 @@ public class TeleportKugelScript : MonoBehaviour
     [SerializeField] private bool isEnable = true;
     [SerializeField] private bool destroy = true;
     [SerializeField] private bool tagTeleport = true;
+    [SerializeField] private float speedFac = 1.03f;
+    [SerializeField] private float maxSpeed = 9.0f;
+
+    [SerializeField] private float bounciness = 0.5f;
 
     [SerializeField] private float teleportDelay = 2.0f;
     [SerializeField] private int colisionCounter = 0;
     [SerializeField] private float destroyMaxTime = 5.0f;
 
+    [SerializeField] private float destroyMinVelocity = 0.05f;
+
     [SerializeField] private string playerGameObjectName = "XR Origin";
 
     private Rigidbody rb;
+    private PhysicMaterial ph;
     private MeshRenderer m;
 
     private ActionBasedController controller;
@@ -35,6 +42,8 @@ public class TeleportKugelScript : MonoBehaviour
 
         this.rb = this.GetComponent<Rigidbody>();
         this.m = this.GetComponent<MeshRenderer>();
+        this.ph = this.GetComponent<Collider>().material;
+
 
         this.player =  GameObject.Find(playerGameObjectName);
         if (player == null) Debug.Log("Objektname vom Spieler ist falsch oder nicht angegeben");
@@ -44,13 +53,29 @@ public class TeleportKugelScript : MonoBehaviour
     void FixedUpdate()
     {
         //######### Destroy over Time #########
-        /*if (this.isEnable && !this.isTeleportation) this.destroyTime += Time.deltaTime;
+        if (this.isEnable && !this.isTeleportation) 
+            this.destroyTime += Time.deltaTime;
 
-        if (this.destroyMaxTime < this.destroyTime) Object.Destroy(this.gameObject);*/
+        if (this.destroyMaxTime < this.destroyTime) 
+            Object.Destroy(this.gameObject);
+
+
         Debug.Log(this.rb.velocity.magnitude);
+        if (this.isEnable) limitVelocity();
 
-        if (this.isEnable && this.rb.velocity.magnitude < 0.05) Object.Destroy(this.gameObject);
+        //######### Destroy wenn zu langsam #########
+        if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
+            Object.Destroy(this.gameObject);
+    }
 
+    private void limitVelocity()
+    {
+        /*Vector3 velocity = this.rb.velocity;
+        this.rb.velocity = velocity * 1.03f;
+        if (this.rb.velocity.magnitude > this.maxSpeed)
+            rb.velocity = this.rb.velocity.normalized * this.maxSpeed;*/
+
+        Debug.Log(this.rb);
     }
 
     void OnDestroy()
@@ -107,9 +132,12 @@ public class TeleportKugelScript : MonoBehaviour
         //ToDo partikel Animation ausführen
     }
 
+    
+
     public void activate()
     {
         this.isEnable = true;
         this.destroyTime = 0;
+        this.ph.bounciness = this.bounciness;
     }
 }
