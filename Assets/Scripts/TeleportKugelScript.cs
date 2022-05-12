@@ -8,8 +8,6 @@ public class TeleportKugelScript : MonoBehaviour
     [SerializeField] private bool isEnable = true;
     [SerializeField] private bool destroy = true;
     [SerializeField] private bool tagTeleport = true;
-    [SerializeField] private float speedFac = 1.03f;
-    [SerializeField] private float maxSpeed = 9.0f;
 
     [SerializeField] private float bounciness = 0.5f;
 
@@ -60,22 +58,11 @@ public class TeleportKugelScript : MonoBehaviour
             Object.Destroy(this.gameObject);
 
 
-        Debug.Log(this.rb.velocity.magnitude);
-        if (this.isEnable) limitVelocity();
+        //Debug.Log(this.rb.velocity.magnitude);
 
         //######### Destroy wenn zu langsam #########
         if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
             Object.Destroy(this.gameObject);
-    }
-
-    private void limitVelocity()
-    {
-        /*Vector3 velocity = this.rb.velocity;
-        this.rb.velocity = velocity * 1.03f;
-        if (this.rb.velocity.magnitude > this.maxSpeed)
-            rb.velocity = this.rb.velocity.normalized * this.maxSpeed;*/
-
-        Debug.Log(this.rb);
     }
 
     void OnDestroy()
