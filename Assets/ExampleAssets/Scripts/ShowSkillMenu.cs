@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ShowSkillMenu : MonoBehaviour
 {
@@ -11,12 +12,16 @@ public class ShowSkillMenu : MonoBehaviour
     GameObject rightHandRef;
     private bool isParallel;
     private bool isSkillMenuOpen =false;
+    private bool isGripPressed = false;
     [SerializeField] private GameObject SkillMenu;
+    
 
 
 
     void Start()
     {
+        
+
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class ShowSkillMenu : MonoBehaviour
         {
             if (!isSkillMenuOpen)
             {
-                showSkillMenu();
+                StartCoroutine(waitForMenu());
             }
 
         }
@@ -36,6 +41,12 @@ public class ShowSkillMenu : MonoBehaviour
             closeSkillMenu();
         }
 
+    }
+
+    public IEnumerator waitForMenu()
+    {
+        yield return new WaitForSeconds(5);
+        showSkillMenu();
     }
 
     public void CalculateParalelVector()
@@ -74,5 +85,37 @@ public class ShowSkillMenu : MonoBehaviour
         
     }
 
+    private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        Debug.Log("ControllerLeft" + obj.control.name);
+        isGripPressed = true;
+    }
+
+    private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        Debug.Log("ControllerLeft" + obj.control.name);
+        isGripPressed = false;
+    }
+
+
    
+
+    private void OnDestroy()
+    {
+        ClearBindings();
+    }
+
+    private void ClearBindings()
+    {
+   
+    }
+
+    public bool getGripPressed()
+    {
+        return isGripPressed;
+    }
+
+
+
+
 }

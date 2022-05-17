@@ -28,7 +28,6 @@ Transform:
   m_LocalPosition: {x: 0.3127514, y: 1.1452488, z: 2.4460783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5565776584955284547}
   - {fileID: 1579331061308412970}
   - {fileID: 7096199965197581671}
   m_Father: {fileID: 0}
@@ -47,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftHandRef: {fileID: 0}
+  rightHandRef: {fileID: 0}
 --- !u!1001 &4902323809655123327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
@@ -384,135 +384,6 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579331061308412975}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &4902323811116240800
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 384519110608104871}
-    m_Modifications:
-    - target: {fileID: 663456142020261799, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: scalingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456142740199681, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: scalingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456142995469996, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: scalingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496288, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_Name
-      value: Telekinesis Orb
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.2135
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1507
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.1499
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663456143797728730, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-        type: 3}
-      propertyPath: scalingMode
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4fca7a45e82d4ae41b9dced063b4b591, type: 3}
---- !u!1 &5565776584955284544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 663456143325496288, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-    type: 3}
-  m_PrefabInstance: {fileID: 4902323811116240800}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5565776584955284547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 663456143325496291, guid: 4fca7a45e82d4ae41b9dced063b4b591,
-    type: 3}
-  m_PrefabInstance: {fileID: 4902323811116240800}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &4110842872430824801
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565776584955284544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
