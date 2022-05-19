@@ -5,8 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class TriggerSkill : MonoBehaviour
 {
-    public GameObject LeftHandController;
-    public GameObject RightHandController;
     [SerializeField]
     private ShowSkillMenu skillMenu;
     private ActionBasedController controllerLeft;
@@ -18,7 +16,7 @@ public class TriggerSkill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        skillMenu = LeftHandController.GetComponent<ShowSkillMenu>();
+        skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
         controllerLeft = controllerArray[0];
         controllerRight = controllerArray[1];
@@ -33,24 +31,54 @@ public class TriggerSkill : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("RightHand")){
+        if(skillMenu.menuHandLeft == true)
+        {
+            if (other.CompareTag("RightHand"))
+            {
 
-            controllerRight.selectAction.action.performed += Grip_performed;
-            controllerRight.selectAction.action.canceled += Grip_canceled;
+                controllerRight.selectAction.action.performed += Grip_performed;
+                controllerRight.selectAction.action.canceled += Grip_canceled;
 
 
+            }
         }
+        else
+        {
+            if (other.CompareTag("LeftHand"))
+            {
+
+                controllerLeft.selectAction.action.performed += Grip_performed;
+                controllerLeft.selectAction.action.canceled += Grip_canceled;
+
+
+            }
+        }
+        
         
        
   
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("RightHand")){
+        if (skillMenu.menuHandLeft == true)
+        {
+            if (other.CompareTag("RightHand"))
+            {
 
-            controllerRight.selectAction.action.performed -= Grip_performed;
-            controllerRight.selectAction.action.canceled -= Grip_canceled;
-            isGripPressed = false;
+                controllerRight.selectAction.action.performed -= Grip_performed;
+                controllerRight.selectAction.action.canceled -= Grip_canceled;
+                isGripPressed = false;
+            }
+        }
+        else
+        {
+            if (other.CompareTag("LeftHand"))
+            {
+
+                controllerLeft.selectAction.action.performed -= Grip_performed;
+                controllerLeft.selectAction.action.canceled -= Grip_canceled;
+                isGripPressed = false;
+            }
         }
     }
 
@@ -61,7 +89,16 @@ public class TriggerSkill : MonoBehaviour
         skillMenu.closeSkillMenu();
         GameObject g1 = Instantiate(fireball);
         //g1.transform.SetParent(RightHandController.transform);
-        g1.transform.position = RightHandController.transform.position;
+        if(skillMenu.menuHandLeft == true)
+        {
+            g1.transform.position = skillMenu.rightHandRef.transform.position;
+
+        }
+        else
+        {
+            g1.transform.position = skillMenu.leftHandRef.transform.position;
+
+        }
     }
 
     private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)

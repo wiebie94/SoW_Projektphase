@@ -6,13 +6,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ShowSkillMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    GameObject leftHandRef;
-    [SerializeField]
-    GameObject rightHandRef;
+    
+    public GameObject leftHandRef;
+    public GameObject rightHandRef;
     private bool isParallel;
     private bool isSkillMenuOpen =false;
     private bool isGripPressed = false;
+    public bool menuHandLeft = false;
+    public bool isCoroutineFinished = false;
     [SerializeField] private GameObject SkillMenu;
     
 
@@ -30,39 +31,52 @@ public class ShowSkillMenu : MonoBehaviour
         CalculateParalelVector();
         if (isParallel)
         {
-            if (!isSkillMenuOpen)
+            if (!isSkillMenuOpen && !isCoroutineFinished)
             {
-                StartCoroutine(waitForMenu());
+                
+                StartCoroutine(waitForMenuShow());
+                isCoroutineFinished = true;
             }
 
         }
         else if (isSkillMenuOpen)
         {
             closeSkillMenu();
+            
         }
 
     }
 
-    public IEnumerator waitForMenu()
+    public IEnumerator waitForMenuShow()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         showSkillMenu();
     }
 
+
+
     public void CalculateParalelVector()
     {
+        
+
         //Vektor zeichnen von der Hand des Spielers nach oben
         Vector3 menuHandPos = leftHandRef.transform.position;
         Vector3 upVektor = Vector3.up;
-        Debug.DrawRay(menuHandPos, upVektor);
         //Vektor zeichen von der Hand des Spielers nach 
-        Vector3 menuHandUp = -leftHandRef.transform.up;
-        Debug.DrawRay(menuHandPos, menuHandUp);
-        float AngleBetween  =Vector3.Angle(upVektor, menuHandUp);
-        if(AngleBetween < 15f)
-        {
+        Vector3 menuHandUpLeft = -leftHandRef.transform.up;
+        Vector3 menuHandUpRight = -rightHandRef.transform.up;
+        //Falls der Winkel zwischen der Linken Hand und dem Up Vektor kleiner als 30 Grad sein sollte, dann setz Linke Hand auf True und is Paralell auch
+        if(Vector3.Angle(upVektor, menuHandUpLeft) < 30f){
+            menuHandLeft = true;
             isParallel = true;
         }
+        //Andernfalls ist es die rechte Hand auf der das Menü sein soll 
+        else if(Vector3.Angle(upVektor, menuHandUpRight) < 30f)
+        {
+            menuHandLeft = false;
+            isParallel = true;
+        }
+        //Falls es keins von beiden ist ist nichts paralell und deshalb setzen wir paralell auf falls
         else
         {
             isParallel = false;
@@ -72,17 +86,21 @@ public class ShowSkillMenu : MonoBehaviour
 
     public void showSkillMenu()
     {
-        isSkillMenuOpen = true;
+        //TODO: Von Alfons kommen hier Particle Spawn und Despawn Scripte, das ich hier nur die Methode des Scripts aufrufen muss
         SkillMenu.SetActive(true);
+        isSkillMenuOpen = true;
+        
 
     }
 
     public void closeSkillMenu()
     {
-       
-            isSkillMenuOpen = false;
-            SkillMenu.SetActive(false);
-        
+        //TODO: Von Alfons kommen hier Particle Spawn und Despawn Scripte, das ich hier nur die Methode des Scripts aufrufen muss
+
+        SkillMenu.SetActive(false);
+        isSkillMenuOpen = false;
+        isCoroutineFinished = false;
+
     }
 
     private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
