@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &384519110608104871
 Transform:
   m_ObjectHideFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandRef: {fileID: 0}
   rightHandRef: {fileID: 0}
+  sSkillMenu: {fileID: 0}
 --- !u!1001 &4902323809655123327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,17 +173,17 @@ PrefabInstance:
     - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1122
+      value: 0.049
       objectReference: {fileID: 0}
     - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2005
+      value: -0.146
       objectReference: {fileID: 0}
     - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1497
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
@@ -222,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 2770357867294969883, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
       propertyPath: m_Name
-      value: Fire Orb
+      value: FireOrb
       objectReference: {fileID: 0}
     - target: {fileID: 2770357867637237281, guid: d90acc6315de4fb409e981e18ef993d1,
         type: 3}
@@ -243,19 +244,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4902323809655123327}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5212424074547697914
-BoxCollider:
+--- !u!135 &87311944
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7096199965197581668}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &87311945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096199965197581668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6279ede6a18842d4ca39b13c97383326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMenu: {fileID: 0}
+  fireball: {fileID: 1171996869661294710, guid: a829542dfbd39384e9338a78097a82bb,
+    type: 3}
+  teleportBall: {fileID: 0}
 --- !u!1001 &4902323810463098887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 5900389184934313000, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_Name
-      value: Teleport Orb
+      value: TeleportOrb
       objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313000, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
@@ -301,17 +318,17 @@ PrefabInstance:
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0326
+      value: -0.1004
       objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0999
+      value: -0.146
       objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1499
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: 5900389184934313005, guid: dfa5ed40b6c3e3f4d90628da570136d7,
         type: 3}
@@ -377,16 +394,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4902323810463098887}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &141918398549900691
-BoxCollider:
+--- !u!135 &1407628400
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579331061308412975}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1407628401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579331061308412975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6279ede6a18842d4ca39b13c97383326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMenu: {fileID: 0}
+  fireball: {fileID: 1171996869661294710, guid: 3c6832a26c03468439b3258f4612a483,
+    type: 3}
+  teleportBall: {fileID: 0}
