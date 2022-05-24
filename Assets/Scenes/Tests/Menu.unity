@@ -3087,6 +3087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038540367}
   - component: {fileID: 1038540366}
+  - component: {fileID: 1038540368}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3127,6 +3128,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038540368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038540365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c80b20809ee15d4d86d3cb222800cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayOffset: 1
 --- !u!4 &1046434139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1268708227025724415, guid: ae15297bfc0bd834d9884dee0acbe08f,
@@ -5774,6 +5788,7 @@ GameObject:
   - component: {fileID: 2033344591}
   - component: {fileID: 2033344590}
   - component: {fileID: 2033344589}
+  - component: {fileID: 2033344594}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: LeftHandController
@@ -6127,6 +6142,19 @@ MonoBehaviour:
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!114 &2033344594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033344587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c80b20809ee15d4d86d3cb222800cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayOffset: 1
 --- !u!4 &2055736302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6347406346396362103, guid: ae15297bfc0bd834d9884dee0acbe08f,
