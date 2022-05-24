@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5471,6 +5471,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4115490124185390516, guid: 4b147af2034fe084594f536f5e123eac,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115490124747254775, guid: 4b147af2034fe084594f536f5e123eac,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4115490125051373746, guid: 4b147af2034fe084594f536f5e123eac,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5580,6 +5590,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Loading_Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115490125051373753, guid: 4b147af2034fe084594f536f5e123eac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4115490125051373757, guid: 4b147af2034fe084594f536f5e123eac,
         type: 3}
@@ -5751,7 +5766,7 @@ PrefabInstance:
     - target: {fileID: 1229609491664236876, guid: 1d0ae498ae53ecc4bbc8297caab9c255,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1899291979077397494, guid: 1d0ae498ae53ecc4bbc8297caab9c255,
         type: 3}

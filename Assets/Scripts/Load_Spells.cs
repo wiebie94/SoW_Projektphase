@@ -19,6 +19,11 @@ public class Load_Spells : MonoBehaviour
         centerImage = center.GetComponent<RectTransform>();
 
         rim.GetComponent<RectTransform>().sizeDelta = new Vector2(maxSize, maxSize);
+
+        rim.SetActive(true);
+        center.SetActive(true);
+        centerImage.sizeDelta = new Vector2(0,0);
+        timePassed = 0;
     }
 
     // Update is called once per frame
