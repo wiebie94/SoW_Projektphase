@@ -358,41 +358,6 @@ CapsuleCollider:
   m_Height: 2.57
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &87311942 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7096199965197581668, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1920073630}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &87311944
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87311942}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &87311945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87311942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6279ede6a18842d4ca39b13c97383326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillMenu: {fileID: 0}
-  fireball: {fileID: 1171996869661294710, guid: 3c6832a26c03468439b3258f4612a483,
-    type: 3}
-  teleportBall: {fileID: 0}
 --- !u!1 &129136900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,41 +4385,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1680553285}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1407628398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1579331061308412975, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1920073630}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1407628400
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407628398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1407628401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407628398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6279ede6a18842d4ca39b13c97383326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillMenu: {fileID: 0}
-  fireball: {fileID: 1171996869661294710, guid: 3c6832a26c03468439b3258f4612a483,
-    type: 3}
-  teleportBall: {fileID: 0}
 --- !u!1 &1411564067
 GameObject:
   m_ObjectHideFlags: 0
@@ -6105,20 +6035,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1498819028, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
-      propertyPath: Fireball
-      value: 
-      objectReference: {fileID: 2770357867294969883, guid: d90acc6315de4fb409e981e18ef993d1,
-        type: 3}
-    - target: {fileID: 1498819028, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
-      propertyPath: Teleport
-      value: 
-      objectReference: {fileID: 5900389184934313000, guid: dfa5ed40b6c3e3f4d90628da570136d7,
-        type: 3}
-    - target: {fileID: 1498819028, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
-      propertyPath: Telekinese
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1498819028, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
       propertyPath: leftHandRef
       value: 
       objectReference: {fileID: 605106227}
@@ -6126,21 +6042,6 @@ PrefabInstance:
       propertyPath: rightHandRef
       value: 
       objectReference: {fileID: 633179005}
-    - target: {fileID: 141918398549900691, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 141918398549900691, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 141918398549900691, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 384519110608104871, guid: ca30d072bc8d2c542bf99a7eb68c356b,
         type: 3}
       propertyPath: m_RootOrder
@@ -6196,95 +6097,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1579331061308412970, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.1004
-      objectReference: {fileID: 0}
-    - target: {fileID: 1579331061308412970, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.146
-      objectReference: {fileID: 0}
-    - target: {fileID: 1579331061308412970, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.117
-      objectReference: {fileID: 0}
-    - target: {fileID: 1579331061308412975, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Name
-      value: TeleportOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110842872430824801, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110842872430824801, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110842872430824801, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5212424074547697914, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5212424074547697914, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5212424074547697914, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565776584955284544, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Name
-      value: TelekinesisOrb
-      objectReference: {fileID: 0}
     - target: {fileID: 6461055629916683141, guid: ca30d072bc8d2c542bf99a7eb68c356b,
         type: 3}
       propertyPath: m_Name
       value: SkillMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 6461055629916683141, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096199965197581668, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_Name
-      value: FireOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096199965197581671, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.049
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096199965197581671, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.146
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096199965197581671, guid: ca30d072bc8d2c542bf99a7eb68c356b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.117
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4110842872430824801, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
-    - {fileID: 141918398549900691, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
-    - {fileID: 5212424074547697914, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca30d072bc8d2c542bf99a7eb68c356b, type: 3}
 --- !u!1 &1926607596
 GameObject:
