@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GrabInteractable
+  - PullableObject
+  - LeftHand
+  - RightHand
+  - LeftHandController
+  - RightHandController
+  - TeleportKugel
+  - Teleport
   layers:
   - Default
   - TransparentFX
@@ -11,9 +19,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - PlayerBody
+  - PlayerHands
+  - GrabInteractable
   - 
   - 
   - 
