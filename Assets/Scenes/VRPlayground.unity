@@ -389,8 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6279ede6a18842d4ca39b13c97383326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftHandController: {fileID: 605106227}
-  RightHandController: {fileID: 633179005}
   skillMenu: {fileID: 0}
   fireball: {fileID: 1171996869661294710, guid: 3c6832a26c03468439b3258f4612a483,
     type: 3}
@@ -2054,6 +2052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandRef: {fileID: 605106227}
   rightHandRef: {fileID: 633179005}
+  menuHandLeft: 0
+  isCoroutineFinished: 0
   SkillMenu: {fileID: 1498819026}
 --- !u!1001 &633178987
 PrefabInstance:
@@ -4451,8 +4451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6279ede6a18842d4ca39b13c97383326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftHandController: {fileID: 605106227}
-  RightHandController: {fileID: 633179005}
   skillMenu: {fileID: 0}
   fireball: {fileID: 1171996869661294710, guid: 3c6832a26c03468439b3258f4612a483,
     type: 3}
@@ -5798,6 +5796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1751878777}
+  - component: {fileID: 1751878778}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5821,6 +5820,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1751878778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751878776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602816cc865d3624690d6467120824ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandRef: {fileID: 605106227}
+  rightHandRef: {fileID: 633179005}
+  menuHandLeft: 0
+  isCoroutineFinished: 0
+  SkillMenu: {fileID: 1498819026}
 --- !u!4 &1761446226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1268708227025724415, guid: ae15297bfc0bd834d9884dee0acbe08f,
