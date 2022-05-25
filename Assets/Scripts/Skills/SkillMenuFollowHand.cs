@@ -11,12 +11,6 @@ public class SkillMenuFollowHand : MonoBehaviour
     [SerializeField]
     ShowSkillMenu sSkillMenu;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        sSkillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
-    }
-
     // Update is called once per frame
     void Update()
     {

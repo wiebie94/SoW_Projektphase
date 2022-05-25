@@ -44,14 +44,12 @@ public class TelekineseScript : MonoBehaviour
 
     private void Action_performed_left(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("ControllerLeft"+obj.control.name);
         if (telekineseObj != null)
             TelekineseBegin();
     }
 
     private void Action_canceled_left(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("ControllerLeft" + obj.control.name);
         if (isItemGrabbed)
             TelekineseEnd();
     }
@@ -59,21 +57,26 @@ public class TelekineseScript : MonoBehaviour
     
     void TelekineseBegin()
     {
-        Debug.Log("TelekineseBegin");
-
         isItemGrabbed = true;
         telekineseDragObject.SetActive(true);
         telekineseDragObject.GetComponent<TelekineseDragAndPull>().SetTelekineseHand(hand);
         telekineseRigidbody = telekineseObj.GetComponent<Rigidbody>();
-        followTarget.position = telekineseRigidbody.position;
-
+        
         if (telekineseRigidbody == null)
-            Debug.LogError("telekineseRigidbody is null!");
+        {
+            telekineseRigidbody = telekineseObj.transform.parent.GetComponent<Rigidbody>();
+
+            if (telekineseRigidbody == null)
+                Debug.LogError("telekineseRigidbody is null!");
+        }
+
+        Debug.Log("telekinse obj: " + telekineseRigidbody.gameObject.name);
+
+        followTarget.position = telekineseRigidbody.position;
     }
 
     void TelekineseEnd()
     {
-        Debug.Log("TelekineseEnd");
 
         isItemGrabbed = false;
         telekineseDragObject.SetActive(false);

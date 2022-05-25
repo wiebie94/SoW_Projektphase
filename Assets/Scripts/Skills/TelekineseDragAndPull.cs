@@ -92,7 +92,6 @@ public class TelekineseDragAndPull : MonoBehaviour
         {
             enteredDragCollider = true;
             dragHandRef = other.gameObject;
-            Debug.Log("HandBool" + enteredDragCollider);
         }
     }
 
@@ -104,7 +103,6 @@ public class TelekineseDragAndPull : MonoBehaviour
         {
             enteredDragCollider = false;
             dragHandRef = null;
-            Debug.Log("HandBool" + enteredDragCollider);
 
         }
     }
@@ -115,7 +113,6 @@ public class TelekineseDragAndPull : MonoBehaviour
         if(enteredDragCollider == true)
         {
             enteredDragCollider =false;
-            Debug.Log("HandBool" + enteredDragCollider);
         }
 
         followObj = null;
