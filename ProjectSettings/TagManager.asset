@@ -12,6 +12,7 @@ TagManager:
   - RightHandController
   - TeleportKugel
   - Teleport
+  - LeftHandObjectModel
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - PlayerBody
   - PlayerHands
   - GrabInteractable
-  - 
-  - 
+  - NoCollisionWithHands
+  - NoCollisionWithPlayerBody
   - 
   - 
   - 
