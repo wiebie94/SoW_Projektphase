@@ -29,6 +29,7 @@ public class Load_Spells : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.LookAt(Camera.main.transform.position); 
         timePassed += Time.deltaTime; 
         if(timePassed <= time){
             centerImage.sizeDelta = new Vector2(((timePassed) / time) * maxSize, ((timePassed) / time) * maxSize);
