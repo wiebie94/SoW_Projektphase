@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,10 +135,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportPad_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1229609491664236876, guid: 1d0ae498ae53ecc4bbc8297caab9c255,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1899291979077397494, guid: 1d0ae498ae53ecc4bbc8297caab9c255,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1899291979077397494, guid: 1d0ae498ae53ecc4bbc8297caab9c255,
         type: 3}
@@ -232,6 +237,129 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d0ae498ae53ecc4bbc8297caab9c255, type: 3}
+--- !u!1001 &1330961138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1314008656889838983, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: particleSystems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314008656889838983, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: particleSystems.Array.data[0]
+      value: 
+      objectReference: {fileID: 1330961142}
+    - target: {fileID: 1314008656889838983, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: particleSystems.Array.data[1]
+      value: 
+      objectReference: {fileID: 1330961141}
+    - target: {fileID: 1314008656889838983, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: particleSystems.Array.data[2]
+      value: 
+      objectReference: {fileID: 1330961140}
+    - target: {fileID: 1314008656889838983, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: particleSystems.Array.data[3]
+      value: 
+      objectReference: {fileID: 1330961139}
+    - target: {fileID: 2770357866780969722, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: startDelay.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969880, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770357867294969883, guid: d90acc6315de4fb409e981e18ef993d1,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Orb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d90acc6315de4fb409e981e18ef993d1, type: 3}
+--- !u!198 &1330961139 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2770357867637237281, guid: d90acc6315de4fb409e981e18ef993d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1330961138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1330961140 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2770357866835436887, guid: d90acc6315de4fb409e981e18ef993d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1330961138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1330961141 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2770357866780969722, guid: d90acc6315de4fb409e981e18ef993d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1330961138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1330961142 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2770357865923208284, guid: d90acc6315de4fb409e981e18ef993d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1330961138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1371337710
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,5 +568,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}

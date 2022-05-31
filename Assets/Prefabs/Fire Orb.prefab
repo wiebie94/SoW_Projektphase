@@ -47,7 +47,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -4851,7 +4851,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -14421,6 +14421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2770357867294969880}
+  - component: {fileID: 1314008656889838983}
   m_Layer: 0
   m_Name: Fire Orb
   m_TagString: Untagged
@@ -14446,6 +14447,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1314008656889838983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770357867294969883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c995f9900a76b24bbe267c957a1c79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystems:
+  - {fileID: 2770357865923208284}
+  - {fileID: 2770357866780969722}
+  - {fileID: 2770357866835436887}
+  - {fileID: 2770357867637237281}
 --- !u!1 &2770357867637237308
 GameObject:
   m_ObjectHideFlags: 0

@@ -4813,6 +4813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5900389184934313005}
+  - component: {fileID: 3412368792539717237}
   m_Layer: 0
   m_Name: Teleport Orb
   m_TagString: Untagged
@@ -4838,6 +4839,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3412368792539717237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900389184934313000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c995f9900a76b24bbe267c957a1c79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystems:
+  - {fileID: 5900389185973491255}
+  - {fileID: 5900389185724662885}
+  - {fileID: 5900389185120883762}
+  - {fileID: 5900389184674679448}
 --- !u!1 &5900389185120883761
 GameObject:
   m_ObjectHideFlags: 0
@@ -14494,7 +14512,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -14562,7 +14580,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
