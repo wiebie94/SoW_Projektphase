@@ -26,11 +26,33 @@ public class FireballScript : MonoBehaviour
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
         controllerRight = controllerArray[0];
         controllerLeft = controllerArray[1];
+        ShowSkillMenu.onFireballSkillTriggered += FireballSkillTriggered;
+        ShowSkillMenu.onFireballSkillUntriggered += FireballSkillUntriggered;
 
-      
+
 
     }
 
+    private void FireballSkillTriggered()
+    {
+        if (skillMenu.menuHandLeft)
+        {
+            controllerRight.activateAction.action.performed += activateAction_performed;
+        }
+        else
+        {
+            controllerLeft.activateAction.action.performed += activateAction_performed;
+
+        }
+    }
+
+    private void FireballSkillUntriggered()
+    {
+        controllerLeft.activateAction.action.performed -= activateAction_performed;
+        controllerRight.activateAction.action.performed -= activateAction_performed;
+
+    }
+    /*
     private void Update()
     {
         if(skillMenu.isGripPressed && !_isDone)
@@ -59,9 +81,10 @@ public class FireballScript : MonoBehaviour
         }
     }
 
+    */
+
     private void activateAction_cancelled(InputAction.CallbackContext obj)
     {
-        Debug.Log("FireballScript" + obj.action);
     }
 
     private void activateAction_performed(InputAction.CallbackContext obj)
@@ -75,6 +98,7 @@ public class FireballScript : MonoBehaviour
             
                     fired = true;
                     g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward * 0.5f, Quaternion.identity);
+                    //TODO:JAN-> Hier weiterer Code für den Fireball einfügen
                     initialPos = rightHandRef.transform.forward;
                     g1.GetComponent<Rigidbody>().AddForce(initialPos + rightHandRef.transform.forward * 1000, ForceMode.Acceleration);
 
@@ -83,7 +107,8 @@ public class FireballScript : MonoBehaviour
             {
                 fired = true;
                 g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward * 0.5f, Quaternion.identity);
-                initialPos = leftHandRef.transform.forward;
+                    //TODO:JAN-> Hier weiterer Code für den Fireball einfügen
+                    initialPos = leftHandRef.transform.forward;
                 g1.GetComponent<Rigidbody>().AddForce(initialPos + leftHandRef.transform.forward * 1000, ForceMode.Acceleration);
             }
                 StartCoroutine(waitForSeconds());

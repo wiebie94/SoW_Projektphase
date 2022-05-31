@@ -38,8 +38,8 @@ public class TelekineseDragAndPull : MonoBehaviour
     void Start()
     {
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        controllerLeft = controllerArray[0];
-        controllerRight = controllerArray[1];
+        controllerRight = controllerArray[0];
+        controllerLeft = controllerArray[1];
     }
 
     private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

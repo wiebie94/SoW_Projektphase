@@ -20,7 +20,7 @@ public class TelekineseScript : MonoBehaviour
     [SerializeField] Vector3 followRotationOffset;
     [SerializeField] float followSpeed;
     [SerializeField] float rotateSpeed;
-
+    [SerializeField]
     private Coroutine timerCoroutine;
     private float timeAfterHit = 0;
 
@@ -33,13 +33,36 @@ public class TelekineseScript : MonoBehaviour
 
     [SerializeField] HandType hand;
 
+    Coroutine telekineseCoroutine;
+
+    ActionBasedController controller;
+
     void Start()
     {
-        ActionBasedController controller = GetComponent<ActionBasedController>();
-        controller.selectAction.action.performed += Action_performed_left;
-        controller.selectAction.action.canceled += Action_canceled_left;
+        controller = GetComponent<ActionBasedController>();
+        
 
-        StartCoroutine(TelekineseRayCast(0.1f));
+        //skillMenu.onTelekineseSkillTriggered
+
+        ShowSkillMenu.onTelekineseSkillTriggered += TelekineseSkillTriggered;
+        ShowSkillMenu.onTelekineseSkillUntriggered += TelekineseSkillUntriggered;
+    }
+
+    private void TelekineseSkillTriggered()
+    {
+        TelekineseCoroutineStart();
+
+        controller.activateAction.action.performed += Action_performed_left;
+        controller.activateAction.action.canceled += Action_canceled_left;
+    }
+
+    private void TelekineseSkillUntriggered()
+    {
+        controller.activateAction.action.performed -= Action_performed_left;
+        controller.activateAction.action.canceled -= Action_canceled_left;
+
+        TelekineseEnd();
+        TelekineseCoroutineStop();
     }
 
     private void Action_performed_left(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -77,6 +100,8 @@ public class TelekineseScript : MonoBehaviour
 
     void TelekineseEnd()
     {
+        if (telekineseDragObject == null)
+            return;
 
         isItemGrabbed = false;
         telekineseDragObject.SetActive(false);
@@ -112,6 +137,9 @@ public class TelekineseScript : MonoBehaviour
 
     void ClearHighLight()
     {
+        if (telekineseObj == null)
+            return;
+
         Material[] materials = new Material[1];
         materials[0] = telekineseObj.GetComponent<Renderer>().materials[0];
         telekineseObj.GetComponent<Renderer>().materials = materials;
@@ -125,6 +153,20 @@ public class TelekineseScript : MonoBehaviour
         StopCoroutine(timerCoroutine);
         timerCoroutine = null;
         timeAfterHit = 0;
+    }
+
+   void TelekineseCoroutineStart()
+    {
+        if (telekineseCoroutine != null)
+            StopCoroutine(telekineseCoroutine);
+
+        telekineseCoroutine = StartCoroutine(TelekineseRayCast(0.1f));
+    }
+
+    void TelekineseCoroutineStop()
+    {
+        if (telekineseCoroutine != null)
+            StopCoroutine(telekineseCoroutine);
     }
 
 
@@ -152,6 +194,7 @@ public class TelekineseScript : MonoBehaviour
 
     IEnumerator TelekineseRayCast(float interval)
     {
+        
         while(true)
         {
             RaycastHit hit;

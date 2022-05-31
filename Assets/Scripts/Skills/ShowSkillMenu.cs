@@ -16,21 +16,35 @@ public class ShowSkillMenu : MonoBehaviour
     public bool isCoroutineFinished = false;
     [SerializeField] private GameObject SkillMenu;
     public bool _isFireBallActive = false;
+    public bool _isTelekinesisActive = false;
     public bool _isTeleportActive = false;
     public GameObject leftHandSkinMesh;
     private bool _isHandSkinSet = false;
     public GameObject rightHandSkinMesh;
     public Material handMaterialFireball;
     public Material handMaterialTeleport;
+    public Material handMaterialTelekinesis;
     public Material defaultHandSkin;
     public bool _isDone = false;
-    public GameObject loadingCircle;
-    public IEnumerator iEnem;
-    public GameObject lCircleInstantiated;
+    public Coroutine showMenuCoroutine;
+    [SerializeField] Load_Spells lCircle;
+
+    [SerializeField] float loadingTime = 1.5f;
+
+    public delegate void OnTelekineseSkillTriggered();
+    public static event OnTelekineseSkillTriggered onTelekineseSkillTriggered;
+
+    public delegate void OnTelekineseSkillUntriggered();
+    public static event OnTelekineseSkillUntriggered onTelekineseSkillUntriggered;
+
+    public delegate void OnFireballSkillTriggered();
+    public static event OnTelekineseSkillTriggered onFireballSkillTriggered;
+
+    public delegate void OnFireballSkillUntriggered();
+    public static event OnFireballSkillUntriggered onFireballSkillUntriggered;
 
     void Start()
     {
-        
 
     }
 
@@ -55,14 +69,12 @@ public class ShowSkillMenu : MonoBehaviour
         {
 
             //Wenn das Skill Menü geschlossen ist und die 2 Sekunden noch nicht abgelaufen sind
-            if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive)
+            if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
             {
-                iEnem = waitForMenuShow();
-                Debug.Log("STARTING COROUTINE");
+                showMenuCoroutine = StartCoroutine(waitForMenuShow());
 
                 //Starte die zwei Sekunden und zeige das Skillmenu
                 //TODO: Öffnen des Menüs zulassen bei aktivem Zauber auf der anderen Hand !?
-                StartCoroutine(iEnem);
                 isCoroutineFinished = true;
                 
             }
@@ -72,10 +84,8 @@ public class ShowSkillMenu : MonoBehaviour
         //Wenn es nicht paralell ist und das Skillmenü aber gerade angezeigt wird, dann schließe es
         if (!isParallel && isSkillMenuOpen)
         {
-            if (lCircleInstantiated)
-            {
-                Destroy(lCircleInstantiated);
-            }
+
+            lCircle.StopLoading();
             closeSkillMenu();
             
         }
@@ -84,15 +94,11 @@ public class ShowSkillMenu : MonoBehaviour
         if (!isParallel && !_isDone)
         {
 
-            if (iEnem.Current != null)
+            if (showMenuCoroutine != null)
             {
-                Debug.Log("STOPPING COROUTINE");
 
-                StopCoroutine(iEnem);
-                if (lCircleInstantiated)
-                {
-                    Destroy(lCircleInstantiated);
-                }
+                StopCoroutine(showMenuCoroutine);
+                lCircle.StopLoading();
                 closeSkillMenu();
                 _isDone = true;
             }
@@ -110,24 +116,21 @@ public class ShowSkillMenu : MonoBehaviour
         _isDone = false;
         if (menuHandLeft)
         {
-            lCircleInstantiated =  Instantiate(loadingCircle, leftHandRef.transform.position, Quaternion.identity);
-            lCircleInstantiated.transform.SetParent(leftHandRef.transform);
-            lCircleInstantiated.transform.localPosition = new Vector3(0, -0.1f, 0.1f);
+            lCircle.StartLoading(loadingTime);
+            lCircle.transform.SetParent(leftHandRef.transform);
+            lCircle.transform.localPosition = new Vector3(0, -0.1f, 0.1f);
 
         }
         else
         {
-            lCircleInstantiated =  Instantiate(loadingCircle, rightHandRef.transform.position, Quaternion.identity);
-            lCircleInstantiated.transform.SetParent(rightHandRef.transform);
-            lCircleInstantiated.transform.localPosition = new Vector3(0, -0.1f, 0.1f);
+            lCircle.StartLoading(loadingTime);
+            lCircle.transform.SetParent(rightHandRef.transform);
+            lCircle.transform.localPosition = new Vector3(0, -0.1f, 0.1f);
 
 
         }
-        yield return new WaitForSeconds(2);
-        if (lCircleInstantiated)
-        {
-            Destroy(lCircleInstantiated);
-        }
+        yield return new WaitForSeconds(loadingTime);
+        lCircle.StopLoading();
         showSkillMenu();
     }
 
@@ -183,13 +186,11 @@ public class ShowSkillMenu : MonoBehaviour
 
     private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("ControllerLeft" + obj.control.name);
         isGripPressed = true;
     }
 
     private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("ControllerLeft" + obj.control.name);
         isGripPressed = false;
        
 
@@ -200,9 +201,11 @@ public class ShowSkillMenu : MonoBehaviour
     {
         if (name.Equals("FireOrb"))
         {
-
+            onFireballSkillTriggered.Invoke();
             _isFireBallActive = true;
             _isTeleportActive = false;
+            _isTelekinesisActive = false;
+
             if (_isHandSkinSet)
             {
                 leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
@@ -233,9 +236,10 @@ public class ShowSkillMenu : MonoBehaviour
         }
         if (name.Equals("TeleportOrb"))
         {
-
             _isTeleportActive = true;
             _isFireBallActive = false;
+            _isTelekinesisActive = false;
+
             if (_isHandSkinSet)
             {
                 leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
@@ -264,6 +268,42 @@ public class ShowSkillMenu : MonoBehaviour
 
             }
         }
+
+            if (name.Equals("Telekinesis Orb"))
+            {
+                onTelekineseSkillTriggered.Invoke();
+
+                _isTeleportActive = false;
+                _isFireBallActive = false;
+                _isTelekinesisActive = true;
+                if (_isHandSkinSet)
+                {
+                    leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
+                    rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
+                    _isHandSkinSet = false;
+
+                }
+                //g1.transform.SetParent(RightHandController.transform);
+                if (this.menuHandLeft == true)
+                {
+                    if (_isHandSkinSet == false)
+                    {
+                        _isHandSkinSet = true;
+                        rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
+                    }
+
+                }
+                else
+                {
+                    if (_isHandSkinSet == false)
+                    {
+                        _isHandSkinSet = true;
+                        leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
+                    }
+
+
+                }
+            }
     }
 
 
@@ -287,8 +327,21 @@ public class ShowSkillMenu : MonoBehaviour
 
     public void resetHand()
     {
-        _isFireBallActive = false;
+        if (_isTelekinesisActive)
+        {
+            onTelekineseSkillUntriggered.Invoke();
+            _isTelekinesisActive = false;
+        }
+        if (_isFireBallActive)
+        {
+            onFireballSkillUntriggered.Invoke();
+            _isFireBallActive = false;
+        }
+
+
         _isTeleportActive = false;
+        
+
         rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
         leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
 
