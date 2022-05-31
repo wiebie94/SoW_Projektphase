@@ -79,7 +79,14 @@ public class Hand : MonoBehaviour
 
         var objectToGrab = grabbableColliders[0].gameObject;
 
-        heldObject = objectToGrab.GetComponentInParent<GrabInteractable>();
+        Equip(objectToGrab);
+    }
+
+    public void Equip(GameObject grabObject)
+    {
+        Released(new InputAction.CallbackContext());
+
+        heldObject = grabObject.GetComponentInParent<GrabInteractable>();
 
         if (heldObject == null)
         {

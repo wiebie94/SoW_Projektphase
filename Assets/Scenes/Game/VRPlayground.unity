@@ -7573,13 +7573,13 @@ MonoBehaviour:
   eventUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 100929523}
-        m_TargetAssemblyTypeName: GateLogic, Assembly-CSharp
-        m_MethodName: OpenGate
-        m_Mode: 1
+      - m_Target: {fileID: 6597583924897927739}
+        m_TargetAssemblyTypeName: Hand, Assembly-CSharp
+        m_MethodName: Equip
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 382670186}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7587,19 +7587,7 @@ MonoBehaviour:
         m_CallState: 2
   eventDown:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 100929523}
-        m_TargetAssemblyTypeName: GateLogic, Assembly-CSharp
-        m_MethodName: CloseGate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2034399687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8793,6 +8781,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6597583924897927736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6597583924897927739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6381307541152034389, guid: 3a2e8a945c546f845b6949bc32954ae2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6597583924897927736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a658034a11d2e40948d5de264dd34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8677920378521696159
 PrefabInstance:
   m_ObjectHideFlags: 0

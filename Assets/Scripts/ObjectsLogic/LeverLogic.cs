@@ -42,19 +42,16 @@ public class LeverLogic : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Lever update");
             if (hingeJoint.angle > 0 && hingeJoint.spring.targetPosition != maxLimit)
             {
                 hingeJoint.spring = CreateSpring(maxLimit);
                 eventUp.Invoke();
-                Debug.Log("CHange to max");
             }
                 
             else if (hingeJoint.angle < 0 && hingeJoint.spring.targetPosition != minLimit)
             {
                 hingeJoint.spring = CreateSpring(minLimit);
                 eventDown.Invoke();
-                Debug.Log("CHange to min");
             }
                 
 
