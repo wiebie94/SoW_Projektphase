@@ -19,6 +19,8 @@ public class TeleportKugelScript : MonoBehaviour
 
     [SerializeField] private string playerGameObjectName = "XR Origin";
 
+    [SerializeField] private GameObject teleportEffect;
+
     private Rigidbody rb;
     private PhysicMaterial ph;
     private MeshRenderer m;
@@ -32,19 +34,25 @@ public class TeleportKugelScript : MonoBehaviour
     private bool isTeleportation = false;
     private float destroyTime = 0;
 
+    private Transform playerCam;
+
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        playerCam = Camera.main.transform;
+
         this.manager = GameObject.Find("TeleportManager").GetComponent<IKugelDestroy>();
         if (this.manager == null) Debug.Log("Achtung es befindet sich kein TeleporManager in der Scene");
 
         this.rb = this.GetComponent<Rigidbody>();
-        this.m = this.GetComponent<MeshRenderer>();
-        this.ph = this.GetComponent<Collider>().material;
+        this.m = this.GetComponentInChildren<MeshRenderer>();
+        this.ph = this.GetComponentInChildren<Collider>().material;
 
 
         this.player =  GameObject.Find(playerGameObjectName);
         if (player == null) Debug.Log("Objektname vom Spieler ist falsch oder nicht angegeben");
+
+
     }
 
     // Update is called once per frame
@@ -61,8 +69,8 @@ public class TeleportKugelScript : MonoBehaviour
         //Debug.Log(this.rb.velocity.magnitude);
 
         //######### Destroy wenn zu langsam #########
-        if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
-            Object.Destroy(this.gameObject);
+       // if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
+        //    Object.Destroy(this.gameObject);
     }
 
     void OnDestroy()
@@ -71,6 +79,7 @@ public class TeleportKugelScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("dsd");
         //######### Collision checks #########
         GameObject collisionGameObject = collision.gameObject;
         if (!isEnable) return;
@@ -94,6 +103,10 @@ public class TeleportKugelScript : MonoBehaviour
 
         this.isEnable = false;
 
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
         Debug.Log("Teleport");
         
     }
@@ -104,9 +117,10 @@ public class TeleportKugelScript : MonoBehaviour
         this.startingTelportAnimation();
         yield return new WaitForSeconds(this.teleportDelay);
   
-        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y;
+        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y * 2 + 0.1f; // 0.1f da sonst spieler durch den boden fällt
+        //Debug.Log(playerColiderOffsetY);
 
-        this.player.transform.position = (point + Vector3.up) * playerColiderOffsetY;
+        this.player.transform.position = (point + this.player.transform.position - this.playerCam.transform.position) + Vector3.up * playerColiderOffsetY;
 
         if (destroy) {
             Object.Destroy(this.gameObject);
@@ -116,7 +130,8 @@ public class TeleportKugelScript : MonoBehaviour
 
     private void startingTelportAnimation()
     {
-        //ToDo partikel Animation ausführen
+        GameObject effectObjekt = Instantiate(teleportEffect, this.playerCam.position, Quaternion.identity);
+        effectObjekt.transform.parent = this.playerCam;
     }
 
     
