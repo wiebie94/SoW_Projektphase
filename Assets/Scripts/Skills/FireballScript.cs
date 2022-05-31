@@ -52,36 +52,6 @@ public class FireballScript : MonoBehaviour
         controllerRight.activateAction.action.performed -= activateAction_performed;
 
     }
-    /*
-    private void Update()
-    {
-        if(skillMenu.isGripPressed && !_isDone)
-        {
-
-       
-        if (skillMenu.menuHandLeft)
-        {
-            controllerRight.activateAction.action.performed += activateAction_performed;
-            controllerRight.activateAction.action.canceled += activateAction_cancelled;
-            controllerLeft.activateAction.action.performed -= activateAction_performed;
-            controllerLeft.activateAction.action.canceled -= activateAction_cancelled;
-            }
-        else
-        {
-            controllerLeft.activateAction.action.performed += activateAction_performed;
-            controllerLeft.activateAction.action.canceled += activateAction_cancelled;
-            controllerRight.activateAction.action.performed -= activateAction_performed;
-            controllerRight.activateAction.action.canceled -= activateAction_cancelled;
-            }
-            _isDone = true;
-        }
-        else
-        {
-            _isDone = false;
-        }
-    }
-
-    */
 
     private void activateAction_cancelled(InputAction.CallbackContext obj)
     {

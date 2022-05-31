@@ -64,8 +64,11 @@ public class ShowSkillMenu : MonoBehaviour
             SkillMenu.transform.position = rightHandRef.transform.position;
             SkillMenu.transform.rotation = rightHandRef.transform.rotation;
         }
-
-        CalculateParalelVector();
+        if(!_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
+        {
+            CalculateParalelVector();
+        }
+       
         //Wenn es Paralell ist
         if (isParallel)
         {
