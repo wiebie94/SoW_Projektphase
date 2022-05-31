@@ -48,8 +48,11 @@ public class TelekineseScript : MonoBehaviour
         ShowSkillMenu.onTelekineseSkillUntriggered += TelekineseSkillUntriggered;
     }
 
-    private void TelekineseSkillTriggered()
+    private void TelekineseSkillTriggered(HandType activationHand)
     {
+        if (hand != activationHand)
+            return;
+
         TelekineseCoroutineStart();
 
         controller.activateAction.action.performed += Action_performed_left;

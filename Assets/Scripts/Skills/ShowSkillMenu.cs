@@ -33,14 +33,14 @@ public class ShowSkillMenu : MonoBehaviour
 
     [SerializeField] float loadingTime = 1.5f;
     [SerializeField] float fadeOut = 0.5f;
-    public delegate void OnTelekineseSkillTriggered();
+    public delegate void OnTelekineseSkillTriggered(HandType hand);
     public static event OnTelekineseSkillTriggered onTelekineseSkillTriggered;
 
     public delegate void OnTelekineseSkillUntriggered();
     public static event OnTelekineseSkillUntriggered onTelekineseSkillUntriggered;
 
     public delegate void OnFireballSkillTriggered();
-    public static event OnTelekineseSkillTriggered onFireballSkillTriggered;
+    public static event OnFireballSkillTriggered onFireballSkillTriggered;
 
     public delegate void OnFireballSkillUntriggered();
     public static event OnFireballSkillUntriggered onFireballSkillUntriggered;
@@ -286,8 +286,7 @@ public class ShowSkillMenu : MonoBehaviour
 
             if (name.Equals("Telekinesis Orb"))
             {
-                onTelekineseSkillTriggered.Invoke();
-
+               
                 _isTeleportActive = false;
                 _isFireBallActive = false;
                 _isTelekinesisActive = true;
@@ -301,6 +300,8 @@ public class ShowSkillMenu : MonoBehaviour
                 //g1.transform.SetParent(RightHandController.transform);
                 if (this.menuHandLeft == true)
                 {
+                    onTelekineseSkillTriggered.Invoke(HandType.Right);
+
                     if (_isHandSkinSet == false)
                     {
                         _isHandSkinSet = true;
@@ -310,8 +311,10 @@ public class ShowSkillMenu : MonoBehaviour
                 }
                 else
                 {
+                    onTelekineseSkillTriggered.Invoke(HandType.Left);
+
                     if (_isHandSkinSet == false)
-                    {
+                        {
                         _isHandSkinSet = true;
                         leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
                     }
