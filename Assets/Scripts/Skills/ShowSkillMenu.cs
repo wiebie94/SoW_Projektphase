@@ -27,10 +27,12 @@ public class ShowSkillMenu : MonoBehaviour
     public Material defaultHandSkin;
     public bool _isDone = false;
     public Coroutine showMenuCoroutine;
+    public Coroutine deactivateMenuCoroutine;
+
     [SerializeField] Load_Spells lCircle;
 
     [SerializeField] float loadingTime = 1.5f;
-
+    [SerializeField] float fadeOut = 0.5f;
     public delegate void OnTelekineseSkillTriggered();
     public static event OnTelekineseSkillTriggered onTelekineseSkillTriggered;
 
@@ -69,7 +71,7 @@ public class ShowSkillMenu : MonoBehaviour
         {
 
             //Wenn das Skill Menü geschlossen ist und die 2 Sekunden noch nicht abgelaufen sind
-            if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
+            if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive   )
             {
                 showMenuCoroutine = StartCoroutine(waitForMenuShow());
 
@@ -82,32 +84,31 @@ public class ShowSkillMenu : MonoBehaviour
         }
         
         //Wenn es nicht paralell ist und das Skillmenü aber gerade angezeigt wird, dann schließe es
-        if (!isParallel && isSkillMenuOpen)
+        if (!isParallel && isSkillMenuOpen && !_isDone)
         {
-
-            lCircle.StopLoading();
-            closeSkillMenu();
-            
-        }
-        
-        //Wenn es nicht paralell ist und die Coroutine noch nicht abgeschlossen wurde
-        if (!isParallel && !_isDone)
-        {
-
             if (showMenuCoroutine != null)
             {
 
                 StopCoroutine(showMenuCoroutine);
                 lCircle.StopLoading();
-                closeSkillMenu();
+                deactivateMenu();
                 _isDone = true;
             }
-           
-            
+
 
         }
         
 
+    }
+
+
+    private void deactivateMenu()
+    {
+        if (deactivateMenuCoroutine != null)
+        {
+            StopCoroutine(deactivateMenuCoroutine);
+        }
+        deactivateMenuCoroutine = StartCoroutine(closeSkillMenu());
     }
 
     public IEnumerator waitForMenuShow()
@@ -169,19 +170,28 @@ public class ShowSkillMenu : MonoBehaviour
     {
         //TODO: Von Alfons kommen hier Particle Spawn und Despawn Scripte, das ich hier nur die Methode des Scripts aufrufen muss
         SkillMenu.SetActive(true);
+        for(int i = 0; i<SkillMenu.transform.childCount; i++)
+        {
+            SkillMenu.transform.GetChild(i).GetComponent<ParticleController>().activateParticles();
+        }
         isSkillMenuOpen = true;
         
 
     }
 
-    public void closeSkillMenu()
+    IEnumerator closeSkillMenu()
     {
-        //TODO: Von Alfons kommen hier Particle Spawn und Despawn Scripte, das ich hier nur die Methode des Scripts aufrufen muss
-
+        for (int i = 0; i < SkillMenu.transform.childCount; i++)
+        {
+            SkillMenu.transform.GetChild(i).GetComponent<ParticleController>().deactivateParticles();
+        }
+        yield return new WaitForSeconds(fadeOut);
+        Debug.Log("Setting Skillmenu Active false");
         SkillMenu.SetActive(false);
+        Debug.Log("Setting Skillmenu Active false2");
+
         isSkillMenuOpen = false;
         isCoroutineFinished = false;
-
     }
 
     private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -199,6 +209,8 @@ public class ShowSkillMenu : MonoBehaviour
 
     public void SelectedSkill(string name)
     {
+        lCircle.StopLoading();
+        deactivateMenu();
         if (name.Equals("FireOrb"))
         {
             onFireballSkillTriggered.Invoke();

@@ -879,6 +879,8 @@ MonoBehaviour:
   defaultHandSkin: {fileID: -7492275243852492049, guid: ae15297bfc0bd834d9884dee0acbe08f,
     type: 3}
   _isDone: 0
+  lCircle: {fileID: 846842561}
+  loadingTime: 1.5
 --- !u!114 &327425861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,31 +898,6 @@ MonoBehaviour:
   rightHandRef: {fileID: 875057508}
   fireBall: {fileID: 1171996869661294710, guid: a829542dfbd39384e9338a78097a82bb,
     type: 3}
---- !u!114 &327425862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327425858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 939579ecc4e2d2443b887777ab342e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highLightMaterial: {fileID: 2100000, guid: 2368dc14c53145c498b25ec086f77890, type: 2}
-  range: 15
-  followTarget: {fileID: 0}
-  telekineseDragObject: {fileID: 590690864}
-  followPositionOffset: {x: 0, y: 0, z: 0}
-  followRotationOffset: {x: 0, y: 0, z: 0}
-  followSpeed: 0
-  rotateSpeed: 0
-  activationTime: 1
-  pullAndPushSpeed: 1
-  telekineseMinRange: 1
-  telekineseMaxRange: 10
-  hand: 0
 --- !u!1 &346111850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3494,6 +3471,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 875057507}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &846842561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4115490125051373758, guid: 4b147af2034fe084594f536f5e123eac,
+    type: 3}
+  m_PrefabInstance: {fileID: 917062444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020811591f0364945a2c6d8501dd09c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &875057507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7259,6 +7248,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 280214005}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1772182156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772182154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c995f9900a76b24bbe267c957a1c79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1787818677
 PrefabInstance:
   m_ObjectHideFlags: 0

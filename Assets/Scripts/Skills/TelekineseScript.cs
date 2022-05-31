@@ -60,7 +60,7 @@ public class TelekineseScript : MonoBehaviour
     {
         controller.activateAction.action.performed -= Action_performed_left;
         controller.activateAction.action.canceled -= Action_canceled_left;
-
+        Debug.Log("TelekineseEnd");
         TelekineseEnd();
         TelekineseCoroutineStop();
     }

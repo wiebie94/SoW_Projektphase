@@ -66,8 +66,6 @@ public class Hand : MonoBehaviour
 
     private void Grab(InputAction.CallbackContext obj)
     {
-        Debug.Log("Grab");
-
         if (isGrabbing || heldObject)
             return;
 
@@ -75,7 +73,6 @@ public class Hand : MonoBehaviour
         if (grabbableColliders.Length < 1)
             return;
 
-        Debug.Log("after return");
 
         var objectToGrab = grabbableColliders[0].gameObject;
 
@@ -101,8 +98,6 @@ public class Hand : MonoBehaviour
     {
         if (isGrabbing)
         {
-            Debug.Log("Object released");
-
             heldObject.GrabEnd(handType);
 
             isGrabbing = false;

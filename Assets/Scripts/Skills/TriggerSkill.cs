@@ -10,7 +10,6 @@ public class TriggerSkill : MonoBehaviour
     private ActionBasedController controllerLeft;
     private ActionBasedController controllerRight;
     private bool isGripPressed = false;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +46,7 @@ public class TriggerSkill : MonoBehaviour
         {
             if (other.CompareTag("LeftHand"))
             {
-
+                //Subscribe mit dem LinkenController zu Performed und Cancelled
                 controllerLeft.selectAction.action.performed += Grip_performed;
                 controllerLeft.selectAction.action.canceled += Grip_canceled;
                 
@@ -88,24 +87,41 @@ public class TriggerSkill : MonoBehaviour
     */
     private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("show menu in");
-        controllerRight.selectAction.action.performed -= Grip_performed;
-        controllerLeft.selectAction.action.performed -= Grip_performed;
+        if (skillMenu.menuHandLeft)
+        {
+            controllerRight.selectAction.action.performed -= Grip_performed;
+            controllerRight.selectAction.action.canceled += Grip_canceled;
+            controllerLeft.selectAction.action.canceled -= Grip_canceled;
+            controllerLeft.selectAction.action.performed -= Grip_performed;
+
+
+        }
+        else
+        {
+            controllerLeft.selectAction.action.performed -= Grip_performed;
+            controllerLeft.selectAction.action.canceled += Grip_canceled;
+            controllerRight.selectAction.action.canceled -= Grip_canceled;
+            controllerRight.selectAction.action.performed -= Grip_performed;
+
+
+
+        }
+
         skillMenu.isGripPressed = true;
-        skillMenu.closeSkillMenu();
         skillMenu.SendMessage("SelectedSkill", this.name);
 
     }
 
     private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("show menu out");
+        controllerRight.selectAction.action.performed -= Grip_performed;
+        controllerLeft.selectAction.action.performed -= Grip_performed;
         controllerRight.selectAction.action.canceled -= Grip_canceled;
         controllerLeft.selectAction.action.canceled -= Grip_canceled;
         skillMenu.isGripPressed = false;
-
-
+        Debug.Log("Eigentlich sollte hier unsubscribed werden");
         skillMenu.resetHand();
+        
     }
 
 }
