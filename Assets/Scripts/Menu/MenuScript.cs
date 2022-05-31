@@ -32,7 +32,6 @@ public class MenuScript : MonoBehaviour
 
     private void activateAction_performed(InputAction.CallbackContext obj)
     {
-        //Hier muss acion ausgefhrt
         Debug.Log("menuButton" + menuButton.name);
         menuButton.GetComponent<Button>().onClick.Invoke();
 
@@ -43,7 +42,7 @@ public class MenuScript : MonoBehaviour
     {
         
             RaycastHit hit;
-            Debug.DrawRay(transform.position * rayOffset, transform.forward* range, Color.red);
+            Debug.DrawRay(transform.position * rayOffset, transform.forward * range, Color.red);
 
 
             if (Physics.Raycast(transform.position * rayOffset, transform.forward* range, out hit))
