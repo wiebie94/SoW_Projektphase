@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GrabInteractable : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class GrabInteractable : MonoBehaviour
 
     private Transform leftHandTransform;
     private Transform rightHandTransform;
+
+    [SerializeField] UnityEvent onObjectReleased;
 
     // Start is called before the first frame update
     void Start()
@@ -152,6 +155,8 @@ public class GrabInteractable : MonoBehaviour
 
     public void GrabEnd(HandType hand)
     {
+        onObjectReleased.Invoke();
+
         if (leftHand == null || rightHand == null)
         {
             Debug.LogError("left or right hand not set for grabInteractable!");
