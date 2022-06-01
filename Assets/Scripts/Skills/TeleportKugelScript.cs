@@ -79,7 +79,6 @@ public class TeleportKugelScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("dsd");
         //######### Collision checks #########
         GameObject collisionGameObject = collision.gameObject;
         if (!isEnable) return;

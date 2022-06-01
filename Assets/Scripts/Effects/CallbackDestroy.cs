@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class CallbackDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnDestroy()
     {
-        var main = GetComponent<ParticleSystem>().main;
-        main.stopAction = ParticleSystemStopAction.Callback;
-    }
-
-    void OnParticleSystemStopped()
-    {
-        Debug.Log("System has stopped!");
+        CallbackDestroyParent callbackDestroyParent = this.GetComponentInParent<CallbackDestroyParent>();
+        if(callbackDestroyParent != null)
+            callbackDestroyParent.childDestroy();
     }
 }

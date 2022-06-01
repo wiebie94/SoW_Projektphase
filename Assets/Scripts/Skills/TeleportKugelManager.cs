@@ -11,6 +11,7 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
 {
 
     [SerializeField] private GameObject myPrefab;
+    [SerializeField] private bool test;
     [SerializeField] private int maxCounter = 1;
     private int counter = 0;
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
     // Update is called once per frame
     void Update()
     {
-        this.creatKugel(this.transform.position); // testen
+        if(test) this.creatKugel(this.transform.position); // testen
     }
     public bool isCreatable()
     {
