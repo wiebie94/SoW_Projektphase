@@ -882,13 +882,13 @@ MonoBehaviour:
     type: 2}
   handMaterialTelekinesis: {fileID: 2100000, guid: 6ef00e0d8abca13489c369075dc11b70,
     type: 2}
-  defaultHandSkin: {fileID: -7492275243852492049, guid: ae15297bfc0bd834d9884dee0acbe08f,
-    type: 3}
+  defaultHandSkin: {fileID: 2100000, guid: af92ade2a35a37c4ca9be29b2a93589d, type: 2}
   _isDone: 0
   teleportManager: {fileID: 218492689}
   lCircle: {fileID: 846842561}
   loadingTime: 1.5
   fadeOut: 0.5
+  equipDelay: 0.1
 --- !u!114 &327425861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,6 +1807,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2791874038823325759, guid: 8e65a79cc67a3234faba7d8f34650055,
     type: 3}
   m_PrefabInstance: {fileID: 568047294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &583451903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598194800230500297, guid: 3a2e8a945c546f845b6949bc32954ae2,
+    type: 3}
+  m_PrefabInstance: {fileID: 875057507}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &590690864
 GameObject:
@@ -3158,6 +3164,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 780016388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &833960963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177335774696179498, guid: 3a2e8a945c546f845b6949bc32954ae2,
+    type: 3}
+  m_PrefabInstance: {fileID: 875057507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &837117849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4399,7 +4411,7 @@ GameObject:
   - component: {fileID: 980039525}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4883,6 +4895,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1218532741 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8917405257042103771, guid: 3a2e8a945c546f845b6949bc32954ae2,
+    type: 3}
+  m_PrefabInstance: {fileID: 875057507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833960963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a658034a11d2e40948d5de264dd34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1305771315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8418,7 +8442,19 @@ MonoBehaviour:
       m_Calls: []
   eventDown:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1218532741}
+        m_TargetAssemblyTypeName: Hand, Assembly-CSharp
+        m_MethodName: Equip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2095100197}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2038911595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9114,5 +9150,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: g
+      value: 
+      objectReference: {fileID: 1899991013}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: test
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 583451903}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 833960963}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c500bf1005070b48aebaaad31d18aeb, type: 3}

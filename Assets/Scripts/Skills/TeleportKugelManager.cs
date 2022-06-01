@@ -17,10 +17,11 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
 
     [SerializeField] private GameObject leftHand;
     [SerializeField] private GameObject rightHand;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (test) this.creatKugel(this.transform.position);
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
         if (gameObject != null) {
             this.rightHand.GetComponent<Hand>().Equip(gameObject);
         }*/
-        if(test) this.creatKugel(this.transform.position); // testen
+        //if(test) this.creatKugel(this.transform.position); // testen
     }
     public bool isCreatable()
     {

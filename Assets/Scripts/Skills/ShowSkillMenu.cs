@@ -6,11 +6,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ShowSkillMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+
     public GameObject leftHandRef;
     public GameObject rightHandRef;
     private bool isParallel;
-    private bool isSkillMenuOpen =false;
+    private bool isSkillMenuOpen = false;
     public bool isGripPressed = false;
     public bool menuHandLeft = false;
     public bool isCoroutineFinished = false;
@@ -24,7 +24,7 @@ public class ShowSkillMenu : MonoBehaviour
     public Material handMaterialFireball;
     public Material handMaterialTeleport;
     public Material handMaterialTelekinesis;
-    public Material defaultHandSkin;
+    private Material defaultHandSkin;
     public bool _isDone = false;
     public Coroutine showMenuCoroutine;
     public Coroutine deactivateMenuCoroutine;
@@ -36,6 +36,9 @@ public class ShowSkillMenu : MonoBehaviour
 
     [SerializeField] float loadingTime = 1.5f;
     [SerializeField] float fadeOut = 0.5f;
+
+    [SerializeField] float equipDelay = 0.1f;
+
     public delegate void OnTelekineseSkillTriggered(HandType hand);
     public static event OnTelekineseSkillTriggered onTelekineseSkillTriggered;
 
@@ -51,6 +54,8 @@ public class ShowSkillMenu : MonoBehaviour
     void Start()
     {
         this.teleportManagerScript = this.teleportManager.GetComponent<TeleportKugelManager>();
+
+        defaultHandSkin = leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -67,28 +72,28 @@ public class ShowSkillMenu : MonoBehaviour
             SkillMenu.transform.position = rightHandRef.transform.position;
             SkillMenu.transform.rotation = rightHandRef.transform.rotation;
         }
-        if(!_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
+        if (!_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
         {
             CalculateParalelVector();
         }
-       
+
         //Wenn es Paralell ist
         if (isParallel)
         {
 
             //Wenn das Skill Menü geschlossen ist und die 2 Sekunden noch nicht abgelaufen sind
-            if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive   )
+            if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
             {
                 showMenuCoroutine = StartCoroutine(waitForMenuShow());
 
                 //Starte die zwei Sekunden und zeige das Skillmenu
                 //TODO: Öffnen des Menüs zulassen bei aktivem Zauber auf der anderen Hand !?
                 isCoroutineFinished = true;
-                
+
             }
 
         }
-        
+
         //Wenn es nicht paralell ist und das Skillmenü aber gerade angezeigt wird, dann schließe es
         if (!isParallel && isSkillMenuOpen && !_isDone)
         {
@@ -103,7 +108,7 @@ public class ShowSkillMenu : MonoBehaviour
 
 
         }
-        
+
 
     }
 
@@ -119,7 +124,7 @@ public class ShowSkillMenu : MonoBehaviour
 
     public IEnumerator waitForMenuShow()
     {
-       
+
         _isDone = false;
         if (menuHandLeft)
         {
@@ -145,7 +150,7 @@ public class ShowSkillMenu : MonoBehaviour
 
     public void CalculateParalelVector()
     {
-        
+
 
         //Vektor zeichnen von der Hand des Spielers nach oben
         Vector3 menuHandPos = leftHandRef.transform.position;
@@ -154,12 +159,12 @@ public class ShowSkillMenu : MonoBehaviour
         Vector3 menuHandUpLeft = -leftHandRef.transform.up;
         Vector3 menuHandUpRight = -rightHandRef.transform.up;
         //Falls der Winkel zwischen der Linken Hand und dem Up Vektor kleiner als 30 Grad sein sollte, dann setz Linke Hand auf True und is Paralell auch
-        if(Vector3.Angle(upVektor, menuHandUpLeft) < 30f){
+        if (Vector3.Angle(upVektor, menuHandUpLeft) < 30f) {
             menuHandLeft = true;
             isParallel = true;
         }
         //Andernfalls ist es die rechte Hand auf der das Menü sein soll 
-        else if(Vector3.Angle(upVektor, menuHandUpRight) < 30f)
+        else if (Vector3.Angle(upVektor, menuHandUpRight) < 30f)
         {
             menuHandLeft = false;
             isParallel = true;
@@ -176,12 +181,12 @@ public class ShowSkillMenu : MonoBehaviour
     {
         //TODO: Von Alfons kommen hier Particle Spawn und Despawn Scripte, das ich hier nur die Methode des Scripts aufrufen muss
         SkillMenu.SetActive(true);
-        for(int i = 0; i<SkillMenu.transform.childCount; i++)
+        for (int i = 0; i < SkillMenu.transform.childCount; i++)
         {
             SkillMenu.transform.GetChild(i).GetComponent<ParticleController>().activateParticles();
         }
         isSkillMenuOpen = true;
-        
+
 
     }
 
@@ -208,7 +213,7 @@ public class ShowSkillMenu : MonoBehaviour
     private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         isGripPressed = false;
-       
+
 
     }
 
@@ -276,8 +281,10 @@ public class ShowSkillMenu : MonoBehaviour
                     _isHandSkinSet = true;
                     rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTeleport;
                 }
-                this.leftHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
 
+                //this.leftHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+                //this.rightHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+                EquipItemToHand(HandType.Right, teleportOrb);
             }
             else
             {
@@ -286,53 +293,79 @@ public class ShowSkillMenu : MonoBehaviour
                     _isHandSkinSet = true;
                     leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTeleport;
                 }
-                this.rightHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+
+                //this.leftHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+                //this.rightHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+                EquipItemToHand(HandType.Left, teleportOrb);
             }
 
         }
 
-            if (name.Equals("Telekinesis Orb"))
+        if (name.Equals("Telekinesis Orb"))
+        {
+
+            _isTeleportActive = false;
+            _isFireBallActive = false;
+            _isTelekinesisActive = true;
+            if (_isHandSkinSet)
             {
-               
-                _isTeleportActive = false;
-                _isFireBallActive = false;
-                _isTelekinesisActive = true;
-                if (_isHandSkinSet)
-                {
-                    leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
-                    rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
-                    _isHandSkinSet = false;
+                leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
+                rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
+                _isHandSkinSet = false;
 
-                }
-                //g1.transform.SetParent(RightHandController.transform);
-                if (this.menuHandLeft == true)
-                {
-                    onTelekineseSkillTriggered.Invoke(HandType.Right);
-
-                    if (_isHandSkinSet == false)
-                    {
-                        _isHandSkinSet = true;
-                        rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
-                    }
-
-                }
-                else
-                {
-                    onTelekineseSkillTriggered.Invoke(HandType.Left);
-
-                    if (_isHandSkinSet == false)
-                        {
-                        _isHandSkinSet = true;
-                        leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
-                    }
-
-
-                }
             }
+            //g1.transform.SetParent(RightHandController.transform);
+            if (this.menuHandLeft == true)
+            {
+                onTelekineseSkillTriggered.Invoke(HandType.Right);
+
+                if (_isHandSkinSet == false)
+                {
+                    _isHandSkinSet = true;
+                    rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
+                }
+
+            }
+            else
+            {
+                onTelekineseSkillTriggered.Invoke(HandType.Left);
+
+                if (_isHandSkinSet == false)
+                {
+                    _isHandSkinSet = true;
+                    leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTelekinesis;
+                }
+
+
+            }
+        }
     }
 
 
-   
+    private void EquipItemToHand(HandType hand, GameObject item)
+    {
+        Hand handScript;
+
+        if (hand == HandType.Left)
+            handScript = this.leftHandRef.transform.parent.GetComponent<Hand>();
+        else
+            handScript = this.rightHandRef.transform.parent.GetComponent<Hand>();
+
+        if (handScript == null)
+        {
+            Debug.LogError("Hand Script is null!");
+            return;
+        }
+
+        StartCoroutine(EquipCoroutine(handScript, item));
+    }
+
+    private IEnumerator EquipCoroutine(Hand handScript, GameObject item)
+    {
+        yield return new WaitForSeconds(equipDelay);
+
+        handScript.Equip(item);
+    }
 
     private void OnDestroy()
     {
