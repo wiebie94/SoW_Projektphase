@@ -37,7 +37,7 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
 
     public GameObject creatKugel()
     {
-        return this.kugelFactory(new Vector3(0, 0, 0));
+        return this.kugelFactory(this.transform.position);
     }
 
     private GameObject kugelFactory(Vector3 position)

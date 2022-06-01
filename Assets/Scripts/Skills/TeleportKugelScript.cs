@@ -69,8 +69,8 @@ public class TeleportKugelScript : MonoBehaviour
         //Debug.Log(this.rb.velocity.magnitude);
 
         //######### Destroy wenn zu langsam #########
-       // if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
-        //    Object.Destroy(this.gameObject);
+        if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
+            Object.Destroy(this.gameObject);
     }
 
     void OnDestroy()

@@ -29,6 +29,9 @@ public class ShowSkillMenu : MonoBehaviour
     public Coroutine showMenuCoroutine;
     public Coroutine deactivateMenuCoroutine;
 
+    [SerializeField] private GameObject teleportManager;
+    private TeleportKugelManager teleportManagerScript;
+
     [SerializeField] Load_Spells lCircle;
 
     [SerializeField] float loadingTime = 1.5f;
@@ -47,7 +50,7 @@ public class ShowSkillMenu : MonoBehaviour
 
     void Start()
     {
-
+        this.teleportManagerScript = this.teleportManager.GetComponent<TeleportKugelManager>();
     }
 
     // Update is called once per frame
@@ -251,6 +254,9 @@ public class ShowSkillMenu : MonoBehaviour
         }
         if (name.Equals("TeleportOrb"))
         {
+            GameObject teleportOrb = this.teleportManagerScript.creatKugel();
+            if (gameObject == null) return;
+
             _isTeleportActive = true;
             _isFireBallActive = false;
             _isTelekinesisActive = false;
@@ -270,6 +276,7 @@ public class ShowSkillMenu : MonoBehaviour
                     _isHandSkinSet = true;
                     rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTeleport;
                 }
+                this.leftHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
 
             }
             else
@@ -279,9 +286,9 @@ public class ShowSkillMenu : MonoBehaviour
                     _isHandSkinSet = true;
                     leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTeleport;
                 }
-
-
+                this.rightHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
             }
+
         }
 
             if (name.Equals("Telekinesis Orb"))
