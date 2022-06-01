@@ -94,6 +94,8 @@ public class Hand : MonoBehaviour
         {
             hand.SetActive(false);
             isGrabbing = true;
+
+            heldObject.onObjectLost += ObjectLostInHand;
         }
         else
         {
@@ -108,10 +110,17 @@ public class Hand : MonoBehaviour
             heldObject.GrabEnd(handType);
 
             isGrabbing = false;
+
+            heldObject.onObjectLost -= ObjectLostInHand;
             heldObject = null;
 
             StartCoroutine(HandActivationAndTeleportationAfterGrab());
         }
+    }
+
+    private void ObjectLostInHand()
+    {
+        Released(new InputAction.CallbackContext());
     }
 
     void Update()

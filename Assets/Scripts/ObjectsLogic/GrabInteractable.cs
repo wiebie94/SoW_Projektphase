@@ -33,6 +33,9 @@ public class GrabInteractable : MonoBehaviour
 
     [SerializeField] UnityEvent onObjectReleased;
 
+    public delegate void OnObjectLost();
+    public event OnObjectLost onObjectLost;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,7 +106,8 @@ public class GrabInteractable : MonoBehaviour
         if (isGrabbedByLeftHand || isGrabbedByRightHand)
         //if (!isTwoHandedGrabPossible && (isGrabbedByLeftHand || isGrabbedByRightHand))
         {
-            return false;
+            onObjectLost.Invoke();
+            //return false;
         }
 
         rb.interpolation = RigidbodyInterpolation.Interpolate;
