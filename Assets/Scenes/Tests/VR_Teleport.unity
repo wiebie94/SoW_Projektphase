@@ -1167,6 +1167,12 @@ MonoBehaviour:
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!1 &758763854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598194800230500297, guid: 3a2e8a945c546f845b6949bc32954ae2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1602917419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &799929156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,6 +2963,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a2e8a945c546f845b6949bc32954ae2, type: 3}
+--- !u!1 &1638074165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177335774696179498, guid: 3a2e8a945c546f845b6949bc32954ae2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1602917419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1926607596
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,6 +4068,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: test
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 758763854}
+    - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
+        type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 1638074165}
     - target: {fileID: 8632091539087316151, guid: 1c500bf1005070b48aebaaad31d18aeb,
         type: 3}
       propertyPath: maxCounter

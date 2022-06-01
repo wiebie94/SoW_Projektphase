@@ -14,6 +14,9 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
     [SerializeField] private bool test;
     [SerializeField] private int maxCounter = 1;
     private int counter = 0;
+
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,10 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
     // Update is called once per frame
     void Update()
     {
+        /*GameObject gameObject = this.creatKugel();
+        if (gameObject != null) {
+            this.rightHand.GetComponent<Hand>().Equip(gameObject);
+        }*/
         if(test) this.creatKugel(this.transform.position); // testen
     }
     public bool isCreatable()
