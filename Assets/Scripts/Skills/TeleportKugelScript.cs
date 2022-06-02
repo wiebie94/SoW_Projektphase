@@ -141,4 +141,10 @@ public class TeleportKugelScript : MonoBehaviour
         this.destroyTime = 0;
         this.ph.bounciness = this.bounciness;
     }
+    public void deactivate()
+    {
+        this.isEnable = false;
+        this.destroyTime = 0;
+        this.ph.bounciness = this.bounciness;
+    }
 }

@@ -85,7 +85,6 @@ public class ShowSkillMenu : MonoBehaviour
             if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
             {
                 showMenuCoroutine = StartCoroutine(waitForMenuShow());
-
                 //Starte die zwei Sekunden und zeige das Skillmenu
                 //TODO: Öffnen des Menüs zulassen bei aktivem Zauber auf der anderen Hand !?
                 isCoroutineFinished = true;
@@ -259,43 +258,36 @@ public class ShowSkillMenu : MonoBehaviour
         }
         if (name.Equals("TeleportOrb"))
         {
-            GameObject teleportOrb = this.teleportManagerScript.creatKugel();
-            if (gameObject == null) return;
+            GameObject teleportOrb = this.teleportManagerScript.creatKugel(this.SkillMenu.transform.Find("TeleportOrb").position);
+            if (teleportOrb == null) return;
 
             _isTeleportActive = true;
             _isFireBallActive = false;
             _isTelekinesisActive = false;
 
-            if (_isHandSkinSet)
+            /*if (_isHandSkinSet)
             {
                 leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
                 rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
                 _isHandSkinSet = false;
 
-            }
-            //g1.transform.SetParent(RightHandController.transform);
+            }*/
             if (this.menuHandLeft == true)
             {
-                if (_isHandSkinSet == false)
+                /*if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
                     rightHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTeleport;
-                }
-
-                //this.leftHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
-                //this.rightHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+                }*/
                 EquipItemToHand(HandType.Right, teleportOrb);
             }
             else
             {
-                if (_isHandSkinSet == false)
+                /*if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
                     leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = handMaterialTeleport;
-                }
-
-                //this.leftHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
-                //this.rightHandRef.transform.parent.GetComponent<Hand>().Equip(teleportOrb);
+                }*/
                 EquipItemToHand(HandType.Left, teleportOrb);
             }
 

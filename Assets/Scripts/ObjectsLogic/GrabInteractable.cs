@@ -31,7 +31,9 @@ public class GrabInteractable : MonoBehaviour
     private Transform leftHandTransform;
     private Transform rightHandTransform;
 
+    [SerializeField] UnityEvent onObjectGrabbed;
     [SerializeField] UnityEvent onObjectReleased;
+    
 
     public delegate void OnObjectLost();
     public event OnObjectLost onObjectLost;
@@ -109,6 +111,8 @@ public class GrabInteractable : MonoBehaviour
             onObjectLost.Invoke();
             //return false;
         }
+
+        onObjectGrabbed.Invoke();
 
         rb.interpolation = RigidbodyInterpolation.Interpolate;
 

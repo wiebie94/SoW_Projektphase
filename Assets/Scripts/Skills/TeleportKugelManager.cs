@@ -27,11 +27,7 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
     // Update is called once per frame
     void Update()
     {
-        /*GameObject gameObject = this.creatKugel();
-        if (gameObject != null) {
-            this.rightHand.GetComponent<Hand>().Equip(gameObject);
-        }*/
-        //if(test) this.creatKugel(this.transform.position); // testen
+        if(test) this.creatKugel(this.transform.position); // testen
     }
     public bool isCreatable()
     {
@@ -39,8 +35,8 @@ public class TeleportKugelManager : MonoBehaviour, IKugelDestroy
     }
 
     //ToDo überarbeiten für Menü später
-    public bool creatKugel(Vector3 position) {
-        return this.kugelFactory(position) != null;
+    public GameObject creatKugel(Vector3 position) {
+        return this.kugelFactory(position);
     }
 
     public GameObject creatKugel()

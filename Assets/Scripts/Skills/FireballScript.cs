@@ -98,6 +98,5 @@ public class FireballScript : MonoBehaviour
         yield return new WaitForSeconds(2);
         fired = false;
         Destroy(g1);
-
     }
 }
