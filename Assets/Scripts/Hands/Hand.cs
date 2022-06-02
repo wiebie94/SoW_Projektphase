@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -81,6 +82,9 @@ public class Hand : MonoBehaviour
 
     public void Equip(GameObject grabObject)
     {
+        if (grabObject == null)
+            return;
+
         Released(new InputAction.CallbackContext());
 
         heldObject = grabObject.GetComponentInParent<GrabInteractable>();
@@ -192,8 +196,8 @@ public class Hand : MonoBehaviour
 
     void AnimateHand()
     {
-        SetGrip(controller.selectAction.action.ReadValue<float>());
-        SetTrigger(controller.activateAction.action.ReadValue<float>());
+        SetGrip(controller.selectActionValue.action.ReadValue<float>());
+        SetTrigger(controller.activateActionValue.action.ReadValue<float>());
 
         if (gripCurrent != gripTarget)
         {
