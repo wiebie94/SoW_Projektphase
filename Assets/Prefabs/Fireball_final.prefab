@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1171996869661294711}
   - component: {fileID: 3053189369519466764}
   - component: {fileID: 2259425072252877301}
+  - component: {fileID: 9181970297201692928}
   m_Layer: 0
   m_Name: Fireball_final
   m_TagString: Untagged
@@ -63,6 +64,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &9181970297201692928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171996869661294710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b84aa924a9b46045a61d3f0e95e863c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion_prefab: {fileID: 5541973976525468595, guid: f178c59474c7aa14e9a4ec11a43d8a98,
+    type: 3}
+  steam_prefab: {fileID: 5484630942733658362, guid: ac07b037ded7e0c43bbc90fd69b2b532,
+    type: 3}
+  steamDuration: 2
 --- !u!1 &1171996869819097581
 GameObject:
   m_ObjectHideFlags: 0
