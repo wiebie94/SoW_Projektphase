@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 47d54cffd470e1344889867fd8d543d8
+guid: ce3fcb99cad2fba4f93485c1a25fb8cb
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,48 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Rock
-    second: {fileID: 2100000, guid: 60ee02b51f3865b489e4e6892499fd97, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sandstone.Bottom
-    second: {fileID: 2100000, guid: 9288cfa7b05a0964293bcd10dc29816c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sandstone.Top
-    second: {fileID: 2100000, guid: 1836ecb8fcdfbf24c9d5202f15da7310, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Rock Bake
-    second: {fileID: 2800000, guid: 4ba01e7d302037944bcf12d908e2285c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Rock Normals Bake
-    second: {fileID: 2800000, guid: 05ed20173f95e5747a9c9334b324a00a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Sandstone_bottom Bake
-    second: {fileID: 2800000, guid: 0f9ddf84f8834c8408be3cc856c74168, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Sandstone_bottom Normals Bake
-    second: {fileID: 2800000, guid: f74c8f64e8494824a9309cb8ea5d1f2a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Sandstone_top Bake
-    second: {fileID: 2800000, guid: d16aed9efb72c8e49b4871782e70dd49, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Sandstone_top Normals Bake
-    second: {fileID: 2800000, guid: 4f7098bbcbeda4341b6561e90d950b03, type: 3}
+      name: PillarMat
+    second: {fileID: 2100000, guid: 86bdff873d2def7449282d49b505a3d1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
