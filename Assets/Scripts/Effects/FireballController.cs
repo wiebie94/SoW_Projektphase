@@ -16,6 +16,7 @@ public class FireballController : MonoBehaviour
     public float steamDuration = 2.0f;
     public float explosionDuration = 2.0f;
     public float burnDuration = 2.0f;
+    private Vector3 spawnPos;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class FireballController : MonoBehaviour
         //explosion on hit
         explosion = Instantiate(explosion_prefab, other.GetContact(0).point, Quaternion.identity);
         Destroy(explosion, explosionDuration);
+        Destroy(transform.gameObject);
         
         //burn something
         if(other.gameObject.tag == "Burnable"){
@@ -40,7 +42,9 @@ public class FireballController : MonoBehaviour
 
         //kindle something
         if(other.gameObject.tag == "Kindle") {
-            kindleFlame = Instantiate(kindle_flame_prefab, other.GameObject.GetComponent<Renderer>().bounds.center, Quaternion.identity);
+            spawnPos = other.gameObject.GetComponent<Transform>().position + other.gameObject.GetComponent<KindleOffset>().getOffset();
+            kindleFlame = Instantiate(kindle_flame_prefab, spawnPos, Quaternion.identity);
+            //other.gameObject.GetComponent<CandleValue>().offset
             Debug.Log("kindle stuff");
         }
 
@@ -58,6 +62,6 @@ public class FireballController : MonoBehaviour
         }
 
         //Destroy firball, mit ruben besprechen
-        Destroy(transform.gameObject);
+        
     }
 }
