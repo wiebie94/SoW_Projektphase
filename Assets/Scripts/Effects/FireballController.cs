@@ -9,15 +9,17 @@ public class FireballController : MonoBehaviour
     public GameObject steam_prefab;
     public GameObject flame_prefab;
     public GameObject kindle_flame_prefab;
+    public GameObject dissolveSound_prefab;
     private GameObject explosion;
     private GameObject steam;
     private GameObject kindleFlame;
     private GameObject woodBurn;
-    public float steamDuration = 2.0f;
-    public float explosionDuration = 2.0f;
-    public float burnDuration = 2.0f;
+    private GameObject dissolveBurnSound;
+    public float steamDuration;
+    public float explosionDuration;
+    public float burnDuration;
+    public float dissolveSoundDuration;
     private Vector3 spawnPos;
-
     void Start()
     {
     }
@@ -26,18 +28,20 @@ public class FireballController : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(0,0,1) * Time.deltaTime;
+
     }
 
     public void OnCollisionEnter(Collision other) {
 
-        //explosion on hit
         explosion = Instantiate(explosion_prefab, other.GetContact(0).point, Quaternion.identity);
-        Destroy(explosion, explosionDuration);
-        Destroy(transform.gameObject);
-        
+        Destroy(explosion, explosionDuration);        
+
         //burn something
         if(other.gameObject.tag == "Burnable"){
                 other.gameObject.AddComponent<BurnController>();
+                dissolveBurnSound = Instantiate(dissolveSound_prefab, other.GetContact(0).point, Quaternion.identity);
+                Destroy(dissolveBurnSound, dissolveSoundDuration);
+                
         }
 
         //kindle something
@@ -59,9 +63,9 @@ public class FireballController : MonoBehaviour
             steam = Instantiate(steam_prefab, other.transform.position, Quaternion.identity);
             Destroy(steam, steamDuration);
             other.gameObject.AddComponent<MeltingController>(); //add Melting Script
-        }
+        }      
 
-        //Destroy firball, mit ruben besprechen
-        
+        //transform.GetComponent<Renderer>().enabled = false;
+        Destroy(transform.gameObject);
     }
 }
