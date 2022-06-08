@@ -8,6 +8,7 @@ public class FireballController : MonoBehaviour
     public GameObject explosion_prefab;
     public GameObject steam_prefab;
     public GameObject flame_prefab;
+    public GameObject kindle_flame_prefab;
     private GameObject explosion;
     private GameObject steam;
     private GameObject kindleFlame;
@@ -23,7 +24,7 @@ public class FireballController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0,0,10) * Time.deltaTime;
+        transform.position += new Vector3(0,0,1) * Time.deltaTime;
     }
 
     public void OnCollisionEnter(Collision other) {
@@ -39,7 +40,7 @@ public class FireballController : MonoBehaviour
 
         //kindle something
         if(other.gameObject.tag == "Kindle") {
-            kindleFlame = Instantiate(flame_prefab, other.GetContact(0).point, Quaternion.identity);
+            kindleFlame = Instantiate(kindle_flame_prefab, other.GameObject.GetComponent<Renderer>().bounds.center, Quaternion.identity);
             Debug.Log("kindle stuff");
         }
 
@@ -57,6 +58,6 @@ public class FireballController : MonoBehaviour
         }
 
         //Destroy firball, mit ruben besprechen
-        transform.gameObject.SetActive(false);
+        Destroy(transform.gameObject);
     }
 }

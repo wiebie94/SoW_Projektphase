@@ -28,9 +28,6 @@ public class FireballScript : MonoBehaviour
         controllerLeft = controllerArray[1];
         ShowSkillMenu.onFireballSkillTriggered += FireballSkillTriggered;
         ShowSkillMenu.onFireballSkillUntriggered += FireballSkillUntriggered;
-
-
-
     }
 
     private void FireballSkillTriggered()
@@ -52,7 +49,7 @@ public class FireballScript : MonoBehaviour
         controllerRight.activateAction.action.performed -= activateAction_performed;
 
     }
-
+    
     private void activateAction_cancelled(InputAction.CallbackContext obj)
     {
     }
@@ -64,34 +61,25 @@ public class FireballScript : MonoBehaviour
             {
             
                 if (skillMenu.menuHandLeft)
-            {
-            
+            {       
                     fired = true;
                     g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward * 0.5f, Quaternion.identity);
-                    //TODO:JAN-> Hier weiterer Code für den Fireball einfügen
+                    //TODO:JAN-> Hier weiterer Code fï¿½r den Fireball einfï¿½gen
                     initialPos = rightHandRef.transform.forward;
                     g1.GetComponent<Rigidbody>().AddForce(initialPos + rightHandRef.transform.forward * 1000, ForceMode.Acceleration);
-
                 }
             else
             {
                 fired = true;
                 g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward * 0.5f, Quaternion.identity);
-                    //TODO:JAN-> Hier weiterer Code für den Fireball einfügen
+                    //TODO:JAN-> Hier weiterer Code fï¿½r den Fireball einfï¿½gen
                     initialPos = leftHandRef.transform.forward;
                 g1.GetComponent<Rigidbody>().AddForce(initialPos + leftHandRef.transform.forward * 1000, ForceMode.Acceleration);
             }
                 StartCoroutine(waitForSeconds());
-
-
             }
         }
-
-
-
     }
-
-
 
     IEnumerator waitForSeconds()
     {

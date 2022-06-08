@@ -103,8 +103,7 @@ public class BurnController : MonoBehaviour
                     bool disable = false;
 
                     //deaktivate Object Parent
-                    GameObject ob = gameObject.transform.parent.gameObject;
-                    ob.SetActive(false);
+                    gameObject.SetActive(false);
                     Material mat = null;
                     renderer.material = mat;
                 }
