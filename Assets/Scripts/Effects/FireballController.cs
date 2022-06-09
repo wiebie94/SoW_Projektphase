@@ -20,6 +20,12 @@ public class FireballController : MonoBehaviour
     public float burnDuration;
     public float dissolveSoundDuration;
     private Vector3 spawnPos;
+
+    public float explosionRadius;
+    public float explosionPower;
+    public LayerMask chosenLayer;
+    private bool firstHit;
+
     void Start()
     {
     }
@@ -32,6 +38,8 @@ public class FireballController : MonoBehaviour
     }
 
     public void OnCollisionEnter(Collision other) {
+        if (this.firstHit) return;
+        this.firstHit = true;
 
         explosion = Instantiate(explosion_prefab, other.GetContact(0).point, Quaternion.identity);
         Destroy(explosion, explosionDuration);        
@@ -52,8 +60,8 @@ public class FireballController : MonoBehaviour
             Debug.Log("kindle stuff");
         }
 
-        //burn on wood
-        if(other.gameObject.tag == "WoodBurn") {
+        //burn on wood other.gameObject.tag == "WoodBurn"
+        if (true) {
             woodBurn = Instantiate(flame_prefab, other.GetContact(0).point, Quaternion.identity);
             Destroy(woodBurn, burnDuration);
         }
@@ -63,9 +71,23 @@ public class FireballController : MonoBehaviour
             steam = Instantiate(steam_prefab, other.transform.position, Quaternion.identity);
             Destroy(steam, steamDuration);
             other.gameObject.AddComponent<MeltingController>(); //add Melting Script
-        }      
+        }
 
         //transform.GetComponent<Renderer>().enabled = false;
+        this.explosionPyhsic(other.GetContact(0).point);
         Destroy(transform.gameObject);
+    }
+    private void explosionPyhsic(Vector3 position) 
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, this.explosionRadius, chosenLayer);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            if(rb == null)
+                rb = hit.GetComponentInParent<Rigidbody>();
+
+            if (rb != null)
+                rb.AddExplosionForce(this.explosionPower, position, this.explosionRadius, 3.0F);
+        }
     }
 }

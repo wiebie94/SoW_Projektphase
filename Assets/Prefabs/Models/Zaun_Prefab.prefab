@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4143743790447307128}
   - component: {fileID: 1021844946503116509}
   - component: {fileID: 3011401654186037783}
+  - component: {fileID: 6642704068018567696}
   m_Layer: 0
   m_Name: Zaun_Prefab
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6642704068018567696
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3659836230774289346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: cdb90b1952bcfd04c87903fb3467542d, type: 3}

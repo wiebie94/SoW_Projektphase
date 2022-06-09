@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1292772054416944088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381083984805502330}
+  - component: {fileID: 5147332046002099183}
+  m_Layer: 0
+  m_Name: LeftStairsCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381083984805502330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292772054416944088}
+  m_LocalRotation: {x: 0.8540051, y: 0, z: 0, w: 0.5202646}
+  m_LocalPosition: {x: 0.05511, y: -0.00874, z: -0.01515}
+  m_LocalScale: {x: 0.009, y: 0.009999997, z: -0.02}
+  m_Children: []
+  m_Father: {fileID: 6717670729350748666}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 117.3, y: 0, z: 0}
+--- !u!65 &5147332046002099183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292772054416944088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000004, z: 1.0000004}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6229082205882008384
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +55,7 @@ GameObject:
   - component: {fileID: 6717670729350748666}
   - component: {fileID: 7680377318244783711}
   - component: {fileID: 5580761703091692181}
+  - component: {fileID: 6654447830709337946}
   m_Layer: 0
   m_Name: Gallery_Prefab
   m_TagString: Untagged
@@ -28,7 +73,9 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
-  m_Children: []
+  m_Children:
+  - {fileID: 381083984805502330}
+  - {fileID: 3374095549584728240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -85,3 +132,61 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6654447830709337946
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229082205882008384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6395636015907450366, guid: 9c374f929ec5b0345b05da1819db3d61, type: 3}
+--- !u!1 &8365788429639466944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3374095549584728240}
+  - component: {fileID: 8153931308887056354}
+  m_Layer: 0
+  m_Name: RightStairsCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3374095549584728240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365788429639466944}
+  m_LocalRotation: {x: 0.8540051, y: 0, z: 0, w: 0.5202646}
+  m_LocalPosition: {x: -0.05481, y: -0.00865, z: -0.0151}
+  m_LocalScale: {x: 0.009, y: 0.009999997, z: -0.02}
+  m_Children: []
+  m_Father: {fileID: 6717670729350748666}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 117.3, y: 0, z: 0}
+--- !u!65 &8153931308887056354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365788429639466944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000004, z: 1.0000004}
+  m_Center: {x: 0, y: 0, z: 0}

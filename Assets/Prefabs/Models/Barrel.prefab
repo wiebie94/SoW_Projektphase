@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4168900883859564287}
   - component: {fileID: 7995896819474090099}
   - component: {fileID: 112227504114967591}
+  - component: {fileID: 5602286644019380373}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5602286644019380373
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407464517598235761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8264766115119967290, guid: 5717bf1a598b19941b60ce4c20b47e85, type: 3}
 --- !u!1 &3489580234920290228
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +139,7 @@ GameObject:
   - component: {fileID: 772840637234054183}
   - component: {fileID: 6920412389760790148}
   - component: {fileID: 4975667670132278122}
+  - component: {fileID: 4801877136539332587}
   m_Layer: 0
   m_Name: Fass
   m_TagString: Untagged
@@ -194,3 +210,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4801877136539332587
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862110520147200784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8265299202141949834, guid: 5717bf1a598b19941b60ce4c20b47e85, type: 3}
