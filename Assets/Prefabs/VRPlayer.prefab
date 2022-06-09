@@ -637,7 +637,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 3295320616196714313}
   m_CameraFloorOffsetObject: {fileID: 3295320616891285626}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: -0.31
+  m_CameraYOffset: 0.87
 --- !u!136 &3295320616196714356
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2379,6 +2379,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3295320616934204724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3295320617562024722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517440749180533620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781048c602275414492c4eff6878f83c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMenu: {fileID: 0}
+  leftHandRef: {fileID: 8860109793257996056}
+  rightHandRef: {fileID: 8860109794356003126}
+  fireBall: {fileID: 1171996869661294710, guid: a829542dfbd39384e9338a78097a82bb,
+    type: 3}
 --- !u!114 &3295320617562024723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2414,23 +2431,6 @@ MonoBehaviour:
   loadingTime: 1.5
   fadeOut: 0.5
   equipDelay: 0.1
---- !u!114 &3295320617562024722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517440749180533620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 781048c602275414492c4eff6878f83c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillMenu: {fileID: 0}
-  leftHandRef: {fileID: 8860109793257996056}
-  rightHandRef: {fileID: 8860109794356003126}
-  fireBall: {fileID: 1171996869661294710, guid: a829542dfbd39384e9338a78097a82bb,
-    type: 3}
 --- !u!1001 &3295320616976217979
 PrefabInstance:
   m_ObjectHideFlags: 0
