@@ -33,6 +33,7 @@ public class FireballController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (firstHit) return;
         transform.position += new Vector3(0,0,1) * Time.deltaTime;
 
     }
@@ -85,6 +86,13 @@ public class FireballController : MonoBehaviour
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if(rb == null)
                 rb = hit.GetComponentInParent<Rigidbody>();
+            ActiveByExplosion ae = hit.GetComponent<ActiveByExplosion>();
+            if (ae != null) 
+            {
+                ae.activateRB();
+                rb = hit.GetComponent<Rigidbody>();
+            }
+
 
             if (rb != null)
                 rb.AddExplosionForce(this.explosionPower, position, this.explosionRadius, 3.0F);

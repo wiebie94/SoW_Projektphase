@@ -100,7 +100,7 @@ public class BurnController : MonoBehaviour
                 burningMat.SetFloat("prop_dissolve", dissolve_amount);
 
                 if(dissolve_amount > 1.1f){
-                    bool disable = false;
+                    //bool disable = false;
 
                     //deaktivate Object Parent
                     /*gameObject.SetActive(false);
