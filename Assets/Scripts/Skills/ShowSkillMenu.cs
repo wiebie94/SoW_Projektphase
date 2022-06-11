@@ -28,7 +28,7 @@ public class ShowSkillMenu : MonoBehaviour
     public bool _isDone = false;
     public Coroutine showMenuCoroutine;
     public Coroutine deactivateMenuCoroutine;
-
+    public GameObject aimHelp;
     [SerializeField] private GameObject teleportManager;
     private TeleportKugelManager teleportManagerScript;
 
@@ -223,6 +223,7 @@ public class ShowSkillMenu : MonoBehaviour
         deactivateMenu();
         if (name.Equals("FireOrb"))
         {
+            Instantiate(aimHelp);
             onFireballSkillTriggered.Invoke();
             _isFireBallActive = true;
             _isTeleportActive = false;
@@ -295,7 +296,7 @@ public class ShowSkillMenu : MonoBehaviour
 
         if (name.Equals("Telekinesis Orb"))
         {
-
+            Instantiate(aimHelp);
             _isTeleportActive = false;
             _isFireBallActive = false;
             _isTelekinesisActive = true;
