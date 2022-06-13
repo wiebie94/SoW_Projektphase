@@ -34,7 +34,7 @@ public class FireballController : MonoBehaviour
     void Update()
     {
         if (firstHit) return;
-        transform.position += new Vector3(0,0,1) * Time.deltaTime;
+        transform.position += new Vector3(0,0,10) * Time.deltaTime;
 
     }
 
