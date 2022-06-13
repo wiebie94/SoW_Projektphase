@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody))]
 public class GrabInteractable : MonoBehaviour
 {
     private bool isTwoHandedGrabPossible = false;
+    [SerializeField] bool shouldObjectBeReplaced = false;
     [SerializeField] bool isXAndZAxisSwapped;
     [SerializeField] bool isOnHingeJoint;
     [SerializeField] Transform leftHand;
@@ -116,6 +118,9 @@ public class GrabInteractable : MonoBehaviour
 
         rb.interpolation = RigidbodyInterpolation.Interpolate;
 
+        if (shouldObjectBeReplaced)
+            transform.GetChild(0).gameObject.SetActive(false);
+
         if (hand == HandType.Left)
         {
             isGrabbedByLeftHand = true;
@@ -164,6 +169,9 @@ public class GrabInteractable : MonoBehaviour
     public void GrabEnd(HandType hand)
     {
         onObjectReleased.Invoke();
+
+        if (shouldObjectBeReplaced)
+            transform.GetChild(0).gameObject.SetActive(true);
 
         if (leftHand == null || rightHand == null)
         {

@@ -74,8 +74,7 @@ public class Hand : MonoBehaviour
         if (grabbableColliders.Length < 1)
             return;
 
-
-        var objectToGrab = grabbableColliders[0].gameObject;
+        var objectToGrab = GetNearestCollider(grabbableColliders).gameObject;
 
         Equip(objectToGrab);
     }
@@ -105,6 +104,30 @@ public class Hand : MonoBehaviour
         {
             heldObject = null;
         }
+    }
+
+    private Collider GetNearestCollider(Collider[] list)
+    {
+        if (list == null || list.Length == 0)
+            return null;
+
+        if (list.Length == 1)
+            return list[0];
+
+        Collider nearestCollider = null;
+        float nearestDistance = 100000;
+
+        foreach (Collider c in list)
+        {
+            float distanceToHand = Vector3.Distance(palm.position, c.gameObject.transform.position);
+            if (distanceToHand < nearestDistance)
+            {
+                nearestDistance = distanceToHand;
+                nearestCollider = c;
+            }
+        }
+
+        return nearestCollider;
     }
 
     private void Released(InputAction.CallbackContext obj)
