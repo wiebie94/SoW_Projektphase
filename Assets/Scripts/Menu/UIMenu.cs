@@ -19,6 +19,8 @@ public class UIMenu : MonoBehaviour
 
         allScreens.Add(pauseScreen);
         allScreens.Add(optionsScreen);
+
+        //GetComponent<UIPLayerFollow>().StartFollowingPlayer();
     }
 
     public void CloseMenu()
