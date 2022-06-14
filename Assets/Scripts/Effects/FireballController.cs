@@ -34,8 +34,6 @@ public class FireballController : MonoBehaviour
     void Update()
     {
         if (firstHit) return;
-        transform.position += new Vector3(0,0,10) * Time.deltaTime;
-
     }
 
     public void OnCollisionEnter(Collision other) {
