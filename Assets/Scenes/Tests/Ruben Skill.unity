@@ -2071,7 +2071,6 @@ MonoBehaviour:
   handMaterialTeleport: {fileID: 0}
   handMaterialTelekinesis: {fileID: 0}
   _isDone: 0
-  aimHelp: {fileID: 5609866929884453692, guid: a47cdbe7e347a9b418ec07deb078aa65, type: 3}
   teleportManager: {fileID: 0}
   lCircle: {fileID: 0}
   loadingTime: 1.5
@@ -3987,6 +3986,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740222626231541414, guid: b2083ebbb88d5e64d927d2d188406402,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740222626231541414, guid: b2083ebbb88d5e64d927d2d188406402,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.03284836
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740222626231541414, guid: b2083ebbb88d5e64d927d2d188406402,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.251976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2083ebbb88d5e64d927d2d188406402, type: 3}
