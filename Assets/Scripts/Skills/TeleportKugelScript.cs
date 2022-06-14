@@ -66,7 +66,7 @@ public class TeleportKugelScript : MonoBehaviour
             Object.Destroy(this.gameObject);
 
 
-        //Debug.Log(this.rb.velocity.magnitude);
+        Debug.Log("RB+Vel" + this.rb.velocity.magnitude);
 
         //######### Destroy wenn zu langsam #########
         if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
@@ -116,7 +116,7 @@ public class TeleportKugelScript : MonoBehaviour
         this.startingTelportAnimation();
         yield return new WaitForSeconds(this.teleportDelay);
   
-        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y * 2 + 0.1f; // 0.1f da sonst spieler durch den boden fällt
+        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y * 2 + 0.1f; // 0.1f da sonst spieler durch den boden fï¿½llt
         //Debug.Log(playerColiderOffsetY);
 
         this.player.transform.position = (point + this.player.transform.position - this.playerCam.transform.position) + Vector3.up * playerColiderOffsetY;
