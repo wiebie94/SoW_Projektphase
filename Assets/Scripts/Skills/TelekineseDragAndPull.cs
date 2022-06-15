@@ -144,8 +144,10 @@ public class TelekineseDragAndPull : MonoBehaviour
             telekineseHandRef = leftHandRef;
             dragHandRef = rightHandRef;
 
+            
             controllerRight.selectAction.action.performed += Grip_performed;
             controllerRight.selectAction.action.canceled += Grip_canceled;
+
 
             telekineseScriptMain = telekineseScriptMainLeftRef;
         }
@@ -155,8 +157,9 @@ public class TelekineseDragAndPull : MonoBehaviour
             telekineseHandRef = rightHandRef;
             dragHandRef = leftHandRef;
 
-            controllerLeft.selectAction.action.performed += Grip_performed;
-            controllerLeft.selectAction.action.canceled += Grip_canceled;
+                controllerLeft.selectAction.action.performed += Grip_performed;
+                controllerLeft.selectAction.action.canceled += Grip_canceled;
+           
 
             telekineseScriptMain = telekineseScriptMainRightRef;
         }

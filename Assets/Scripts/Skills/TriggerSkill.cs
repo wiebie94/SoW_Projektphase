@@ -37,7 +37,6 @@ public class TriggerSkill : MonoBehaviour
 
 
                 controllerRight.selectAction.action.performed += Grip_performed;
-                controllerRight.selectAction.action.canceled += Grip_canceled;
 
 
             }
@@ -48,7 +47,6 @@ public class TriggerSkill : MonoBehaviour
             {
                 //Subscribe mit dem LinkenController zu Performed und Cancelled
                 controllerLeft.selectAction.action.performed += Grip_performed;
-                controllerLeft.selectAction.action.canceled += Grip_canceled;
                 
 
             }
@@ -58,10 +56,9 @@ public class TriggerSkill : MonoBehaviour
        
   
     }
-    /*
     private void OnTriggerExit(Collider other)
     {
-  
+        Debug.Log("Unsubscribing from Grip Performed and Cancelled");
         if (skillMenu.menuHandLeft == true)
         {
 
@@ -69,8 +66,7 @@ public class TriggerSkill : MonoBehaviour
             {
 
                 controllerRight.selectAction.action.performed -= Grip_performed;
-                controllerRight.selectAction.action.canceled -= Grip_canceled;
-                isGripPressed = false;
+
             }
         }
         else
@@ -79,20 +75,17 @@ public class TriggerSkill : MonoBehaviour
             {
 
                 controllerLeft.selectAction.action.performed -= Grip_performed;
-                controllerLeft.selectAction.action.canceled -= Grip_canceled;
-                isGripPressed = false;
             }
         }
     }
-    */
     private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         if (skillMenu.menuHandLeft)
         {
             controllerRight.selectAction.action.performed -= Grip_performed;
             controllerRight.selectAction.action.canceled += Grip_canceled;
-            controllerLeft.selectAction.action.canceled -= Grip_canceled;
             controllerLeft.selectAction.action.performed -= Grip_performed;
+            controllerLeft.selectAction.action.canceled -= Grip_canceled;
 
 
         }
@@ -100,8 +93,8 @@ public class TriggerSkill : MonoBehaviour
         {
             controllerLeft.selectAction.action.performed -= Grip_performed;
             controllerLeft.selectAction.action.canceled += Grip_canceled;
-            controllerRight.selectAction.action.canceled -= Grip_canceled;
             controllerRight.selectAction.action.performed -= Grip_performed;
+            controllerRight.selectAction.action.canceled -= Grip_canceled;
 
 
 
@@ -114,10 +107,21 @@ public class TriggerSkill : MonoBehaviour
 
     private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        controllerRight.selectAction.action.performed -= Grip_performed;
-        controllerLeft.selectAction.action.performed -= Grip_performed;
-        controllerRight.selectAction.action.canceled -= Grip_canceled;
-        controllerLeft.selectAction.action.canceled -= Grip_canceled;
+        if (skillMenu.menuHandLeft == true)
+        {
+
+            controllerRight.selectAction.action.performed -= Grip_performed;
+            controllerRight.selectAction.action.canceled -= Grip_canceled;
+            
+        }
+        else
+        {
+            controllerLeft.selectAction.action.performed -= Grip_performed;
+            controllerLeft.selectAction.action.canceled -= Grip_canceled;
+
+
+        }
+       
         skillMenu.isGripPressed = false;
         Debug.Log("Eigentlich sollte hier unsubscribed werden");
         skillMenu.resetHand();
