@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIMenu : MonoBehaviour
 {
+    [SerializeField] InputActionProperty menuAction;
+
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject optionsScreen;
 
@@ -11,27 +15,50 @@ public class UIMenu : MonoBehaviour
 
     List<GameObject> allScreens;
 
+    private UIPLayerFollow followScript;
+
+    private bool isMenuOpened = false;
+
     private void Start()
-    {
+    { 
         content = transform.GetChild(0).gameObject;
+
+        followScript = GetComponent<UIPLayerFollow>();
 
         allScreens = new List<GameObject>();
 
         allScreens.Add(pauseScreen);
         allScreens.Add(optionsScreen);
 
-        //GetComponent<UIPLayerFollow>().StartFollowingPlayer();
+        menuAction.action.performed += MenuButtonPressed;
+    }
+
+    private void MenuButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if (!isMenuOpened)
+            OpenMenu();
+        else
+            CloseMenu();
     }
 
     public void CloseMenu()
     {
+        isMenuOpened = false;
         CloseAllScreens();
 
         content.SetActive(false);
+
+        followScript.StopFollowingPlayer();
     }
 
     public void OpenMenu()
     {
+        if (isMenuOpened)
+            return;
+
+        followScript.StartFollowingPlayer();
+
+        isMenuOpened = true;
         content.SetActive(true);
 
         OpenPauseScreen();
