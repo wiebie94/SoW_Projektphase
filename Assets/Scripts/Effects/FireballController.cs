@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireballController : MonoBehaviour
 {
+    private Rigidbody rb;
 
     public GameObject explosion_prefab;
     public GameObject steam_prefab;
@@ -25,19 +26,16 @@ public class FireballController : MonoBehaviour
     public float explosionPower;
     public LayerMask chosenLayer;
     private bool firstHit;
+    private Vector3 startVelocity;
 
     void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (firstHit) return;
+        rb = this.GetComponent<Rigidbody>();
     }
 
     public void OnCollisionEnter(Collision other) {
-        if (this.firstHit) return;
+
+        if (this.firstHit || other.gameObject.tag == "Reflect") return;
         this.firstHit = true;
 
         explosion = Instantiate(explosion_prefab, other.GetContact(0).point, Quaternion.identity);

@@ -11,7 +11,9 @@ public class ActiveByExplosion : MonoBehaviour
     public void activateRB()
     {
         this.transform.parent = superParent;
+
         if (this.GetComponent<Rigidbody>() != null) return;
+
         this.rb = this.gameObject.AddComponent<Rigidbody>();
         if (this.rb != null)
         {
