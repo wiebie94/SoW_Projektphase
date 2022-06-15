@@ -6,12 +6,24 @@ using UnityEngine.Events;
 public class TestLever : MonoBehaviour
 {
     public bool isOpen = false;
+    private bool moved = false;
     [SerializeField] UnityEvent Up;
     [SerializeField] UnityEvent Down;
 
     void Update()
     {
-        if(isOpen) Up.Invoke();
-        else Down.Invoke();
+        if(isOpen) {
+            if(!moved) {
+                moved = true;
+                Up.Invoke();
+            }
+        }
+        else {
+            if(moved){
+                moved = false;
+                Down.Invoke();
+            }
+            
+        }
     }
 }
