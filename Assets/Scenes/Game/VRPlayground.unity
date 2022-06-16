@@ -933,19 +933,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -7363382999065477798, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  menuAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Menu
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 17cdb7fc-3188-48ec-a159-afeba49242e8
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 3845185136319457433, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
   m_TranslateAnchorAction:
     m_UseReference: 1
     m_Action:
@@ -2526,18 +2513,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -5913262927076077117, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  menuAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: 
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_TranslateAnchorAction:
     m_UseReference: 1
     m_Action:
@@ -3366,7 +3341,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 799929156}
   m_CameraFloorOffsetObject: {fileID: 395352859}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 0.87
+  m_CameraYOffset: -0.35
 --- !u!4 &799929158
 Transform:
   m_ObjectHideFlags: 0
@@ -7365,11 +7340,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 369551403224465962, guid: 712532102e23a4540a21a637b0b7d5fa,
-        type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 216760696}
     - target: {fileID: 369551403224465963, guid: 712532102e23a4540a21a637b0b7d5fa,
         type: 3}
       propertyPath: m_RootOrder
@@ -7554,6 +7524,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: RightHand
       objectReference: {fileID: 0}
+    - target: {fileID: 569326214511961408, guid: 3a2e8a945c546f845b6949bc32954ae2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 598194800230500297, guid: 3a2e8a945c546f845b6949bc32954ae2,
         type: 3}
       propertyPath: m_TagString
@@ -7628,6 +7603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: LeftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789799986477298923, guid: 3a2e8a945c546f845b6949bc32954ae2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3408485664672574558, guid: 3a2e8a945c546f845b6949bc32954ae2,
         type: 3}
