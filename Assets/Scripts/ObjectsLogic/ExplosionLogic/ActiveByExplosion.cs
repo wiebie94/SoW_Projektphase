@@ -14,7 +14,9 @@ public class ActiveByExplosion : MonoBehaviour
 
         if (this.GetComponent<Rigidbody>() != null) return;
 
-        this.rb = this.gameObject.AddComponent<Rigidbody>();
+        if (this.gameObject.active)
+            this.rb = this.gameObject.AddComponent<Rigidbody>();
+
         if (this.rb != null)
         {
             this.rb.mass = this.masse;

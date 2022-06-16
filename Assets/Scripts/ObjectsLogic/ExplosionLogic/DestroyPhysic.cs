@@ -44,7 +44,8 @@ public class DestroyPhysic : MonoBehaviour
         foreach (Transform child in children) 
         {
             //Debug.Log("GameObject: " + this.name + "  Child: "+ child.name);
-            child.parent = this.superParent;
+            if (this.superParent.gameObject.active)
+                child.parent = this.superParent;
 
             DestroyPhysic childS = child.GetComponent<DestroyPhysic>();
             if(childS != null)

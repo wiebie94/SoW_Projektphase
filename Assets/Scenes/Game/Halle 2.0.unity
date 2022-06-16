@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.36
+  m_AmbientIntensity: 0.71
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 4067de1a02072244798361060c5e7325, type: 2}
@@ -24317,6 +24317,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3295320616196714359, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: m_CameraYOffset
+      value: -0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3295320616744408864, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: m_ClearFlags
@@ -24335,7 +24340,7 @@ PrefabInstance:
     - target: {fileID: 3295320616744408867, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: m_Antialiasing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295320616744408867, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}

@@ -6,7 +6,7 @@ public class BurnController : MonoBehaviour
 {
     public Material burningMat;
 
-    public float speed = 0.5f;
+    public float speed = 1f;
     public float dissolveSpeed = 0.5f;
     public float dissolve_threshold = 0.75f;
     private float burn_amount;
