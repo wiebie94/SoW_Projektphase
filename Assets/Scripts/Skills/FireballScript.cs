@@ -63,18 +63,16 @@ public class FireballScript : MonoBehaviour
                 if (skillMenu.menuHandLeft)
             {       
                     fired = true;
-                    g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward * 0.5f, Quaternion.identity);
+                    g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward, Quaternion.identity);
                     //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
-                    initialPos = rightHandRef.transform.forward;
-                    g1.GetComponent<Rigidbody>().AddForce(initialPos + rightHandRef.transform.forward * 1000, ForceMode.Acceleration);
+                    g1.GetComponent<Rigidbody>().AddForce(rightHandRef.transform.forward * 500, ForceMode.Impulse);
                 }
             else
             {
                 fired = true;
-                g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward * 0.5f, Quaternion.identity);
+                g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward, Quaternion.identity);
                     //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
-                    initialPos = leftHandRef.transform.forward;
-                g1.GetComponent<Rigidbody>().AddForce(initialPos + leftHandRef.transform.forward * 1000, ForceMode.Acceleration);
+                g1.GetComponent<Rigidbody>().AddForce(leftHandRef.transform.forward * 500, ForceMode.Impulse);
             }
                 StartCoroutine(waitForSeconds());
             }

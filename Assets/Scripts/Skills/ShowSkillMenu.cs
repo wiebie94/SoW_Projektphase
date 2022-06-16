@@ -9,7 +9,7 @@ public class ShowSkillMenu : MonoBehaviour
 
     public GameObject leftHandRef;
     public GameObject rightHandRef;
-    private bool isParallel;
+    private bool isParallel =false;
     private bool isSkillMenuOpen = false;
     public bool isGripPressed = false;
     public bool menuHandLeft = false;
@@ -26,11 +26,17 @@ public class ShowSkillMenu : MonoBehaviour
     public Material handMaterialTelekinesis;
     private Material defaultHandSkin;
     public bool _isDone = false;
+    public bool _oneTime = false;
     public Coroutine showMenuCoroutine;
     public Coroutine deactivateMenuCoroutine;
     [SerializeField] private GameObject teleportManager;
     private TeleportKugelManager teleportManagerScript;
-
+    private GameObject AimHelpLeft;
+    private GameObject AimHelpRight;
+    public Material AimHelpFireBallMaterial;
+    public Material AimHelpTelekineseMaterial;
+    public Material AimHelpFireBallParticlesMaterial;
+    public Material AimHelpTelekineseParticlesMaterial;
     [SerializeField] Load_Spells lCircle;
 
     [SerializeField] float loadingTime = 1.5f;
@@ -53,7 +59,10 @@ public class ShowSkillMenu : MonoBehaviour
     void Start()
     {
         this.teleportManagerScript = this.teleportManager.GetComponent<TeleportKugelManager>();
-
+        AimHelpLeft = leftHandRef.transform.Find("AimHelpParent").gameObject;
+        AimHelpRight = rightHandRef.transform.Find("AimHelpParent").gameObject;
+        AimHelpLeft.SetActive(false);
+        AimHelpRight.SetActive(false);
         defaultHandSkin = leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material;
     }
 
@@ -83,6 +92,8 @@ public class ShowSkillMenu : MonoBehaviour
             //Wenn das Skill Menü geschlossen ist und die 2 Sekunden noch nicht abgelaufen sind
             if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
             {
+                Debug.Log("showMenuCoroutine:");
+
                 showMenuCoroutine = StartCoroutine(waitForMenuShow());
                 //Starte die zwei Sekunden und zeige das Skillmenu
                 //TODO: Öffnen des Menüs zulassen bei aktivem Zauber auf der anderen Hand !?
@@ -93,7 +104,7 @@ public class ShowSkillMenu : MonoBehaviour
         }
 
         //Wenn es nicht paralell ist und das Skillmenü aber gerade angezeigt wird, dann schließe es
-        if (!isParallel && isSkillMenuOpen && !_isDone)
+        if (!isParallel && !_isDone)
         {
             if (showMenuCoroutine != null)
             {
@@ -157,21 +168,27 @@ public class ShowSkillMenu : MonoBehaviour
         Vector3 menuHandUpLeft = -leftHandRef.transform.up;
         Vector3 menuHandUpRight = -rightHandRef.transform.up;
         //Falls der Winkel zwischen der Linken Hand und dem Up Vektor kleiner als 30 Grad sein sollte, dann setz Linke Hand auf True und is Paralell auch
-        if (Vector3.Angle(upVektor, menuHandUpLeft) < 30f) {
+        if (Vector3.Angle(upVektor, menuHandUpLeft) < 30f)
+        {
             menuHandLeft = true;
             isParallel = true;
+            _oneTime = false;
         }
         //Andernfalls ist es die rechte Hand auf der das Menü sein soll 
         else if (Vector3.Angle(upVektor, menuHandUpRight) < 30f)
         {
             menuHandLeft = false;
             isParallel = true;
+            _oneTime = false;
         }
         //Falls es keins von beiden ist ist nichts paralell und deshalb setzen wir paralell auf falls
         else
         {
             isParallel = false;
+          
         }
+
+        
 
     }
 
@@ -222,7 +239,11 @@ public class ShowSkillMenu : MonoBehaviour
         deactivateMenu();
         if (name.Equals("FireOrb"))
         {
-            
+            AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
+            AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
+            AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
+            AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
+           
             onFireballSkillTriggered.Invoke();
             _isFireBallActive = true;
             _isTeleportActive = false;
@@ -238,6 +259,11 @@ public class ShowSkillMenu : MonoBehaviour
             //g1.transform.SetParent(RightHandController.transform);
             if (this.menuHandLeft == true)
             {
+                if (AimHelpLeft.activeSelf)
+                {
+                    AimHelpLeft.SetActive(false);
+                }
+                AimHelpRight.SetActive(true);
                 if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
@@ -247,6 +273,11 @@ public class ShowSkillMenu : MonoBehaviour
             }
             else
             {
+                if(AimHelpRight.activeSelf)
+                {
+                    AimHelpRight.SetActive(false);
+                }
+                AimHelpLeft.SetActive(true);
                 if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
@@ -295,7 +326,10 @@ public class ShowSkillMenu : MonoBehaviour
 
         if (name.Equals("Telekinesis Orb"))
         {
-           
+            AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
+            AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
+            AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
+            AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
             _isTeleportActive = false;
             _isFireBallActive = false;
             _isTelekinesisActive = true;
@@ -310,7 +344,11 @@ public class ShowSkillMenu : MonoBehaviour
             if (this.menuHandLeft == true)
             {
                 onTelekineseSkillTriggered.Invoke(HandType.Right);
-
+                if (AimHelpLeft.activeSelf)
+                {
+                    AimHelpLeft.SetActive(false);
+                }
+                AimHelpRight.SetActive(true);
                 if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
@@ -321,7 +359,11 @@ public class ShowSkillMenu : MonoBehaviour
             else
             {
                 onTelekineseSkillTriggered.Invoke(HandType.Left);
-
+                if (AimHelpRight.activeSelf)
+                {
+                    AimHelpRight.SetActive(false);
+                }
+                AimHelpLeft.SetActive(true);
                 if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
@@ -377,6 +419,14 @@ public class ShowSkillMenu : MonoBehaviour
 
     public void resetHand()
     {
+        if (AimHelpLeft.activeSelf)
+        {
+            AimHelpLeft.SetActive(false);
+        }
+        if (AimHelpRight.activeSelf)
+        {
+            AimHelpRight.SetActive(false);
+        }
         if (_isTelekinesisActive)
         {
             onTelekineseSkillUntriggered.Invoke();
