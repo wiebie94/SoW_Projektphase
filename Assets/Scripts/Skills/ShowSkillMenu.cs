@@ -33,6 +33,10 @@ public class ShowSkillMenu : MonoBehaviour
     private TeleportKugelManager teleportManagerScript;
     private GameObject AimHelpLeft;
     private GameObject AimHelpRight;
+    public Material AimHelpFireBallMaterial;
+    public Material AimHelpTelekineseMaterial;
+    public Material AimHelpFireBallParticlesMaterial;
+    public Material AimHelpTelekineseParticlesMaterial;
     [SerializeField] Load_Spells lCircle;
 
     [SerializeField] float loadingTime = 1.5f;
@@ -235,7 +239,11 @@ public class ShowSkillMenu : MonoBehaviour
         deactivateMenu();
         if (name.Equals("FireOrb"))
         {
-            
+            AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
+            AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
+            AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
+            AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
+           
             onFireballSkillTriggered.Invoke();
             _isFireBallActive = true;
             _isTeleportActive = false;
@@ -318,7 +326,10 @@ public class ShowSkillMenu : MonoBehaviour
 
         if (name.Equals("Telekinesis Orb"))
         {
-            
+            AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
+            AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
+            AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
+            AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
             _isTeleportActive = false;
             _isFireBallActive = false;
             _isTelekinesisActive = true;
@@ -333,7 +344,11 @@ public class ShowSkillMenu : MonoBehaviour
             if (this.menuHandLeft == true)
             {
                 onTelekineseSkillTriggered.Invoke(HandType.Right);
-
+                if (AimHelpLeft.activeSelf)
+                {
+                    AimHelpLeft.SetActive(false);
+                }
+                AimHelpRight.SetActive(true);
                 if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
@@ -344,7 +359,11 @@ public class ShowSkillMenu : MonoBehaviour
             else
             {
                 onTelekineseSkillTriggered.Invoke(HandType.Left);
-
+                if (AimHelpRight.activeSelf)
+                {
+                    AimHelpRight.SetActive(false);
+                }
+                AimHelpLeft.SetActive(true);
                 if (_isHandSkinSet == false)
                 {
                     _isHandSkinSet = true;
