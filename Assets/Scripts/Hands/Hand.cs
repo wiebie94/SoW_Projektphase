@@ -95,9 +95,11 @@ public class Hand : MonoBehaviour
 
         if (heldObject.GrabBegin(hand.transform.rotation, handType))
         {
-            hand.SetActive(false);
             isGrabbing = true;
 
+            ResetHandAnimation();
+            Invoke(nameof(DisableHand), 0.05f);
+            
             heldObject.onObjectLost += ObjectLostInHand;
         }
         else
@@ -152,7 +154,7 @@ public class Hand : MonoBehaviour
 
     void Update()
     {
-        if (!isGrabbing)
+        if (!isGrabbing)    
         {
             AnimateHand();
             PhysicsMove();
@@ -207,6 +209,11 @@ public class Hand : MonoBehaviour
         }
     }
 
+    private void DisableHand()
+    {
+        hand.SetActive(false);
+    }
+
     public void SetGrip(float value)
     {
         gripTarget = value;
@@ -233,6 +240,12 @@ public class Hand : MonoBehaviour
             triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, animationSpeed * Time.deltaTime);
             animator.SetFloat(animatorTriggerParam, triggerCurrent);
         }
+    }
+
+    void ResetHandAnimation()
+    {
+        animator.SetFloat(animatorGripParam, 0);
+        animator.SetFloat(animatorTriggerParam, 0);
     }
 
     public void VisibilityTurnOff()
