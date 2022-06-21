@@ -5,6 +5,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class TeleportKugelScript : MonoBehaviour
 {
+    [SerializeField] private float valocityX = 2.0f;
+    [SerializeField] private float valocityY = 2.0f;
+    [SerializeField] private float valocityZ = 2.0f;
+
     [SerializeField] private bool isEnable = true;
     [SerializeField] private bool destroy = true;
     [SerializeField] private bool tagTeleport = true;
@@ -64,9 +68,6 @@ public class TeleportKugelScript : MonoBehaviour
 
         if (this.destroyMaxTime < this.destroyTime) 
             Object.Destroy(this.gameObject);
-
-
-        Debug.Log("RB+Vel" + this.rb.velocity.magnitude);
 
         //######### Destroy wenn zu langsam #########
         if (this.isEnable && this.rb.velocity.magnitude < destroyMinVelocity) 
@@ -137,6 +138,7 @@ public class TeleportKugelScript : MonoBehaviour
 
     public void activate()
     {
+        rb.velocity = rb.velocity.x * this.valocityX * Vector3.right + rb.velocity.y * this.valocityY * Vector3.up + rb.velocity.z * this.valocityZ * Vector3.forward;
         this.isEnable = true;
         this.destroyTime = 0;
         this.ph.bounciness = this.bounciness;

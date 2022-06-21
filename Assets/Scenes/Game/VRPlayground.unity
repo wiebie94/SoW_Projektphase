@@ -933,19 +933,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -7363382999065477798, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  menuAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Menu
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 17cdb7fc-3188-48ec-a159-afeba49242e8
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 3845185136319457433, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
   m_TranslateAnchorAction:
     m_UseReference: 1
     m_Action:
@@ -2526,18 +2513,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -5913262927076077117, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
-  menuAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: 
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_TranslateAnchorAction:
     m_UseReference: 1
     m_Action:
@@ -6820,7 +6795,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0.41}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 5.675, y: 1.8560001, z: -3.576}
+  m_ConnectedAnchor: {x: 4.932056, y: 1.4022055, z: -3.6592362}
   m_UseSpring: 1
   m_Spring:
     spring: 20
@@ -6868,7 +6843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034399685}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 3.5599442, y: 1.0627946, z: 0.041236162}
+  m_LocalPosition: {x: 2.817, y: 0.609, z: -0.042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1871311213}
@@ -7365,11 +7340,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 369551403224465962, guid: 712532102e23a4540a21a637b0b7d5fa,
-        type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 216760696}
     - target: {fileID: 369551403224465963, guid: 712532102e23a4540a21a637b0b7d5fa,
         type: 3}
       propertyPath: m_RootOrder
@@ -7554,6 +7524,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: RightHand
       objectReference: {fileID: 0}
+    - target: {fileID: 569326214511961408, guid: 3a2e8a945c546f845b6949bc32954ae2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 598194800230500297, guid: 3a2e8a945c546f845b6949bc32954ae2,
         type: 3}
       propertyPath: m_TagString
@@ -7628,6 +7603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: LeftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789799986477298923, guid: 3a2e8a945c546f845b6949bc32954ae2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3408485664672574558, guid: 3a2e8a945c546f845b6949bc32954ae2,
         type: 3}
