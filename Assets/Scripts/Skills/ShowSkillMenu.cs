@@ -243,7 +243,9 @@ public class ShowSkillMenu : MonoBehaviour
             AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
             AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
             AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
-           
+            AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystemRenderer>().trailMaterial = AimHelpFireBallParticlesMaterial;
+            AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystemRenderer>().trailMaterial = AimHelpFireBallParticlesMaterial;
+
             onFireballSkillTriggered.Invoke();
             _isFireBallActive = true;
             _isTeleportActive = false;
@@ -330,6 +332,8 @@ public class ShowSkillMenu : MonoBehaviour
             AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
             AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
             AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
+            AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystemRenderer>().trailMaterial = AimHelpTelekineseParticlesMaterial;
+            AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystemRenderer>().trailMaterial = AimHelpTelekineseParticlesMaterial;
             _isTeleportActive = false;
             _isFireBallActive = false;
             _isTelekinesisActive = true;
