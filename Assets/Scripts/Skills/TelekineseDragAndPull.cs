@@ -17,8 +17,8 @@ public class TelekineseDragAndPull : MonoBehaviour
     [SerializeField]
     GameObject rightHandRef;
 
-    private ActionBasedController controllerLeft;
-    private ActionBasedController controllerRight;
+    [SerializeField] private ActionBasedController controllerLeft;
+    [SerializeField] private ActionBasedController controllerRight;
 
     private HandType telekineseHand;
     private GameObject telekineseHandRef;
@@ -37,12 +37,10 @@ public class TelekineseDragAndPull : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        controllerRight = controllerArray[0];
-        controllerLeft = controllerArray[1];
+
     }
 
-    private void Grip_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Trigger_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         Debug.Log("ControllerLeft" + obj.control.name);
         isSecondaryControllerGripPressed = true;
@@ -50,7 +48,7 @@ public class TelekineseDragAndPull : MonoBehaviour
         dragStartValue = CalculateDragValueBetweenHands();
     }
 
-    private void Grip_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Trigger_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         Debug.Log("ControllerLeft" + obj.control.name);
         isSecondaryControllerGripPressed = false;
@@ -74,6 +72,9 @@ public class TelekineseDragAndPull : MonoBehaviour
 
     private float CalculateDragValueBetweenHands()
     {
+        if (telekineseHandRef == null)
+            return dragStartValue;
+
         Vector3 dragHandPos = telekineseHandRef.transform.localPosition;
 
         Vector3 dragHandUp = telekineseHandRef.transform.forward;
@@ -145,8 +146,8 @@ public class TelekineseDragAndPull : MonoBehaviour
             dragHandRef = rightHandRef;
 
             
-            controllerRight.selectAction.action.performed += Grip_performed;
-            controllerRight.selectAction.action.canceled += Grip_canceled;
+            controllerRight.activateAction.action.performed += Trigger_performed;
+            controllerRight.activateAction.action.canceled += Trigger_canceled;
 
 
             telekineseScriptMain = telekineseScriptMainLeftRef;
@@ -157,8 +158,8 @@ public class TelekineseDragAndPull : MonoBehaviour
             telekineseHandRef = rightHandRef;
             dragHandRef = leftHandRef;
 
-                controllerLeft.selectAction.action.performed += Grip_performed;
-                controllerLeft.selectAction.action.canceled += Grip_canceled;
+            controllerLeft.activateAction.action.performed += Trigger_performed;
+            controllerLeft.activateAction.action.canceled += Trigger_canceled;
            
 
             telekineseScriptMain = telekineseScriptMainRightRef;
@@ -172,9 +173,9 @@ public class TelekineseDragAndPull : MonoBehaviour
 
     private void ClearBindings()
     {
-        controllerRight.selectAction.action.performed -= Grip_performed;
-        controllerRight.selectAction.action.canceled -= Grip_canceled;
-        controllerLeft.selectAction.action.performed -= Grip_performed;
-        controllerLeft.selectAction.action.canceled -= Grip_canceled;
+        controllerRight.selectAction.action.performed -= Trigger_performed;
+        controllerRight.selectAction.action.canceled -= Trigger_canceled;
+        controllerLeft.selectAction.action.performed -= Trigger_performed;
+        controllerLeft.selectAction.action.canceled -= Trigger_canceled;
     }
 }

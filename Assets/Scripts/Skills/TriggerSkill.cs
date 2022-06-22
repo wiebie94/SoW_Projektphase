@@ -58,7 +58,6 @@ public class TriggerSkill : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Unsubscribing from Grip Performed and Cancelled");
         if (skillMenu.menuHandLeft == true)
         {
 
