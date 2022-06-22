@@ -23,7 +23,6 @@ public class TestLever : MonoBehaviour
                 moved = false;
                 Down.Invoke();
             }
-            
         }
     }
 }
