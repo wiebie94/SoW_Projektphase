@@ -24,6 +24,8 @@ public class TelekineseScript : MonoBehaviour
     private Coroutine timerCoroutine;
     private float timeAfterHit = 0;
 
+    private int layerForRaycast;
+
     [SerializeField] float activationTime = 1;
 
     [SerializeField] float pullAndPushSpeed = 1;
@@ -40,7 +42,8 @@ public class TelekineseScript : MonoBehaviour
     void Start()
     {
         controller = GetComponent<ActionBasedController>();
-        
+
+        layerForRaycast = LayerMask.GetMask("GrabInteractable");
 
         //skillMenu.onTelekineseSkillTriggered
 
@@ -129,6 +132,11 @@ public class TelekineseScript : MonoBehaviour
 
     void HighLightObject(GameObject gObj)
     {
+        if (telekineseObj == gObj)
+            return;
+
+        ClearHighLight();
+
         telekineseObj = gObj;
 
         Material[] materials = new Material[2];
@@ -154,7 +162,8 @@ public class TelekineseScript : MonoBehaviour
 
     void ClearTimer()
     {
-        StopCoroutine(timerCoroutine);
+        if (timerCoroutine != null)
+            StopCoroutine(timerCoroutine);
         timerCoroutine = null;
         timeAfterHit = 0;
     }
@@ -179,9 +188,13 @@ public class TelekineseScript : MonoBehaviour
     {
         if (isItemGrabbed)
         {
+            if (telekineseRigidbody == null)
+                return;
+
             // Position
             var positionWithOffset = followTarget.TransformPoint(followPositionOffset);
             var distance = Vector3.Distance(positionWithOffset, telekineseObj.transform.position);
+
             telekineseRigidbody.velocity = (positionWithOffset - telekineseObj.transform.position).normalized * (followSpeed * distance);
 
             // Rotation
@@ -204,16 +217,14 @@ public class TelekineseScript : MonoBehaviour
             RaycastHit hit;
             Debug.DrawRay(transform.position, transform.forward * range, Color.red);
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit, range))
+            Ray ray = new Ray(transform.position, transform.forward);
+
+            if (Physics.Raycast(ray, out hit, range, layerForRaycast))
             {
-                if (telekineseObj == null && hit.collider.CompareTag(neeededTag))
-                {
-                    if (timeAfterHit > activationTime)
-                        HighLightObject(hit.collider.gameObject);
-                    else if (timerCoroutine == null)
-                        timerCoroutine = StartCoroutine(ObjectHitTimer());
-                }
+                if (!isItemGrabbed && hit.collider.CompareTag(neeededTag))
+                    HighLightObject(hit.collider.gameObject);
             }
+
             else if (telekineseObj != null && isItemGrabbed == false)
             {
                 ClearHighLight();

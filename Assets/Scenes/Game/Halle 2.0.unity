@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.36
+  m_AmbientIntensity: 0.68
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 4067de1a02072244798361060c5e7325, type: 2}
@@ -1543,6 +1543,11 @@ PrefabInstance:
     - target: {fileID: 3190389703478621171, guid: 4c961101f5523a444b100ce7726bfc1c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327297698944764060, guid: 4c961101f5523a444b100ce7726bfc1c,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3576,6 +3581,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2681292608668448584, guid: 88570657e0a6d9546be3b2442bfe9a4d,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3854784100607970343, guid: 88570657e0a6d9546be3b2442bfe9a4d,
         type: 3}
       propertyPath: m_RootOrder
@@ -26312,41 +26322,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 796021038696370655, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3052863890824085620, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295320616744408864, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295320616744408867, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_StopNaN
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295320616744408867, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_Dithering
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295320616744408867, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_Antialiasing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295320616744408867, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3295320616987318486, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: m_RootOrder
@@ -26407,21 +26382,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: VRPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 3295320617562024723, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: AimHelpTelekineseMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 883297524941bf5439e9aa4f69414a38, type: 2}
-    - target: {fileID: 3295320617562024723, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: AimHelpFireBallParticlesMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 1f71ea9c0945a8f42a4067e17a2017ec, type: 2}
-    - target: {fileID: 3295320617562024723, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: AimHelpTelekineseParticlesMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: ddf887cddc3de574ca12bbec1cd61a0f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c835572f61275a4ca7006ca2dbf036d, type: 3}
 --- !u!1001 &1515826874
