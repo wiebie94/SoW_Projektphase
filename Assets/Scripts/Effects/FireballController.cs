@@ -65,7 +65,7 @@ public class FireballController : MonoBehaviour
 
         //melting wall
         if(other.gameObject.tag == "Melting") {
-            steam = Instantiate(steam_prefab, other.transform.position, Quaternion.identity);
+            steam = Instantiate(steam_prefab, other.GetContact(0).point, Quaternion.identity);
             Destroy(steam, steamDuration);
             other.gameObject.AddComponent<MeltingController>(); //add Melting Script
         }
