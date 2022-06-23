@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [SerializeField]
-//ACHTUNG SaveData müssen gelöscht werden falls eine neues Atribute angelegt wird
+//ACHTUNG SaveData mï¿½ssen gelï¿½scht werden falls eine neues Atribute angelegt wird
 public class GameData { 
-    public List<int> hasKeyIndex;
 
-    public GameData(List<int> hasKeyIndex)
+    /*public struct colindex {
+        Color color;
+        int index;
+    }*/
+    public List<Color> hasKeyIndex;
+
+    public GameData(List<Color> hasKeyIndex)
     {
         this.hasKeyIndex = hasKeyIndex;
     }
 
     public GameData()
     {
-        hasKeyIndex = new List<int>();
+        hasKeyIndex = new List<Color>();
+        this.hasKeyIndex.Add(new Color(1f,0f,0f,1f));
     }
 }
