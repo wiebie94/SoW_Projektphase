@@ -59,15 +59,18 @@ public class FireballController : MonoBehaviour
             offsetforward.z = offset.z;
             spawnPos = other.gameObject.GetComponent<Transform>().position;
             spawnPos.y += offset.y;
-            if(other.gameObject.tag == "kindle"){
+            if(other.gameObject.tag == "Kindle"){
                 kindleFlame = Instantiate(kindle_flame_prefab, spawnPos, Quaternion.identity);
+                Debug.Log("Kleine Flamme");
             }
             else{
                 kindleFlame = Instantiate(kindle_flame_prefab_big, spawnPos, Quaternion.identity);
+                Debug.Log("Grosse Flamme");
             }
+            kindleFlame.transform.SetParent(other.transform);
             kindleFlame.transform.Rotate(Vector3.up, other.gameObject.GetComponent<Transform>().rotation.eulerAngles.y);
             kindleFlame.transform.Translate(offsetforward, Space.Self);
-            other.transform.GetChild(other.transform.GetChildCount()-1).gameObject.active = true;
+            other.transform.GetChild(other.transform.childCount-1).gameObject.SetActive(true);
             candleFlame = Instantiate(candleLight_prefab, kindleFlame.transform.position, Quaternion.identity);
 
             Debug.Log("kindle stuff");

@@ -8,7 +8,7 @@ public class MeltingController : MonoBehaviour
     private float melting;
     private Collider col;
     private float meltingthreshold = -3.0f;
-    public float meltingspeed = 1; 
+    public float meltingspeed = 0.5f; 
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class MeltingController : MonoBehaviour
         icewall = GetComponent<Renderer>().material;
         melting = icewall.GetFloat("_melting");
         col = GetComponent<Collider>();
+        icewall.SetFloat("_speed", meltingspeed);
     }
     // Update is called once per frame
     void Update()
