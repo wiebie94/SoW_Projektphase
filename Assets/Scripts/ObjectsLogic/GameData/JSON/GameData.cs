@@ -10,16 +10,16 @@ public class GameData {
         Color color;
         int index;
     }*/
-    public List<Color> hasKeyIndex;
+    public List<Color> keySave;
 
     public GameData(List<Color> hasKeyIndex)
     {
-        this.hasKeyIndex = hasKeyIndex;
+        this.keySave = hasKeyIndex;
     }
 
     public GameData()
     {
-        hasKeyIndex = new List<Color>();
-        this.hasKeyIndex.Add(new Color(1f,0f,0f,1f));
+        keySave = new List<Color>();
+
     }
 }

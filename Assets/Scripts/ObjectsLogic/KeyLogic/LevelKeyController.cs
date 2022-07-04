@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelKeyController : MonoBehaviour
 {
-    public List<GameObject> keysPrefab;
+    public GameObject keyPrefab;
     public GameSave gameSave;
 
     private Transform[] spawnPointKey;
@@ -14,6 +14,7 @@ public class LevelKeyController : MonoBehaviour
     void Start()
     {
         initSpawnPont();
+        this.OnLockKeySave(new Color(1f,0f,0f,1f));
         spawnKeys();
     }
 
@@ -30,30 +31,33 @@ public class LevelKeyController : MonoBehaviour
     private void spawnKeys()
     {
         Debug.Log(this.gameSave.getGameData());
-        /*foreach (int keyIndex in this.gameSave.getGameData().hasKeyIndex) 
+
+        int spawnIndex = 0;
+
+        foreach (Color keyColor in this.gameSave.getGameData().keySave) 
         {
-            if (keyIndex >= this.keysPrefab.Count) 
-            {
-                Debug.LogWarning("Achtung den KeyIndex "+ keyIndex + "gibt es nicht");
-                continue;
-            }
-            if (keyIndex >= this.spawnPointKey.Length)
-            {
-                Debug.LogWarning("Achtung es gibt f�r den KeyIndex " + keyIndex + " keinen KeySpawn");
-                continue;
-            }
-            GameObject tmp = Instantiate(this.keysPrefab[keyIndex], this.spawnPointKey[keyIndex].position, Quaternion.identity);
 
-        }*/
+            if (spawnIndex >= this.spawnPointKey.Length)
+            {
+                Debug.LogWarning("Achtung es gibt fuer den KeyIndex " + spawnIndex + " keinen KeySpawn");
+                break;
+            }
+            GameObject tmp = Instantiate(keyPrefab, this.spawnPointKey[spawnIndex].position, Quaternion.identity);
+
+            Renderer tmpR = tmp.GetComponentInChildren<Renderer>();
+
+            // tmpR.material.SetColor("Key Mat", keyColor);
+            tmpR.material.color = keyColor;
+
+            spawnIndex++;
+        }
     }
-    public bool OnLockKeySave(int indexKey) 
-    {
-        /*if (indexKey >= this.keysPrefab.Count) return false;
-        
-        if(this.gameSave.getGameData().hasKeyIndex.IndexOf(indexKey) >= 0) return false;
+    public bool OnLockKeySave(Color keyColor) 
+    { 
+        if(this.gameSave.getGameData().keySave.IndexOf(keyColor) >= 0) return false;
 
-        this.gameSave.getGameData().hasKeyIndex.Add(indexKey); 
-        this.gameSave.SaveData();*/
+        this.gameSave.getGameData().keySave.Add(keyColor); 
+        this.gameSave.SaveData();
         return true;
     }
 }
