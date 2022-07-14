@@ -20,6 +20,9 @@ public class LeverLogic : MonoBehaviour
     [SerializeField] UnityEvent eventUp;
     [SerializeField] UnityEvent eventDown;
 
+    bool open = false;
+    bool neutral = true;
+
     void Start()
     {
         hingeJoint = GetComponent<HingeJoint>();
@@ -31,9 +34,12 @@ public class LeverLogic : MonoBehaviour
         springForce = hingeJoint.spring.spring;
 
         if (upOnStart)
+        {
             hingeJoint.spring = CreateSpring(maxLimit);
+            neutral = false;
+        }            
         else
-            hingeJoint.spring = CreateSpring(minLimit);
+            hingeJoint.spring = CreateSpring(0.0f);
 
         StartCoroutine(LeverStateCheck());
     }
@@ -42,19 +48,43 @@ public class LeverLogic : MonoBehaviour
     {
         while (true)
         {
-            if (hingeJoint.angle > 0 && hingeJoint.spring.targetPosition != maxLimit)
+            if (hingeJoint.angle > 30f)
             {
-                hingeJoint.spring = CreateSpring(maxLimit);
-                eventUp.Invoke();
+                if(!open && neutral)
+                {
+                    open = true;
+                    neutral = false;
+                    eventUp.Invoke();                    
+                }
+                if (open)
+                {
+                    hingeJoint.spring = CreateSpring(maxLimit);
+                    yield return new WaitForSeconds(0.3f);
+                }                                
             }
-                
-            else if (hingeJoint.angle < 0 && hingeJoint.spring.targetPosition != minLimit)
-            {
-                hingeJoint.spring = CreateSpring(minLimit);
-                eventDown.Invoke();
-            }
-                
 
+            else if (hingeJoint.angle < -30f)
+            {
+                if(open && neutral)
+                {
+                    open = false;
+                    neutral = false;
+                    eventDown.Invoke();
+                }
+                if (!open)
+                {
+                    hingeJoint.spring = CreateSpring(minLimit);
+                    yield return new WaitForSeconds(checkUpdateTime);
+                }                    
+            }
+
+            else
+            {
+
+                hingeJoint.spring = CreateSpring(0.0f);
+                neutral = true;
+            }
+            
             yield return new WaitForSeconds(checkUpdateTime);
         }
     }
@@ -67,5 +97,12 @@ public class LeverLogic : MonoBehaviour
         spring.targetPosition = targetPos;
 
         return spring;
+    }
+    public void SetToNeutral()
+    {
+        hingeJoint.spring = CreateSpring(0.0f);
+        open = false;
+        neutral = true;
+        Debug.Log(this.gameObject.name + " Neutral");
     }
 }

@@ -23,8 +23,9 @@ public class GateController : MonoBehaviour
                 activeGate = Instantiate(levels[i], levelPostitions[i].transform, false);
             }
             else {
-                // Schliessen der anderen Tore
-                gates[i].GetComponent<GateLogic>().CloseGate();
+                // Schliessen der anderen 
+                levers[i].GetComponent<LeverLogic>().SetToNeutral();
+                gates[i].GetComponent<GateLogic>().CloseGate();                
             }
         }
     }
