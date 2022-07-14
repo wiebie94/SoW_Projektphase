@@ -61,6 +61,10 @@ public class FireballController : MonoBehaviour
             spawnPos.y += offset.y;
             if(other.gameObject.tag == "Kindle"){
                 kindleFlame = Instantiate(kindle_flame_prefab, spawnPos, Quaternion.identity);
+                if(other.gameObject.transform.childCount > 0)
+                {
+                    other.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
                 Debug.Log("Kleine Flamme");
             }
             else{
