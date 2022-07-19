@@ -41,10 +41,11 @@ public class FireballController : MonoBehaviour
     public void OnCollisionEnter(Collision other) {
 
         if (this.firstHit || other.gameObject.tag == "Reflect") return;
-        this.firstHit = true;             
-
+        this.firstHit = true;
+        explosion = Instantiate(explosion_prefab, other.GetContact(0).point, Quaternion.identity);
+        Destroy(explosion, explosionDuration);
         //burn something
-        if(other.gameObject.tag == "Burnable"){
+        if (other.gameObject.tag == "Burnable"){
                 other.gameObject.AddComponent<BurnController>();
                 dissolveBurnSound = Instantiate(dissolveSound_prefab, other.GetContact(0).point, Quaternion.identity);
                 Destroy(dissolveBurnSound, dissolveSoundDuration);

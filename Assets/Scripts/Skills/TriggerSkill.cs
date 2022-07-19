@@ -11,6 +11,9 @@ public class TriggerSkill : MonoBehaviour
     private ActionBasedController controllerRight;
     private bool isGripPressed = false;
     // Start is called before the first frame update
+    
+    
+    
     void Start()
     {
         skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
@@ -25,6 +28,8 @@ public class TriggerSkill : MonoBehaviour
     {
         
     }
+
+
 
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +52,7 @@ public class TriggerSkill : MonoBehaviour
             {
                 //Subscribe mit dem LinkenController zu Performed und Cancelled
                 controllerLeft.selectAction.action.performed += Grip_performed;
-                
+
 
             }
         }

@@ -10,7 +10,7 @@ public class UIMenu : MonoBehaviour
 
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject optionsScreen;
-
+    [SerializeField] GameObject resetButton;
     private GameObject content;
 
     List<GameObject> allScreens;
@@ -22,7 +22,7 @@ public class UIMenu : MonoBehaviour
     private void Start()
     { 
         content = transform.GetChild(0).gameObject;
-
+        resetButton.SetActive(false);
         followScript = GetComponent<UIPLayerFollow>();
 
         allScreens = new List<GameObject>();
@@ -47,7 +47,7 @@ public class UIMenu : MonoBehaviour
         CloseAllScreens();
 
         content.SetActive(false);
-
+        resetButton.SetActive(false);
         followScript.StopFollowingPlayer();
     }
 
@@ -60,6 +60,7 @@ public class UIMenu : MonoBehaviour
 
         isMenuOpened = true;
         content.SetActive(true);
+        resetButton.SetActive(true);
 
         OpenPauseScreen();
     }
@@ -99,5 +100,15 @@ public class UIMenu : MonoBehaviour
         {
             screen.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        menuAction.action.performed += MenuButtonPressed;
+    }
+
+    private void OnDisable()
+    {
+        menuAction.action.performed -= MenuButtonPressed;
     }
 }

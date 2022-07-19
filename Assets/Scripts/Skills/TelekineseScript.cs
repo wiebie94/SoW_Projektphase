@@ -46,9 +46,17 @@ public class TelekineseScript : MonoBehaviour
         layerForRaycast = LayerMask.GetMask("GrabInteractable");
 
         //skillMenu.onTelekineseSkillTriggered
+    }
 
+    private void OnEnable()
+    {
         ShowSkillMenu.onTelekineseSkillTriggered += TelekineseSkillTriggered;
         ShowSkillMenu.onTelekineseSkillUntriggered += TelekineseSkillUntriggered;
+    }
+    private void OnDisable()
+    {
+        ShowSkillMenu.onTelekineseSkillTriggered -= TelekineseSkillTriggered;
+        ShowSkillMenu.onTelekineseSkillUntriggered -= TelekineseSkillUntriggered;
     }
 
     private void TelekineseSkillTriggered(HandType activationHand)

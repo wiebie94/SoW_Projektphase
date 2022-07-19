@@ -56,6 +56,9 @@ public class ShowSkillMenu : MonoBehaviour
     public delegate void OnFireballSkillUntriggered();
     public static event OnFireballSkillUntriggered onFireballSkillUntriggered;
 
+
+
+
     void Start()
     {
         this.teleportManagerScript = this.teleportManager.GetComponent<TeleportKugelManager>();

@@ -56,14 +56,27 @@ public class Hand : MonoBehaviour
         rb = hand.GetComponent<Rigidbody>();
         rb.maxAngularVelocity = 20;
 
-        //Input Setup
-        controller.selectAction.action.started += Grab;
-        controller.selectAction.action.canceled += Released;
+
 
         //Teleport Hands
         rb.position = followTarget.position;
         rb.rotation = followTarget.rotation;
     }
+
+    private void OnEnable()
+    {
+        //Input Setup
+        controller.selectAction.action.started += Grab;
+        controller.selectAction.action.canceled += Released;
+    }
+
+    private void OnDisable()
+    {
+        //Input Setup
+        controller.selectAction.action.started -= Grab;
+        controller.selectAction.action.canceled -= Released;
+    }
+
 
     private void Grab(InputAction.CallbackContext obj)
     {

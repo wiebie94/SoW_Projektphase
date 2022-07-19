@@ -26,8 +26,20 @@ public class FireballScript : MonoBehaviour
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
         controllerRight = controllerArray[0];
         controllerLeft = controllerArray[1];
+
+    }
+
+    private void OnEnable()
+    {
         ShowSkillMenu.onFireballSkillTriggered += FireballSkillTriggered;
         ShowSkillMenu.onFireballSkillUntriggered += FireballSkillUntriggered;
+
+    }
+
+    private void OnDisable()
+    {
+        ShowSkillMenu.onFireballSkillTriggered -= FireballSkillTriggered;
+        ShowSkillMenu.onFireballSkillUntriggered -= FireballSkillUntriggered;
     }
 
     private void FireballSkillTriggered()
@@ -81,7 +93,7 @@ public class FireballScript : MonoBehaviour
 
     IEnumerator waitForSeconds()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         fired = false;
         Destroy(g1);
     }
