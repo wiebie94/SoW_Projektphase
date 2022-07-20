@@ -24,4 +24,18 @@ public class Level1LogicController : MonoBehaviour
     public void setObjRightCompleted(bool c) {
         objRightCompleted = c;
     }
+
+    private void Update()
+    {
+        if(checkCompleted())
+        {
+            //do something
+            Debug.Log("Win");
+        }
+    }
+
+    private bool checkCompleted()
+    {
+        return objLeftCompleted && objFrontCompleted && objRightCompleted;
+    }
 }

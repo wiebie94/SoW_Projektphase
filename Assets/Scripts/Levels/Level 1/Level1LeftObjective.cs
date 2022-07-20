@@ -10,13 +10,16 @@ public class Level1LeftObjective : MonoBehaviour
     [SerializeField] UnityEvent Incomplete;
 
     private void Start() {
-        light = this.transform.GetChild(0).gameObject;    
+        light = this.transform.GetChild(0).gameObject;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.name == "Seed") {
-            light.SetActive(true);
-            Complete.Invoke();
+        if(other.gameObject.GetComponent<PlantLogic>() != null) {
+            if (other.gameObject.GetComponent<PlantLogic>().getPlant())
+            {
+                light.SetActive(true);
+                Complete.Invoke();
+            }            
         }
     }
 

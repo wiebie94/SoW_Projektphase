@@ -28,6 +28,14 @@ public class PlantLogic : MonoBehaviour
         }
     }
 
+    public void growPlant()
+    {
+        seed = false;
+        plant = true;
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        this.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
     public bool getSeed()
     {
         return this.seed;

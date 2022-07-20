@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289335616113698728}
   - component: {fileID: 7612318134289368082}
+  - component: {fileID: 6758203028129484002}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -142,6 +143,18 @@ CapsuleCollider:
   m_Height: 0.02
   m_Direction: 2
   m_Center: {x: 0, y: -0.0025, z: -0.011}
+--- !u!114 &6758203028129484002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897864916691400056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0105e06614898e4685e2e3f360ba2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3545903918727952748
 PrefabInstance:
   m_ObjectHideFlags: 0
