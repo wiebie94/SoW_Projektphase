@@ -21,7 +21,6 @@ public class LeverLogic : MonoBehaviour
     [SerializeField] UnityEvent eventDown;
 
     bool open = false;
-    bool neutral = true;
 
     void Start()
     {
@@ -34,10 +33,8 @@ public class LeverLogic : MonoBehaviour
         springForce = hingeJoint.spring.spring;
 
         if (upOnStart)
-        {
             hingeJoint.spring = CreateSpring(maxLimit);
-            neutral = false;
-        }            
+                 
         else
             hingeJoint.spring = CreateSpring(0.0f);
 
@@ -50,10 +47,9 @@ public class LeverLogic : MonoBehaviour
         {
             if (hingeJoint.angle > 30f)
             {
-                if(!open && neutral)
+                if(!open)
                 {
                     open = true;
-                    neutral = false;
                     eventUp.Invoke();                    
                 }
                 if (open)
@@ -65,10 +61,9 @@ public class LeverLogic : MonoBehaviour
 
             else if (hingeJoint.angle < -30f)
             {
-                if(open && neutral)
+                if(open)
                 {
                     open = false;
-                    neutral = false;
                     eventDown.Invoke();
                 }
                 if (!open)
@@ -80,9 +75,7 @@ public class LeverLogic : MonoBehaviour
 
             else
             {
-
                 hingeJoint.spring = CreateSpring(0.0f);
-                neutral = true;
             }
             
             yield return new WaitForSeconds(checkUpdateTime);
@@ -98,11 +91,9 @@ public class LeverLogic : MonoBehaviour
 
         return spring;
     }
-    public void SetToNeutral()
+    public void SetToClosed()
     {
-        hingeJoint.spring = CreateSpring(0.0f);
+        hingeJoint.spring = CreateSpring(minLimit);
         open = false;
-        neutral = true;
-        Debug.Log(this.gameObject.name + " Neutral");
     }
 }

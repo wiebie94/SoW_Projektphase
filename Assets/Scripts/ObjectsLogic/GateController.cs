@@ -24,7 +24,7 @@ public class GateController : MonoBehaviour
             }
             else {
                 // Schliessen der anderen 
-                levers[i].GetComponent<LeverLogic>().SetToNeutral();
+                levers[i].GetComponent<LeverLogic>().SetToClosed();
                 gates[i].GetComponent<GateLogic>().CloseGate();                
             }
         }
