@@ -69,7 +69,16 @@ public class FireballController : MonoBehaviour
                 Debug.Log("Kleine Flamme");
             }
             else{
-                kindleFlame = Instantiate(kindle_flame_prefab_big, spawnPos, Quaternion.identity);
+                
+                if(other.gameObject.name == "Wood")
+                {
+                    other.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    Vector3 tempPos = other.gameObject.transform.GetChild(0).position;
+                    kindleFlame = Instantiate(kindle_flame_prefab_big, tempPos, Quaternion.identity);
+                } 
+                else
+                    kindleFlame = Instantiate(kindle_flame_prefab_big, spawnPos, Quaternion.identity);
+
                 Debug.Log("Grosse Flamme");
             }
             kindleFlame.transform.SetParent(other.transform);

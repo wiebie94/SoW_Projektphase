@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlantLogic : MonoBehaviour
 {
+    bool seed = false;
+    bool plant = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,19 @@ public class PlantLogic : MonoBehaviour
     {
         if(other.gameObject.name == "Seed")
         {
-            Debug.Log("Seed");
             other.gameObject.SetActive(false);
             this.transform.GetChild(0).gameObject.SetActive(true);
+            seed = true;
         }
+    }
+
+    public bool getSeed()
+    {
+        return this.seed;
+    }
+
+    public bool getPlant()
+    {
+        return this.plant;
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class FaucetController : MonoBehaviour
 {
     private ParticleSystem stream;
-    private ParticleSystem drops;
+    private GameObject water;
 
     public bool isOn;
     bool played;
@@ -15,8 +15,9 @@ public class FaucetController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stream = this.GetComponent<ParticleSystem>();
-        drops = this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+        water = this.gameObject.transform.GetChild(0).gameObject;
+        stream = this.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
+        
         isOn = false;
         played = false;
     }
@@ -25,11 +26,14 @@ public class FaucetController : MonoBehaviour
     void Update()
     {
         if(isOn && !played) {
+            water.SetActive(true);
             stream.Clear();
             stream.Play(true);
             played = true;
-        } else if(!isOn)
+        } 
+        else if(!isOn)
         {
+            water.SetActive(false);
             stream.Stop(true);
             played = false;
         }

@@ -14,8 +14,10 @@ public class Level1FrontObjective : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.name == "Wood") {
+        Debug.Log(other.gameObject.name);
+        if(other.gameObject.transform.parent.gameObject.name == "Wood" && other.gameObject.transform.parent.gameObject.transform.GetChild(0).gameObject.activeSelf) {
             light.SetActive(true);
+            Debug.Log("Wood Complete");
             Complete.Invoke();
         }
     }
