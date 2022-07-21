@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float colliderExtraHeight = 1;
 
+    [SerializeField] float cameraToFloorLength;
+    [SerializeField] Vector3 cameraToFloorVector;
+
     private bool isMoving = false;
 
     void Start()
@@ -39,12 +42,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        cameraToFloorVector = new Vector3(cameraToFloorVector.x, cameraToFloorLength, cameraToFloorVector.z);
+
+        //Debug.DrawRay(camObj.transform.position, cameraToFloorVector, Color.blue);
+
+        //RaycastHit hit;
+
+        //if (Physics.Raycast(camObj.transform.position, Vector3.down, out hit, cameraToFloorLength, LayerMask.GetMask("Default")))
+            //Debug.Log("hit: :" + hit.collider.gameObject.name);
+        //else
+            //Debug.Log("No Hit");
+
+
+
+
         Vector2 moveVector = moveAction.action.ReadValue<Vector2>();
 
         if (moveVector != Vector2.zero)
         {
-            //if (!isMoving)
-                //TeleportBodyToLastColliderPosition();
+           if (!isMoving && Physics.Raycast(camObj.transform.position, Vector3.down, cameraToFloorLength, LayerMask.GetMask("Default")))
+                TeleportBodyToLastColliderPosition();
 
             isMoving = true;
 
@@ -75,12 +92,16 @@ public class PlayerController : MonoBehaviour
         collider.height = xrRig.CameraInOriginSpaceHeight + colliderExtraHeight;
     }
 
-    void TeleportBodyToLastColliderPosition()
+    public void TeleportBodyToLastColliderPosition()
     {
         Debug.Log("Teleporting camera");
 
-        //Vector3 colliderWorldPosition = collider.transform.TransformPoint(collider.center);
+        Vector3 colliderWorldPosition = collider.transform.TransformPoint(collider.center);
 
-        transform.localPosition = new Vector3(collider.center.x, transform.localPosition.y, collider.center.z);
+        Vector3 cameraColliderDifference = camObj.transform.position - colliderWorldPosition;
+
+        Vector3 newBodyPosition = transform.position - cameraColliderDifference;
+
+        transform.position = new Vector3(newBodyPosition.x, transform.localPosition.y, newBodyPosition.z);
     }
 }

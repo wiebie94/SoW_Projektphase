@@ -28998,6 +28998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3295320616196714358, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
+      propertyPath: cameraToFloorLength
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295320616196714358, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
       propertyPath: colliderExtraHeight
       value: 0.8
       objectReference: {fileID: 0}
@@ -29181,6 +29186,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: -0.00500063
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087317155011329027, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1728668008}
+    - target: {fileID: 7087317155011329027, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TeleportBodyToLastColliderPosition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087317155011329027, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7087317155011329030, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
@@ -33489,6 +33509,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1724428253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728668008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3295320616196714358, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe5cf2e645295e45ab71711b08a49b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1742230261
 PrefabInstance:
   m_ObjectHideFlags: 0
