@@ -21,7 +21,8 @@ public class KeyController : MonoBehaviour
         Red,
         Green,
         Yellow,
-        Purple
+        Purple,
+        White
     }
 
     // Start is called before the first frame update
@@ -78,6 +79,7 @@ public class KeyController : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(getCurrentColor() == other.gameObject.GetComponent<LockController>().getCurrentColor()){
             gameObject.GetComponent<Collider>().enabled = false;
+            //key destroy, but safe the hands
             dissolveSpeed = other.gameObject.GetComponent<LockController>().dissolveSpeed;
             move = false;
             rotate = true;
@@ -114,17 +116,20 @@ public class KeyController : MonoBehaviour
         if(c == Color.red){
             Key_Color = keyColor.Red;
         }
-        if(c == Color.blue){
+        else if(c == Color.blue){
             Key_Color = keyColor.Blue;
         }
-        if(c == Color.green){
+        else if(c == Color.green){
             Key_Color = keyColor.Green;
         }
-        if(c == Color.yellow){
+        else if(c == Color.yellow){
             Key_Color = keyColor.Yellow;
         }
-        if(c == Color.magenta){
+        else if(c == Color.magenta){
             Key_Color = keyColor.Purple;
+        }
+        else{
+            Key_Color = keyColor.White;
         }
     }
 }

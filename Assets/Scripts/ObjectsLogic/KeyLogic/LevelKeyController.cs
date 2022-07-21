@@ -14,7 +14,7 @@ public class LevelKeyController : MonoBehaviour
     void Start()
     {
         initSpawnPont();
-        this.OnLockKeySave(new Color(1f,0f,0f,1f));
+        //this.OnLockKeySave(new Color(1f,0f,0f,1f));
         spawnKeys();
     }
 
@@ -47,7 +47,7 @@ public class LevelKeyController : MonoBehaviour
             Renderer tmpR = tmp.GetComponentInChildren<Renderer>();
 
             // tmpR.material.SetColor("Key Mat", keyColor);
-            tmpR.material.color = keyColor;
+            tmp.GetComponent<KeyController>().setColor(keyColor);
 
             spawnIndex++;
         }
