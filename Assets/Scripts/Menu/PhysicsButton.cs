@@ -108,15 +108,20 @@ public class PhysicsButton : MonoBehaviour
 
     private IEnumerator startNewSceneAnimation()
     {
-        
+       AsyncOperation operation =  SceneManager.LoadSceneAsync("LoadingScene", LoadSceneMode.Single);
+        operation.priority = 1;
+        operation.allowSceneActivation = false;
         GameObject effectObject = Instantiate(teleportationEffect, this.playerCam.position, Quaternion.identity);
-        effectObject.transform.parent = this.playerCam;
-        yield return new WaitForSeconds(this.teleportDelay);
-        SceneManager.LoadScene("Ruben Skill", LoadSceneMode.Single);
-        //SceneManager.LoadScene("Halle 2.0", LoadSceneMode.Single);
-        //Application.LoadLevel("Halle 2.0");
+            effectObject.transform.parent = this.playerCam;
+        
 
-
+        yield return new WaitForSeconds(1.7f);
+        while (operation.progress < 0.9f)
+        {
+            yield return new WaitForSeconds(0.05f);
+            Debug.Log(operation.progress);
+        }
+        operation.allowSceneActivation = true;
     }
 
 

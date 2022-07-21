@@ -14,4 +14,19 @@ public class WaterLogic : MonoBehaviour
             }                
         }
     }
+
+    private void OnTriggerStay(Collider other) 
+    {
+        Debug.Log(other.gameObject.tag);
+        if(other.gameObject.tag == "WaterBottle") {
+            other.gameObject.GetComponent<FillAndRelease>().setUnderWater();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "WaterBottle") {
+            other.gameObject.GetComponent<FillAndRelease>().resetUnderWater();
+        }
+    }
 }
