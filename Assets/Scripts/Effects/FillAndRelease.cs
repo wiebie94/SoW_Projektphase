@@ -26,17 +26,20 @@ public class FillAndRelease : MonoBehaviour
             fillAmount += Time.deltaTime * fillSpeed;
             renderer.material.SetFloat("_Fill", fillAmount);
 
-            if(fillAmount > fillThreshold){
+            if(fillAmount >= fillThreshold){
                 filled = true;
-                GetComponent<Transform>().GetChild(1).GetComponent<GameObject>().SetActive(true);   //activate cork
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                //GetComponent<Transform>().GetChild(1).GetComponent<GameObject>().SetActive(true);   //activate cork
             }
         }
     }
 
     public void setUnderWater(){
+        Debug.Log("Underwater");
         underWater = true;
     }
     public void resetUnderWater(){
+        Debug.Log("Not Underwater");
         underWater = false;
     }
 }
