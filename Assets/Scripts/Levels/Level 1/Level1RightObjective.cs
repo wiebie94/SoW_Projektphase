@@ -14,16 +14,20 @@ public class Level1RightObjective : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.name == "Bucket") {
-            light.SetActive(true);
-            Complete.Invoke();
+        if(other.gameObject.GetComponent<FillAndRelease>() != null) {
+            if(other.gameObject.GetComponent<FillAndRelease>().getFilled()){
+                light.SetActive(true);
+                Complete.Invoke();
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.name == "Bucket") {
-            light.SetActive(false);
-            Incomplete.Invoke();
+        if(other.gameObject.GetComponent<FillAndRelease>() != null) {
+            if(other.gameObject.GetComponent<FillAndRelease>().getFilled()){
+                light.SetActive(false);
+                Incomplete.Invoke();
+            }
         }
     }
 }

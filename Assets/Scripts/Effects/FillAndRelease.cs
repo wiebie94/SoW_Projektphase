@@ -10,25 +10,27 @@ public class FillAndRelease : MonoBehaviour
     float fillAmount;
     public float fillSpeed;
     public float fillThreshold;
+    public float fillStart;
     // Start is called before the first frame update
     void Start()
     {
         underWater = false;
         filled = false;
-        renderer = GetComponent<Transform>().GetChild(0).GetChild(0).GetComponent<Renderer>();
+        renderer = GetComponent<Transform>().GetChild(0).GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if(underWater && !filled){
+            if(fillAmount < 0.1) fillAmount = fillStart;
             fillAmount = renderer.material.GetFloat("_Fill");
             fillAmount += Time.deltaTime * fillSpeed;
             renderer.material.SetFloat("_Fill", fillAmount);
 
             if(fillAmount >= fillThreshold){
                 filled = true;
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                this.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 //GetComponent<Transform>().GetChild(1).GetComponent<GameObject>().SetActive(true);   //activate cork
             }
         }
@@ -41,5 +43,8 @@ public class FillAndRelease : MonoBehaviour
     public void resetUnderWater(){
         Debug.Log("Not Underwater");
         underWater = false;
+    }
+    public bool getFilled(){
+        return filled;
     }
 }
