@@ -308,6 +308,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe5cf2e645295e45ab71711b08a49b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camObj: {fileID: 0}
+  moveAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Move
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b873fc11-f503-4211-b4a0-f2e0d14f0076
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  moveSpeed: 1
+  dragFactor: 0.1
+  colliderExtraHeight: 1
 --- !u!54 &199731411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1303,6 +1319,7 @@ MonoBehaviour:
   isCoroutineFinished: 0
   SkillMenu: {fileID: 0}
   _isFireBallActive: 0
+  _isTelekinesisActive: 0
   _isTeleportActive: 0
   leftHandSkinMesh: {fileID: 225738378}
   rightHandSkinMesh: {fileID: 1693328986}
@@ -1310,12 +1327,18 @@ MonoBehaviour:
     type: 2}
   handMaterialTeleport: {fileID: 2100000, guid: bf1ca0cb30a7ef04b9c2792d0a37d72f,
     type: 2}
-  defaultHandSkin: {fileID: -7492275243852492049, guid: ae15297bfc0bd834d9884dee0acbe08f,
-    type: 3}
+  handMaterialTelekinesis: {fileID: 0}
   _isDone: 0
-  loadingCircle: {fileID: 4115490125051373753, guid: 4b147af2034fe084594f536f5e123eac,
-    type: 3}
-  lCircleInstantiated: {fileID: 0}
+  _oneTime: 0
+  teleportManager: {fileID: 0}
+  AimHelpFireBallMaterial: {fileID: 0}
+  AimHelpTelekineseMaterial: {fileID: 0}
+  AimHelpFireBallParticlesMaterial: {fileID: 0}
+  AimHelpTelekineseParticlesMaterial: {fileID: 0}
+  lCircle: {fileID: 0}
+  loadingTime: 1.5
+  fadeOut: 0.5
+  equipDelay: 0.1
 --- !u!1 &647870056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6291029837431200300, guid: 3a2e8a945c546f845b6949bc32954ae2,
