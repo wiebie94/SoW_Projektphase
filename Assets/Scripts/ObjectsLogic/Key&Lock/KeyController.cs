@@ -109,4 +109,22 @@ public class KeyController : MonoBehaviour
     public void setDissolve(){
         dissolve = true;
     }
+
+    public void setColor(Color c){
+        if(c == Color.red){
+            Key_Color = keyColor.Red;
+        }
+        if(c == Color.blue){
+            Key_Color = keyColor.Blue;
+        }
+        if(c == Color.green){
+            Key_Color = keyColor.Green;
+        }
+        if(c == Color.yellow){
+            Key_Color = keyColor.Yellow;
+        }
+        if(c == Color.magenta){
+            Key_Color = keyColor.Purple;
+        }
+    }
 }
