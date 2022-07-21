@@ -44,6 +44,11 @@ public class KeyController : MonoBehaviour
 
         //rotation in lock
         if(rotate){
+
+            //aktivate key on lock and animation
+            //if rotation is finished set dissolve true
+
+            /*
             transform.Rotate(rotation, Space.World);
             timer += Time.deltaTime;
             if(timer > rotationTime){
@@ -51,6 +56,7 @@ public class KeyController : MonoBehaviour
                 timer = 0;
                 dissolve = true;
             }
+            */
         }
 
         //dissolve key
@@ -75,6 +81,9 @@ public class KeyController : MonoBehaviour
             dissolveSpeed = other.gameObject.GetComponent<LockController>().dissolveSpeed;
             move = false;
             rotate = true;
+            //start animation
+            //delete later when animation is finished
+            dissolve = true;
         }
     }
 
@@ -95,5 +104,9 @@ public class KeyController : MonoBehaviour
             return Color.magenta;
         } 
         return Color.white;
+    }
+
+    public void setDissolve(){
+        dissolve = true;
     }
 }
