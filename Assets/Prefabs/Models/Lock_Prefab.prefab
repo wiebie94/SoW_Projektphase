@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2055054758196888438}
   - component: {fileID: 3110543681032178899}
   - component: {fileID: 922720838343637017}
+  - component: {fileID: -3538200073365541437}
+  - component: {fileID: -2705212509030707541}
   m_Layer: 0
   m_Name: Lock_Prefab
   m_TagString: Untagged
@@ -59,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0052688c88af0ea45a18033779302e07, type: 2}
+  - {fileID: 2100000, guid: 1555df7b3f2a69c40a05f907ef938908, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,3 +83,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-3538200073365541437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715543556652603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853c9ab7d32d0d54d8940a989139150c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyOffset: {x: 0, y: 0.064, z: 0}
+  dissolveSpeed: 1
+  leverSpawnTimer: 0.5
+  Lock_Color: 0
+--- !u!65 &-2705212509030707541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715543556652603852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000993983, y: 0.00050000014, z: 0.000993789}
+  m_Center: {x: -0.00000030585218, y: 0.00025000007, z: -0.0000000062282206}
