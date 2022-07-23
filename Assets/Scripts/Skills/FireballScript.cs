@@ -17,6 +17,8 @@ public class FireballScript : MonoBehaviour
     private Vector3 initialPos;
     private ActionBasedController controllerLeft;
     private ActionBasedController controllerRight;
+    [SerializeField] private float waitTillFireAgain;
+    [SerializeField] private float waitTillDespawn;
     private bool fired = false;
     private bool _isDone = false;
 
@@ -24,8 +26,8 @@ public class FireballScript : MonoBehaviour
     {
         skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        controllerRight = controllerArray[0];
-        controllerLeft = controllerArray[1];
+        controllerLeft = controllerArray[0];
+        controllerRight = controllerArray[1];
 
     }
 
@@ -93,8 +95,9 @@ public class FireballScript : MonoBehaviour
 
     IEnumerator waitForSeconds()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(waitTillFireAgain);
         fired = false;
+        yield return new WaitForSeconds(waitTillDespawn);
         Destroy(g1);
     }
 }

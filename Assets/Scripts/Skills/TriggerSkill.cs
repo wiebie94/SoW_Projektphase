@@ -18,8 +18,8 @@ public class TriggerSkill : MonoBehaviour
     {
         skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
         ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        controllerRight = controllerArray[0];
-        controllerLeft = controllerArray[1];
+        controllerLeft = controllerArray[0];
+        controllerRight = controllerArray[1];
        
     }
 
