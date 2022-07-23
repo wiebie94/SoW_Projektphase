@@ -18,7 +18,7 @@ public class FaucetController : MonoBehaviour
         water = this.gameObject.transform.GetChild(0).gameObject;
         stream = this.gameObject.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
         
-        isOn = false;
+        isOn = true;
         played = false;
     }
 
