@@ -7,6 +7,7 @@ public class Level1LogicController : MonoBehaviour
     public GameObject objectiveLeft;
     public GameObject objectiveFront;
     public GameObject objectiveRight;
+    public GameObject trophy;
 
     bool objLeftCompleted = false;
     bool objFrontCompleted = false;
@@ -30,6 +31,10 @@ public class Level1LogicController : MonoBehaviour
         if(checkCompleted())
         {
             //do something
+            if(trophy != null)
+            {
+                trophy.SetActive(true);
+            }            
             Debug.Log("Win");
         }
     }
