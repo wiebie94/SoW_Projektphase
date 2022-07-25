@@ -31,30 +31,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        //Debug.Log(rb.velocity.magnitude);
-
-
-        //Vector3 center = xrRig.CameraInOriginSpacePos;
-        //collider.center = new Vector3(center.x, collider.center.y, center.z);
-    }
-
     private void FixedUpdate()
     {
         cameraToFloorVector = new Vector3(cameraToFloorVector.x, cameraToFloorLength, cameraToFloorVector.z);
-
-        //Debug.DrawRay(camObj.transform.position, cameraToFloorVector, Color.blue);
-
-        //RaycastHit hit;
-
-        //if (Physics.Raycast(camObj.transform.position, Vector3.down, out hit, cameraToFloorLength, LayerMask.GetMask("Default")))
-            //Debug.Log("hit: :" + hit.collider.gameObject.name);
-        //else
-            //Debug.Log("No Hit");
-
-
-
 
         Vector2 moveVector = moveAction.action.ReadValue<Vector2>();
 
@@ -94,8 +73,6 @@ public class PlayerController : MonoBehaviour
 
     public void TeleportBodyToLastColliderPosition()
     {
-        Debug.Log("Teleporting camera");
-
         Vector3 colliderWorldPosition = collider.transform.TransformPoint(collider.center);
 
         Vector3 cameraColliderDifference = camObj.transform.position - colliderWorldPosition;

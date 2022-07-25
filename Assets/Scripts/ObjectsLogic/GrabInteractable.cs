@@ -36,11 +36,9 @@ public class GrabInteractable : MonoBehaviour
     [SerializeField] UnityEvent onObjectGrabbed;
     [SerializeField] UnityEvent onObjectReleased;
     
-
     public delegate void OnObjectLost();
     public event OnObjectLost onObjectLost;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,6 +51,12 @@ public class GrabInteractable : MonoBehaviour
         }
 
         defaultMass = rb.mass;
+    }
+
+    public void TeleportToController(Transform followObj)
+    {
+        rb.position = followObj.TransformPoint(positionOffset);
+        rb.rotation = followObj.rotation;
     }
 
     public void MoveObjectTowards(Transform followObj, HandType handType)
@@ -147,23 +151,6 @@ public class GrabInteractable : MonoBehaviour
         }
 
         return true;
-
-
-
-
-        //Transform child = transform.GetChild(0).transform;
-
-        //Vector3 handOffset = child.position - leftHand.position;
-        //transform.GetChild(0).transform.localPosition = handOffset;
-
-        //var modelStartRotQ = handRotation * Quaternion.Inverse(leftHand.rotation);
-        //leftHand.rotation = modelStartRotQ * leftHand.rotation;
-
-        //Debug.Log("rot: " + modelStartRotQ.eulerAngles);
-
-        //rotationOffset = modelStartRotQ.eulerAngles;
-
-        //rotOffset = handRotation * Quaternion.Inverse(leftHand.rotation);
     }
 
     public void GrabEnd(HandType hand)

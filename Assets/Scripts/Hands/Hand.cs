@@ -45,6 +45,10 @@ public class Hand : MonoBehaviour
     private Transform grabPoint;
     private FixedJoint joint1, joint2;
 
+    [SerializeField] float handDistanceCheckInterval = 0.3f;
+    [SerializeField] float handToBodyDistanceLimit = 3f;
+    [SerializeField] Transform playerTransform;
+
     void Start()
     {
         //Animation
@@ -56,11 +60,9 @@ public class Hand : MonoBehaviour
         rb = hand.GetComponent<Rigidbody>();
         rb.maxAngularVelocity = 20;
 
+        TeleportHandToController();
 
-
-        //Teleport Hands
-        rb.position = followTarget.position;
-        rb.rotation = followTarget.rotation;
+        StartCoroutine(HandToBodyDistanceCheck());
     }
 
     private void OnEnable()
@@ -77,6 +79,42 @@ public class Hand : MonoBehaviour
         controller.selectAction.action.canceled -= Released;
     }
 
+    private IEnumerator HandToBodyDistanceCheck()
+    {
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player Transform is null!");
+            yield break;
+        }   
+
+        while(true)
+        {
+            Vector3 handPosition;
+
+            if (isGrabbing && heldObject != null)
+                handPosition = heldObject.transform.position;
+            else
+                handPosition = rb.position;
+
+            if (Vector3.Distance(handPosition, playerTransform.position) > handToBodyDistanceLimit)
+                TeleportHandToController();
+
+            yield return new WaitForSeconds(handDistanceCheckInterval);
+        }
+    }
+
+    public void TeleportHandToController()
+    {
+        if (isGrabbing && heldObject != null)
+        {
+            heldObject.TeleportToController(followTarget);
+        }    
+        else
+        {
+            rb.position = followTarget.position;
+            rb.rotation = followTarget.rotation;
+        }
+    }
 
     private void Grab(InputAction.CallbackContext obj)
     {

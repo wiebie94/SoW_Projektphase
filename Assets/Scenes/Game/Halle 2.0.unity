@@ -29212,6 +29212,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 6231759716730562799, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1698385681}
+    - target: {fileID: 6231759716730562799, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: handToBodyDistanceLimit
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7087317153974937726, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -29256,6 +29266,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: -0.11299954
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445834532434807649, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1698385681}
+    - target: {fileID: 8445834532434807649, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: handToBodyDistanceLimit
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c835572f61275a4ca7006ca2dbf036d, type: 3}
@@ -33194,6 +33214,12 @@ Transform:
 --- !u!1 &1698385676 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3295320616744408869, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1698385681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3295320616744408868, guid: 2c835572f61275a4ca7006ca2dbf036d,
     type: 3}
   m_PrefabInstance: {fileID: 1507039485}
   m_PrefabAsset: {fileID: 0}
