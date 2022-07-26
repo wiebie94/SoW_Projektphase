@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524632689933661771}
   - component: {fileID: 9125081164168766908}
+  - component: {fileID: 1150572381461417121}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -311,6 +312,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00047527463, y: 0.0035135415, z: -0.00008277339}
     m_Extent: {x: 0.0033624507, y: 0.003834261, z: 0.0038791054}
   m_DirtyAABB: 0
+--- !u!65 &1150572381461417121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477246462483034799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12199562, y: 0.17061833, z: 0.16944109}
+  m_Center: {x: -0.004823887, y: 0.014841054, z: 0.059291966}
 --- !u!1 &3813194948314892071
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +396,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4875717284994842043}
+  - component: {fileID: 809144978}
+  - component: {fileID: 1399096717}
   m_Layer: 0
   m_Name: Plant_final_Prefab
   m_TagString: Untagged
@@ -405,6 +421,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &809144978
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251715744829875969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: d390887ed340e614689e7e5419c914b2, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9c893285c765ff64aa94186ec650a05c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1399096717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251715744829875969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c484f24ca9acf74c94523215c2151b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchToOneAttackAfterSeconds: 10
+  switchToOneAttackAfterSecondsRangeMod: 2
 --- !u!1 &5858311487625987478
 GameObject:
   m_ObjectHideFlags: 0
