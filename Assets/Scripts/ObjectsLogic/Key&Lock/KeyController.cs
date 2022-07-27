@@ -7,10 +7,10 @@ public class KeyController : MonoBehaviour
     private GameObject mykey;
     bool move;
     bool rotate;
-    bool dissolve;
+    public bool dissolve;
     public Vector3 rotation;
     private float oldDissolve;
-    private float dissolveSpeed; 
+    public float dissolveSpeed = 1f; 
     private float timer;
     public float rotationTime;
     private Material keyMaterial;
@@ -28,7 +28,7 @@ public class KeyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        move = true;
+        move = false;
         rotate = false;
         dissolve = false;
         timer = 0;;
@@ -62,6 +62,7 @@ public class KeyController : MonoBehaviour
 
         //dissolve key
         if(dissolve){
+            Debug.Log(oldDissolve);
             oldDissolve = gameObject.transform.GetComponent<Renderer>().material.GetFloat("_DissolveAmount");
             gameObject.transform.GetComponent<Renderer>().material.SetFloat("_DissolveAmount", oldDissolve + (dissolveSpeed * Time.deltaTime));
             if(oldDissolve > 1){
@@ -71,9 +72,9 @@ public class KeyController : MonoBehaviour
         }
 
         //change Color
-        if(keyMaterial.GetColor("_KeyLockColor") != getCurrentColor()){
+        /*if(keyMaterial.GetColor("_KeyLockColor") != getCurrentColor()){
             keyMaterial.SetColor("_KeyLockColor", getCurrentColor());
-        }
+        }*/
     }
 
     private void OnCollisionEnter(Collision other) {
@@ -89,7 +90,7 @@ public class KeyController : MonoBehaviour
         }
     }
 
-    public Color getCurrentColor(){
+    /*public Color getCurrentColor(){
         if(Key_Color == keyColor.Red){
             return Color.red;
         }
@@ -106,13 +107,16 @@ public class KeyController : MonoBehaviour
             return Color.magenta;
         } 
         return Color.white;
+    }*/
+    public Color getCurrentColor()
+    { 
+        return this.GetComponent<Renderer>().material.GetColor("_KeyLockColor");
     }
-
     public void setDissolve(){
         dissolve = true;
     }
 
-    public void setColor(Color c){
+    /*public void setColor(Color c){
         if(c == Color.red){
             Key_Color = keyColor.Red;
         }
@@ -131,5 +135,5 @@ public class KeyController : MonoBehaviour
         else{
             Key_Color = keyColor.White;
         }
-    }
+    }*/
 }
