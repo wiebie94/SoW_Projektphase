@@ -11,7 +11,7 @@ public class KeySript : MonoBehaviour
         this.keyController = GameObject.Find("KeyManager").GetComponent<LevelKeyController>();
         if (this.keyController == null)
             Debug.LogWarning("kein KeyManager in der Scene");
-        this.color = this.GetComponentInChildren<Renderer>().material.color;
+        this.color = this.GetComponentInChildren<Renderer>().material.GetColor("_KeyLockColor");
 
     }
 
@@ -19,4 +19,6 @@ public class KeySript : MonoBehaviour
     {
         this.keyController.OnLockKeySave(this.color);
     }
+
+    // funktion das der schlüssel los gelassen wird
 }

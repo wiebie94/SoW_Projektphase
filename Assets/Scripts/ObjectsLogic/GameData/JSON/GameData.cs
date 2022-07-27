@@ -22,4 +22,7 @@ public class GameData {
         keySave = new List<Color>();
 
     }
+    public void resetKey() {
+        keySave.Clear();
+    }
 }

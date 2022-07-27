@@ -59,5 +59,10 @@ public class GameSave : MonoBehaviour
     {
         return gameData;
     }
+    public void resetKey()
+    {
+        this.gameData.resetKey();
+        this.SaveData();
+    }
 
 }
