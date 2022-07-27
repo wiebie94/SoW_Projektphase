@@ -738,6 +738,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7999839135587026388}
+  - component: {fileID: 7535392071790608346}
   m_Layer: 0
   m_Name: "Gel\xE4nder Stein"
   m_TagString: Untagged
@@ -768,3 +769,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7535392071790608346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227982610580807534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1432836, y: 0.7558203, z: 0.20258737}
+  m_Center: {x: 0, y: 0.3738273, z: 0}

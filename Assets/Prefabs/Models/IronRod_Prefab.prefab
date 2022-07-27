@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1723117410273121144}
   - component: {fileID: 2325658077049773277}
   - component: {fileID: 550163711587854359}
+  - component: {fileID: 6019329190069511772}
   m_Layer: 0
   m_Name: IronRod_Prefab
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6019329190069511772
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063333123158870466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.00016
+  m_Height: 0.02
+  m_Direction: 2
+  m_Center: {x: -1.4551915e-11, y: 1.4551919e-11, z: 0.010000003}

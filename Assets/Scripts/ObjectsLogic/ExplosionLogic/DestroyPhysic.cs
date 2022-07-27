@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DestroyPhysic : MonoBehaviour
 {
-    public int masse = 10;
-    public int drag = 0;
+    public int masse = 30;
+    public int drag = 1;
     private Rigidbody rb;
     public Transform superParent;
     public Transform[] activeByExplosionTrigger;
