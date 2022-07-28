@@ -21,6 +21,7 @@ public class FireballScript : MonoBehaviour
     [SerializeField] private float waitTillDespawn;
     private bool fired = false;
     private bool _isDone = false;
+    private float timestamp;
 
     void Start()
     {
@@ -42,6 +43,11 @@ public class FireballScript : MonoBehaviour
     {
         ShowSkillMenu.onFireballSkillTriggered -= FireballSkillTriggered;
         ShowSkillMenu.onFireballSkillUntriggered -= FireballSkillUntriggered;
+    }
+
+    private void Update()
+    {
+    
     }
 
     private void FireballSkillTriggered()
@@ -75,29 +81,27 @@ public class FireballScript : MonoBehaviour
             {
             
                 if (skillMenu.menuHandLeft)
-            {       
-                    fired = true;
-                    g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward, Quaternion.identity);
-                    //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
-                    g1.GetComponent<Rigidbody>().AddForce(rightHandRef.transform.forward * 100, ForceMode.Impulse);
-                }
+            {
+                    if (Time.time >= timestamp)
+                    {
+                        g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward, Quaternion.identity);
+                        //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
+                        g1.GetComponent<Rigidbody>().AddForce(rightHandRef.transform.forward * 100, ForceMode.Impulse);
+                        timestamp = Time.time + waitTillFireAgain;
+                    }
+            }
             else
             {
-                fired = true;
-                g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward, Quaternion.identity);
-                    //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
-                g1.GetComponent<Rigidbody>().AddForce(leftHandRef.transform.forward * 100, ForceMode.Impulse);
-            }
-                StartCoroutine(waitForSeconds());
+                if(Time.time >= timestamp)
+                    {
+                        g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward, Quaternion.identity);
+                        //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
+                        g1.GetComponent<Rigidbody>().AddForce(leftHandRef.transform.forward * 100, ForceMode.Impulse);
+                        timestamp = Time.time + waitTillFireAgain;
+                    }
+               
+                }
             }
         }
-    }
-
-    IEnumerator waitForSeconds()
-    {
-        yield return new WaitForSeconds(waitTillFireAgain);
-        fired = false;
-        yield return new WaitForSeconds(waitTillDespawn);
-        Destroy(g1);
     }
 }
