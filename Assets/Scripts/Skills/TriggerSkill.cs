@@ -10,17 +10,47 @@ public class TriggerSkill : MonoBehaviour
     private ActionBasedController controllerLeft;
     private ActionBasedController controllerRight;
     private bool isGripPressed = false;
+    private ActionBasedController[] controllerArray;
     // Start is called before the first frame update
-    
-    
-    
+
+    private void Awake()
+    {
+        
+    }
+
+
     void Start()
     {
         skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
-        ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        controllerLeft = controllerArray[0];
-        controllerRight = controllerArray[1];
-       
+       controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
+
+        Debug.Log("ON ENABLE SETTING CONTROLLER");
+
+        if (controllerArray[0].name.Equals("LeftHand Controller"))
+        {
+            Debug.Log("Setting Left to 0");
+            controllerLeft = controllerArray[0];
+
+        }
+        if (controllerArray[1].name.Equals("LeftHand Controller"))
+        {
+            Debug.Log("Setting Left to 1");
+
+            controllerLeft = controllerArray[1];
+        }
+        if (controllerArray[0].name.Equals("RightHand Controller"))
+        {
+            Debug.Log("Setting Right to 0");
+
+            controllerRight = controllerArray[0];
+        }
+        if (controllerArray[1].name.Equals("RightHand Controller"))
+        {
+            Debug.Log("Setting Right to 1");
+
+            controllerRight = controllerArray[1];
+        }
+
     }
 
     // Update is called once per frame
@@ -28,7 +58,6 @@ public class TriggerSkill : MonoBehaviour
     {
         
     }
-
 
 
 

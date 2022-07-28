@@ -26,14 +26,25 @@ public class FireballScript : MonoBehaviour
     void Start()
     {
         skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
-        ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
-        controllerLeft = controllerArray[0];
-        controllerRight = controllerArray[1];
+        
 
     }
 
+  
+
     private void OnEnable()
     {
+        ActionBasedController[] controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
+        if (controllerArray[0].name.Equals("LeftHand Controller"))
+        {
+            controllerLeft = controllerArray[0];
+            controllerRight = controllerArray[1];
+        }
+        else
+        {
+            controllerLeft = controllerArray[1];
+            controllerRight = controllerArray[0];
+        }
         ShowSkillMenu.onFireballSkillTriggered += FireballSkillTriggered;
         ShowSkillMenu.onFireballSkillUntriggered += FireballSkillUntriggered;
 
@@ -43,11 +54,6 @@ public class FireballScript : MonoBehaviour
     {
         ShowSkillMenu.onFireballSkillTriggered -= FireballSkillTriggered;
         ShowSkillMenu.onFireballSkillUntriggered -= FireballSkillUntriggered;
-    }
-
-    private void Update()
-    {
-    
     }
 
     private void FireballSkillTriggered()
@@ -77,8 +83,7 @@ public class FireballScript : MonoBehaviour
     private void activateAction_performed(InputAction.CallbackContext obj)
     {
         if (skillMenu._isFireBallActive) { 
-            if (fired == false)
-            {
+
             
                 if (skillMenu.menuHandLeft)
             {
@@ -87,6 +92,8 @@ public class FireballScript : MonoBehaviour
                         g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward, Quaternion.identity);
                         //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
                         g1.GetComponent<Rigidbody>().AddForce(rightHandRef.transform.forward * 100, ForceMode.Impulse);
+                         Destroy(g1, waitTillDespawn);
+                        fired = true;
                         timestamp = Time.time + waitTillFireAgain;
                     }
             }
@@ -97,11 +104,12 @@ public class FireballScript : MonoBehaviour
                         g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward, Quaternion.identity);
                         //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
                         g1.GetComponent<Rigidbody>().AddForce(leftHandRef.transform.forward * 100, ForceMode.Impulse);
+                        Destroy(g1, waitTillDespawn);
+                        fired = true;
                         timestamp = Time.time + waitTillFireAgain;
                     }
                
                 }
             }
-        }
     }
 }

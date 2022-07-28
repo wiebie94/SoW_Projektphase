@@ -56,17 +56,7 @@ public class PhysicsButton : MonoBehaviour
         
     }
 
-    private void OnDisable()
-    {
-        if (startAnimation != null)
-        {
-            StopCoroutine(startAnimation);
-            startAnimation = null;
-        }
 
-        Debug.Log("OnDisable");
-        
-    }
 
 
     private void Pressed() {
@@ -116,12 +106,18 @@ public class PhysicsButton : MonoBehaviour
         
 
         yield return new WaitForSeconds(1.7f);
-        while (operation.progress < 0.9f)
+        while (!operation.isDone)
         {
-            yield return new WaitForSeconds(0.05f);
             Debug.Log(operation.progress);
+            if (operation.progress >= 0.9f)
+            {
+                operation.allowSceneActivation = true;
+                StopAllCoroutines();
+                
+            }
+            yield return null;
         }
-        operation.allowSceneActivation = true;
+        
     }
 
 
