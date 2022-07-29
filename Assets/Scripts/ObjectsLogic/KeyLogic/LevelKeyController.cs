@@ -45,9 +45,7 @@ public class LevelKeyController : MonoBehaviour
             }
             GameObject tmp = Instantiate(keyPrefab, this.spawnPointKey[spawnIndex].position, Quaternion.identity);
 
-            Renderer tmpR = tmp.GetComponentInChildren<Renderer>();
-
-            tmpR.material.SetColor("_KeyLockColor", keyColor);
+            tmp.GetComponentInChildren<KeySript>().setColor(keyColor);
             //tmp.GetComponent<KeyController>().setColor(keyColor);
 
             spawnIndex++;

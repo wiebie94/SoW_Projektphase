@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6599066050438959078}
   - component: {fileID: 7798910782599462979}
   - component: {fileID: 5467294358986224777}
-  - component: {fileID: 3238800617872614919}
   - component: {fileID: -6636190280038631873}
   - component: {fileID: -2415640364367923927}
+  - component: {fileID: 9037541322097348523}
+  - component: {fileID: 149989359894930232}
   m_Layer: 0
   m_Name: Key_Prefab_final
   m_TagString: Key
@@ -84,23 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3238800617872614919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5827454716798391644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e673213f565d7c246a879dbbeb3dbda4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dissolve: 0
-  rotation: {x: 0, y: 0.2, z: 0}
-  dissolveSpeed: 1
-  rotationTime: 0.75
-  Key_Color: 0
 --- !u!65 &-6636190280038631873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -130,3 +114,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9037541322097348523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5827454716798391644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb3e99ca99369646a3d8456fd1ee6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  startUp: 0
+  startDown: 0
+--- !u!114 &149989359894930232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5827454716798391644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ebf87ed3b82694691447ac9183e186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
