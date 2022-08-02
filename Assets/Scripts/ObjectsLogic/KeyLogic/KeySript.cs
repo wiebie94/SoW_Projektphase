@@ -32,6 +32,7 @@ public class KeySript : MonoBehaviour
     }
     private void destroyKey()
     {
+
         //funktion das der schlüssel los gelassen wird
         //Destroy(this.transform.parent.gameObject);
     }

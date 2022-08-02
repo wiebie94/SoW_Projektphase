@@ -183,7 +183,7 @@ public class Hand : MonoBehaviour
         return nearestCollider;
     }
 
-    private void Released(InputAction.CallbackContext obj)
+    public void Released(InputAction.CallbackContext obj)
     {
         if (isGrabbing)
         {

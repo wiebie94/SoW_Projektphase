@@ -60,7 +60,7 @@ public class DissolveController : MonoBehaviour
         this.limitMin = limitMin;
         this.limitMax = limitMax;
 
-        this.dissolveSpeed = 2 / duration;
+        this.dissolveSpeed = 2f / duration;
         this.dissolve = true;
     }
 

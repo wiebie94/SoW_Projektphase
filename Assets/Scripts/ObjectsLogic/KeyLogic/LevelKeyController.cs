@@ -14,11 +14,11 @@ public class LevelKeyController : MonoBehaviour
     void Start()
     {
         initSpawnPont();
-        this.OnLockKeySave(new Color(0f,0f,1f,1f));
         //this.gameSave.resetKey();
+        this.OnLockKeySave(new Color(1f, 0f, 0f, 1f));
         spawnKeys();
     }
-
+    
     private void initSpawnPont()
     {
         Transform keySpawn = this.transform.Find("KeySpawn");
@@ -43,12 +43,23 @@ public class LevelKeyController : MonoBehaviour
                 Debug.LogWarning("Achtung es gibt fuer den KeyIndex " + spawnIndex + " keinen KeySpawn");
                 break;
             }
-            GameObject tmp = Instantiate(keyPrefab, this.spawnPointKey[spawnIndex].position, Quaternion.identity);
+            GameObject tmp = Instantiate(keyPrefab, this.spawnPointKey[spawnIndex].position, this.spawnPointKey[spawnIndex].rotation);
+            tmp.transform.parent = this.spawnPointKey[spawnIndex];
 
             tmp.GetComponentInChildren<KeySript>().setColor(keyColor);
             //tmp.GetComponent<KeyController>().setColor(keyColor);
 
             spawnIndex++;
+        }
+    }
+    private void despawnKeys()
+    {
+        foreach (Transform keySpawn in spawnPointKey)
+        {
+            foreach (Transform child in keySpawn)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
         }
     }
     public bool OnLockKeySave(Color keyColor) 
@@ -58,5 +69,11 @@ public class LevelKeyController : MonoBehaviour
         this.gameSave.getGameData().keySave.Add(keyColor); 
         this.gameSave.SaveData();
         return true;
+    }
+    public void resetKey() {
+        this.despawnKeys();
+        this.gameSave.resetKey();
+        this.OnLockKeySave(new Color(1f, 0f, 0f, 1f));
+        this.spawnKeys();
     }
 }
