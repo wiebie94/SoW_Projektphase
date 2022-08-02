@@ -27,7 +27,7 @@ public class KeySript : MonoBehaviour
     public void startDissolve() 
     {
         this.dissolveController.dissolveDown();
-        Invoke("destroyKey", this.dissolveController.duration);
+        //Invoke("destroyKey", this.dissolveController.duration);
 
     }
     private void destroyKey()
