@@ -15,6 +15,7 @@ public class TelekineseScript : MonoBehaviour
     private Rigidbody telekineseRigidbody;
     private string neeededTag = "GrabInteractable";
     private bool isItemGrabbed = false;
+
     public GameObject telekineseDragObject;
     [SerializeField] Vector3 followPositionOffset;
     [SerializeField] Vector3 followRotationOffset;
@@ -36,7 +37,8 @@ public class TelekineseScript : MonoBehaviour
     [SerializeField] HandType hand;
 
     Coroutine telekineseCoroutine;
-
+    public AudioSource audioSource;
+    public AudioClip telekineseSoundClip;
     ActionBasedController controller;
 
     void Start()
@@ -52,6 +54,7 @@ public class TelekineseScript : MonoBehaviour
     {
         ShowSkillMenu.onTelekineseSkillTriggered += TelekineseSkillTriggered;
         ShowSkillMenu.onTelekineseSkillUntriggered += TelekineseSkillUntriggered;
+        audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
     }
     private void OnDisable()
     {
@@ -95,6 +98,9 @@ public class TelekineseScript : MonoBehaviour
     
     void TelekineseBegin()
     {
+        audioSource.clip = telekineseSoundClip;
+        audioSource.loop = true;
+        audioSource.Play();
         isItemGrabbed = true;
         telekineseDragObject.SetActive(true);
         telekineseDragObject.GetComponent<TelekineseDragAndPull>().SetTelekineseHand(hand);
@@ -115,6 +121,7 @@ public class TelekineseScript : MonoBehaviour
 
     void TelekineseEnd()
     {
+        audioSource.Stop();
         if (telekineseDragObject == null)
             return;
 
