@@ -38,6 +38,8 @@ public class ShowSkillMenu : MonoBehaviour
     public Material AimHelpFireBallParticlesMaterial;
     public Material AimHelpTelekineseParticlesMaterial;
     [SerializeField] Load_Spells lCircle;
+    [SerializeField] int AimHelpLengthFireball;
+    [SerializeField] int AimHelpLengthTelekinese;
 
     [SerializeField] float loadingTime = 1.5f;
     [SerializeField] float fadeOut = 0.5f;
@@ -244,6 +246,8 @@ public class ShowSkillMenu : MonoBehaviour
         {
             AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
             AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpFireBallMaterial;
+            AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().SetPosition(1, new Vector3(0, 0, AimHelpLengthFireball));
+            AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().SetPosition(1, new Vector3(0, 0, AimHelpLengthFireball));
             AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
             AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpFireBallParticlesMaterial;
             AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystemRenderer>().trailMaterial = AimHelpFireBallParticlesMaterial;
@@ -333,6 +337,8 @@ public class ShowSkillMenu : MonoBehaviour
         {
             AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
             AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().material = AimHelpTelekineseMaterial;
+            AimHelpLeft.transform.GetChild(0).GetComponent<LineRenderer>().SetPosition(1,new Vector3(0, 0, AimHelpLengthTelekinese));
+            AimHelpRight.transform.GetChild(0).GetComponent<LineRenderer>().SetPosition(1, new Vector3(0, 0, AimHelpLengthTelekinese));
             AimHelpRight.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
             AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystem>().GetComponent<Renderer>().material = AimHelpTelekineseParticlesMaterial;
             AimHelpLeft.transform.GetChild(1).GetComponent<ParticleSystemRenderer>().trailMaterial = AimHelpTelekineseParticlesMaterial;
@@ -340,6 +346,7 @@ public class ShowSkillMenu : MonoBehaviour
             _isTeleportActive = false;
             _isFireBallActive = false;
             _isTelekinesisActive = true;
+            
             if (_isHandSkinSet)
             {
                 leftHandSkinMesh.GetComponent<SkinnedMeshRenderer>().material = defaultHandSkin;
