@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3392465795402810110}
   - component: {fileID: 6504362519383574977}
   - component: {fileID: 1628878636698057191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Key_Grabbable
   m_TagString: GrabInteractable
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
   onObjectGrabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4465975583476082230}
         m_TargetAssemblyTypeName: KeySript, Assembly-CSharp
         m_MethodName: grabKey
         m_Mode: 1
@@ -593,10 +593,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3392465795402810110}
     m_Modifications:
+    - target: {fileID: 4221661448459241265, guid: 605260bb64bae394c9efa21d95ce54a8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5827454716798391644, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_Name
       value: Key_Prefab_final
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827454716798391644, guid: 605260bb64bae394c9efa21d95ce54a8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5827454716798391644, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
@@ -611,42 +621,42 @@ PrefabInstance:
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.315
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.51283216
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.48656118
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.51308703
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.48682976
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -86.99
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
@@ -656,7 +666,7 @@ PrefabInstance:
     - target: {fileID: 6599066050438959078, guid: 605260bb64bae394c9efa21d95ce54a8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.03
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2415640364367923927, guid: 605260bb64bae394c9efa21d95ce54a8, type: 3}
@@ -668,6 +678,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4606773016343921934}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4465975583476082230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 149989359894930232, guid: 605260bb64bae394c9efa21d95ce54a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4606773016343921934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ebf87ed3b82694691447ac9183e186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5201600372404617535
 PrefabInstance:
   m_ObjectHideFlags: 0
