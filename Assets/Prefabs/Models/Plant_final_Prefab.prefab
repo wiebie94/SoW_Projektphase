@@ -226,7 +226,6 @@ GameObject:
   m_Component:
   - component: {fileID: 524632689933661771}
   - component: {fileID: 9125081164168766908}
-  - component: {fileID: 1150572381461417121}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -312,19 +311,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00047527463, y: 0.0035135415, z: -0.00008277339}
     m_Extent: {x: 0.0033624507, y: 0.003834261, z: 0.0038791054}
   m_DirtyAABB: 0
---- !u!65 &1150572381461417121
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3477246462483034799}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12199562, y: 0.17061833, z: 0.16944109}
-  m_Center: {x: -0.004823887, y: 0.014841054, z: 0.059291966}
 --- !u!1 &3813194948314892071
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6269c5a46fd345346b1ed2a5d08443d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathDuration: 2
+  deathDuration: 2.5
   fireParticles: {fileID: 7685609788870866592, guid: 59e0bb2f5e74ebb49ac5beb6feb47677,
     type: 3}
   firePosition: {fileID: 8769414185164673100}
