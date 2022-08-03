@@ -203,7 +203,7 @@ public class Hand : MonoBehaviour
         Released(new InputAction.CallbackContext());
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!isGrabbing)    
         {

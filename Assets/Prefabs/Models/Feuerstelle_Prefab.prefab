@@ -1233,7 +1233,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.79100955, b: 0.3915094, a: 1}
   m_Intensity: 8
-  m_Range: 6.5
+  m_Range: 8
   m_SpotAngle: 179
   m_InnerSpotAngle: 170.80208
   m_CookieSize: 10
@@ -2347,6 +2347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startForce: {x: 0, y: 0, z: 0}
+  isRandom: 0
+  randomRange: {x: 0, y: 0, z: 0}
 --- !u!1 &8807533622561438878
 GameObject:
   m_ObjectHideFlags: 0
