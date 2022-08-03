@@ -226,7 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524632689933661771}
   - component: {fileID: 9125081164168766908}
-  - component: {fileID: 1150572381461417121}
+  - component: {fileID: 5070597742936816169}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -312,19 +312,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00047527463, y: 0.0035135415, z: -0.00008277339}
     m_Extent: {x: 0.0033624507, y: 0.003834261, z: 0.0038791054}
   m_DirtyAABB: 0
---- !u!65 &1150572381461417121
-BoxCollider:
+--- !u!114 &5070597742936816169
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3477246462483034799}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12199562, y: 0.17061833, z: 0.16944109}
-  m_Center: {x: -0.004823887, y: 0.014841054, z: 0.059291966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f380550520963674387a1cb4c9cf5ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3813194948314892071
 GameObject:
   m_ObjectHideFlags: 0
