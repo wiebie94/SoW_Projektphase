@@ -22,8 +22,9 @@ public class PlantDeath : MonoBehaviour
         {
             animator.SetBool("Dying", true);
             StartCoroutine("PlantDeathAnimation");
+            // particle effect start
             GameObject fire = Instantiate(fireParticles, firePosition.transform, false);
-            fire.transform.localScale = new Vector3(0.4f , 0.4f, 0.4f);
+            //fire.transform.localScale = new Vector3(100, 100, 100);
         }
     }
 
