@@ -111,6 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380560bb1552e7c4c9252c99e7628f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valocityX: 2
+  valocityY: 2
+  valocityZ: 2
   isEnable: 0
   destroy: 1
   tagTeleport: 1
@@ -524,7 +527,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bf1ca0cb30a7ef04b9c2792d0a37d72f, type: 2}
+      objectReference: {fileID: 2100000, guid: af92ade2a35a37c4ca9be29b2a93589d, type: 2}
     - target: {fileID: 8070759511342689295, guid: 8e65a79cc67a3234faba7d8f34650055,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -999,7 +1002,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bf1ca0cb30a7ef04b9c2792d0a37d72f, type: 2}
+      objectReference: {fileID: 2100000, guid: af92ade2a35a37c4ca9be29b2a93589d, type: 2}
     - target: {fileID: 8070759511342689295, guid: 8e65a79cc67a3234faba7d8f34650055,
         type: 3}
       propertyPath: m_LocalRotation.w
