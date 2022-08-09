@@ -75,9 +75,10 @@ GameObject:
   - component: {fileID: 5915587656540324166}
   - component: {fileID: 7329529456069611235}
   - component: {fileID: 4779251027957938729}
+  - component: {fileID: 8565722805068549306}
   m_Layer: 0
   m_Name: Mirror_Prefab
-  m_TagString: Untagged
+  m_TagString: Reflect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8565722805068549306
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436685161721879548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2723260613333405795, guid: 113e431e0c63275418d9632e5dad970e, type: 3}

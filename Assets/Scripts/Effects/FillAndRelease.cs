@@ -30,8 +30,8 @@ public class FillAndRelease : MonoBehaviour
 
             if(fillAmount >= fillThreshold){
                 filled = true;
-                this.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                //GetComponent<Transform>().GetChild(1).GetComponent<GameObject>().SetActive(true);   //activate cork
+                //this.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                GetComponent<Transform>().GetChild(1).GetComponent<GameObject>().SetActive(true);   //activate cork
             }
         }
     }
