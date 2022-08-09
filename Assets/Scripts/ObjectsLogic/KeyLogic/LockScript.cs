@@ -10,7 +10,11 @@ public class LockScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        this.transform.Find("Lock_Prefab").GetComponent<Renderer>().material.SetColor("_KeyLockColor", color);
+        Transform keyLock = this.transform.Find("Lock_final_Prefab"); //.GetComponent<Renderer>().material.SetColor("_KeyLockColor", color);
+        foreach (Transform m in keyLock)
+        {
+            m.GetComponent<Renderer>().material.SetColor("_KeyLockColor", color);
+        }
         Transform key = this.transform.Find("Key_for_animation");
         key.GetComponent<Renderer>().material.SetColor("_KeyLockColor", color);
         key.GetComponent<Renderer>().material.SetFloat("_DissolveAmount", 1);
