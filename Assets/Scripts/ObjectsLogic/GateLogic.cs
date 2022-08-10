@@ -5,10 +5,12 @@ using UnityEngine;
 public class GateLogic : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource audio;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audio = this.gameObject.GetComponent<AudioSource>();
     }
 
     public void OpenGate()
@@ -20,6 +22,7 @@ public class GateLogic : MonoBehaviour
         }
 
         animator.SetBool("IsOpen", true);
+        audio.Play();
     }
 
     public void CloseGate()
@@ -31,5 +34,6 @@ public class GateLogic : MonoBehaviour
         }
 
         animator.SetBool("IsOpen", false);
+        audio.Play();
     }
 }
