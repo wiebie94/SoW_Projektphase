@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2866649675960688385, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 298624666053618233, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -87,6 +92,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Kindle
       objectReference: {fileID: 0}
+    - target: {fileID: 1582072780113547441, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2131318175022753734, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8,
         type: 3}
       propertyPath: m_TagString
@@ -147,5 +157,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2866649675960688385, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8, type: 3}
