@@ -29,9 +29,10 @@ public class FillAndRelease : MonoBehaviour
             renderer.material.SetFloat("_Fill", fillAmount);
 
             if(fillAmount >= fillThreshold){
+                Debug.Log("fulll");
                 filled = true;
-                //this.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                GetComponent<Transform>().GetChild(1).GetComponent<GameObject>().SetActive(true);   //activate cork
+                this.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);   //activate cork
+                
             }
         }
     }

@@ -19,8 +19,10 @@ public class FireballController : MonoBehaviour
     private GameObject kindleFlame;
     private GameObject kindleFlameBig;
     private GameObject woodBurn;
+    private GameObject flame;
     private GameObject dissolveBurnSound;
     private GameObject candleFlame;
+    private GameObject toBurn;
     public float steamDuration;
     public float explosionDuration;
     public float burnDuration;
@@ -31,11 +33,13 @@ public class FireballController : MonoBehaviour
     public float explosionPower;
     public LayerMask chosenLayer;
     private bool firstHit;
+    private bool burnStuff;
     private Vector3 startVelocity;
 
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        burnStuff = false;
     }
 
     public void OnCollisionEnter(Collision other) {
@@ -48,9 +52,10 @@ public class FireballController : MonoBehaviour
         //burn something
         if (other.gameObject.tag == "Burnable"){
                 other.gameObject.AddComponent<BurnController>();
+                flame = Instantiate(flame_prefab, other.GetContact(0).point, Quaternion.identity);
+                Destroy(flame, burnDuration);
                 dissolveBurnSound = Instantiate(dissolveSound_prefab, other.GetContact(0).point, Quaternion.identity);
-                Destroy(dissolveBurnSound, dissolveSoundDuration);
-                
+                Destroy(dissolveBurnSound, dissolveSoundDuration);    
         }
 
         //kindle something
