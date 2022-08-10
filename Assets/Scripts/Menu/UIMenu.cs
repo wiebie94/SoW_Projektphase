@@ -10,6 +10,7 @@ public class UIMenu : MonoBehaviour
 
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject optionsScreen;
+    [SerializeField] GameObject exitScreen;
     [SerializeField] GameObject resetButton;
     private GameObject content;
 
@@ -29,6 +30,7 @@ public class UIMenu : MonoBehaviour
 
         allScreens.Add(pauseScreen);
         allScreens.Add(optionsScreen);
+        allScreens.Add(exitScreen);
 
         menuAction.action.performed += MenuButtonPressed;
     }
@@ -70,6 +72,14 @@ public class UIMenu : MonoBehaviour
         CloseAllScreens();
 
         pauseScreen.SetActive(true);
+        //ResetButtons(pauseScreen.transform);
+    }
+
+    public void OpenExitScreen()
+    {
+        CloseAllScreens();
+
+        exitScreen.SetActive(true);
         //ResetButtons(pauseScreen.transform);
     }
 
