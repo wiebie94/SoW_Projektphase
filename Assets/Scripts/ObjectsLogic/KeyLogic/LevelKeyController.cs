@@ -15,7 +15,7 @@ public class LevelKeyController : MonoBehaviour
     {
         initSpawnPont();
         //this.gameSave.resetKey();
-        this.OnLockKeySave(new Color(0f, 1f, 0f, 1f));
+        this.OnLockKeySave(new Color(1f, 0f, 0f, 1f));
         spawnKeys();
     }
     
@@ -73,7 +73,7 @@ public class LevelKeyController : MonoBehaviour
     public void resetKey() {
         this.despawnKeys();
         this.gameSave.resetKey();
-        this.OnLockKeySave(new Color(0f, 1f, 0f, 1f));
+        this.OnLockKeySave(new Color(1f, 0f, 0f, 1f));
         this.spawnKeys();
     }
 }
