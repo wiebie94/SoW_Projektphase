@@ -7,12 +7,15 @@ public class ResetPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject teleportationEffect;
     [SerializeField] private float teleportDelay = 2.0f;
+    [SerializeField] private GameObject SaveDataJson;
     private Coroutine startAnimation;
     private Transform playerCam;
+    private GameSave gSave;
     // Start is called before the first frame update
     void Start()
     {
         playerCam = Camera.main.transform;
+        
     }
 
     // Update is called once per frame
@@ -32,11 +35,21 @@ public class ResetPlayer : MonoBehaviour
         }
     }
 
-    private void respawnPlayer()
+    public void respawnPlayer()
     {
         Debug.Log("startAnimationRoute" + startAnimation);
 
         Debug.Log("StarteAnimation");
+        startAnimation = StartCoroutine(startNewSceneAnimation());
+    }
+
+    public void respawnPlayerAndResetData()
+    {
+        Debug.Log("startAnimationRoute" + startAnimation);
+
+        Debug.Log("StarteAnimation");
+        gSave = SaveDataJson.GetComponent<GameSave>();
+        gSave.resetKey();
         startAnimation = StartCoroutine(startNewSceneAnimation());
     }
 

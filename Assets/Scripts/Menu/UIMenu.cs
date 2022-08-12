@@ -12,8 +12,10 @@ public class UIMenu : MonoBehaviour
     [SerializeField] GameObject optionsScreen;
     [SerializeField] GameObject exitScreen;
     [SerializeField] GameObject resetButton;
-    private GameObject content;
+    [SerializeField] GameObject resetGameButton;
 
+    private GameObject content;
+    private ResetPlayer rPlayer;
     List<GameObject> allScreens;
 
     private UIPLayerFollow followScript;
@@ -23,6 +25,7 @@ public class UIMenu : MonoBehaviour
     private void Start()
     { 
         content = transform.GetChild(0).gameObject;
+        rPlayer = resetGameButton.GetComponent<ResetPlayer>();
         resetButton.SetActive(false);
         followScript = GetComponent<UIPLayerFollow>();
 
@@ -65,6 +68,12 @@ public class UIMenu : MonoBehaviour
         resetButton.SetActive(true);
 
         OpenPauseScreen();
+    }
+
+    public void ResetGame()
+    {
+        Debug.Log("RESETTING GAME");
+        rPlayer.respawnPlayerAndResetData();
     }
 
     public void OpenPauseScreen()

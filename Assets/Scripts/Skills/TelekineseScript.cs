@@ -54,7 +54,7 @@ public class TelekineseScript : MonoBehaviour
     {
         ShowSkillMenu.onTelekineseSkillTriggered += TelekineseSkillTriggered;
         ShowSkillMenu.onTelekineseSkillUntriggered += TelekineseSkillUntriggered;
-        audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+       
     }
     private void OnDisable()
     {
@@ -102,6 +102,7 @@ public class TelekineseScript : MonoBehaviour
         audioSource.loop = true;
         audioSource.Play();
         isItemGrabbed = true;
+        telekineseDragObject.gameObject.AddComponent<AudioSource>();
         telekineseDragObject.SetActive(true);
         telekineseDragObject.GetComponent<TelekineseDragAndPull>().SetTelekineseHand(hand);
         telekineseRigidbody = telekineseObj.GetComponent<Rigidbody>();
