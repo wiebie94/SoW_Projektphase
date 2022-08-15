@@ -51,8 +51,12 @@ public class FireballController : MonoBehaviour
         Destroy(explosion, explosionDuration);
         //burn something
         if (other.gameObject.tag == "Burnable"){
+
                 other.gameObject.AddComponent<BurnController>();
                 flame = Instantiate(flame_prefab, other.GetContact(0).point, Quaternion.identity);
+                flame.transform.SetParent(other.transform);
+                flame.transform.Rotate(Vector3.up, other.gameObject.GetComponent<Transform>().rotation.eulerAngles.y);
+                flame.transform.Translate(new Vector3(0,0,0), Space.Self);
                 Destroy(flame, burnDuration);
                 dissolveBurnSound = Instantiate(dissolveSound_prefab, other.GetContact(0).point, Quaternion.identity);
                 Destroy(dissolveBurnSound, dissolveSoundDuration);    
@@ -128,7 +132,6 @@ public class FireballController : MonoBehaviour
                 rb = hit.GetComponent<Rigidbody>();
             }
 
-
             if (rb != null)
                 rb.AddExplosionForce(this.explosionPower, position, this.explosionRadius, 3.0F);
         }
@@ -137,6 +140,5 @@ public class FireballController : MonoBehaviour
     private void rotateFlame(GameObject flame, Quaternion degree, Vector3 offsetForward){
         flame.transform.Rotate(Vector3.up, degree.eulerAngles.y);
         flame.transform.Translate(offsetForward, Space.Self);
-       
     }
 }

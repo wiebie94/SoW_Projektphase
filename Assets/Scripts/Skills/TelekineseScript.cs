@@ -237,7 +237,7 @@ public class TelekineseScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, range, layerForRaycast))
             {
-                if (!isItemGrabbed && hit.collider.CompareTag(neeededTag))
+                if (!isItemGrabbed && (hit.collider.CompareTag(neeededTag) || hit.collider.CompareTag("kindleBig") || hit.collider.CompareTag("Telekinese") || hit.collider.CompareTag("WaterBottle")))
                     HighLightObject(hit.collider.gameObject);
             }
 
