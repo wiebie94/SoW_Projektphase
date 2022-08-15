@@ -9,6 +9,7 @@ public class UIPLayerFollow : MonoBehaviour
     [SerializeField] Transform playerCam;
     [SerializeField] float cameraYOffset;
     [SerializeField] float yPositionFollowSpeed = 1;
+    [SerializeField] float yStartOffset = -1;
 
     [SerializeField] float floatingStrength = 1;
     [SerializeField] float floatingFrequence = 2;
@@ -56,7 +57,15 @@ public class UIPLayerFollow : MonoBehaviour
         Vector3 rot = playerCam.eulerAngles;
         transform.rotation = Quaternion.Euler(0, rot.y + rotationOffset, 0);
 
+        SetStartingYPosition();
         shouldFollowPlayer = true;
+    }
+
+    private void SetStartingYPosition()
+    {
+        Vector3 startPosition = new Vector3(transform.position.x, playerCam.position.y + cameraYOffset + yStartOffset, transform.position.z);
+
+        transform.position = startPosition;
     }
 
    public void StopFollowingPlayer()

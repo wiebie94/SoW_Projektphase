@@ -138,6 +138,11 @@ public class ShowSkillMenu : MonoBehaviour
 
     public IEnumerator waitForMenuShow()
     {
+        if (!lCircle.isActiveAndEnabled)
+        {
+            Debug.Log("lCircle is not active!");
+            yield break;
+        }
 
         _isDone = false;
         if (menuHandLeft)

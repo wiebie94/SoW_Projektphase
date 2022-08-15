@@ -3732,18 +3732,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1824322467}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &181304972 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1622269275375211672, guid: 2c835572f61275a4ca7006ca2dbf036d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1507039485}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980b4daa32078424d93b13be203e7d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &182629919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12955,28 +12943,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 618478141}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &619225577 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1100237129724549513, guid: 2c835572f61275a4ca7006ca2dbf036d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1507039485}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &619225582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619225577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c6bad4cf5d94b49a47cbd9e21196ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportationEffect: {fileID: 5777882420780731719, guid: 503ed32342dfbf74a94264ddd3213cec,
-    type: 3}
-  teleportDelay: 2
-  SaveDataJson: {fileID: 1664646143}
 --- !u!4 &621422336 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6895410677382270373, guid: 79f5d90f411db764f90552823ba4c811,
@@ -16598,12 +16564,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 298624666053618233, guid: bbc4cfeb638d2af4eab9bf7f76f0f0d8,
     type: 3}
   m_PrefabInstance: {fileID: 813370812}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &813800528 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1558243775, guid: 2c835572f61275a4ca7006ca2dbf036d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1507039485}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &819932554
 GameObject:
@@ -32401,36 +32361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1100237129724549514, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100237129724549517, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 619225582, guid: 2c835572f61275a4ca7006ca2dbf036d, type: 3}
+      propertyPath: SaveDataJson
       value: 
-      objectReference: {fileID: 181304972}
-    - target: {fileID: 1100237129724549517, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResetGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 1622269275375211672, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: resetGameButton
-      value: 
-      objectReference: {fileID: 619225577}
-    - target: {fileID: 3295320615805281246, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 813800528}
-    - target: {fileID: 3295320616196714359, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_CameraYOffset
-      value: 0.5
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1664646143}
     - target: {fileID: 3295320616987318486, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: m_RootOrder
@@ -32490,16 +32424,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VRPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3295320617126217116, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 813800528}
-    - target: {fileID: 6516723096690226189, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: maxCounter
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c835572f61275a4ca7006ca2dbf036d, type: 3}
