@@ -99,6 +99,7 @@ public class TelekineseScript : MonoBehaviour
     void TelekineseBegin()
     {
         audioSource.clip = telekineseSoundClip;
+        audioSource.volume = 0.1f;
         audioSource.loop = true;
         audioSource.Play();
         isItemGrabbed = true;
