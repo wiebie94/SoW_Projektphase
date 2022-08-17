@@ -241,8 +241,18 @@ public class TelekineseScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, range, layerForRaycast) || Physics.Raycast(ray, out hit, range, layerOnlyTelekinese))  //layerforraycast anpassen
             {
-                if (!isItemGrabbed && (hit.collider.CompareTag(neeededTag) || hit.collider.CompareTag("kindleBig") || hit.collider.CompareTag("Telekinese") || hit.collider.CompareTag("WaterBottle")))
+                if (!isItemGrabbed && (hit.collider.CompareTag(neeededTag) || hit.collider.CompareTag("Telekinese") || hit.collider.CompareTag("WaterBottle"))){
                     HighLightObject(hit.collider.gameObject);
+                }
+                if(!isItemGrabbed && hit.collider.CompareTag("KindleBig")){
+                    foreach(Transform child in hit.collider.gameObject.transform.parent.transform){
+                        if(child.GetComponent<MeshRenderer>() != null){
+                            HighLightObject(child.gameObject);
+                        }
+                    }
+                }
+                    
+
             }
 
             else if (telekineseObj != null && isItemGrabbed == false)
