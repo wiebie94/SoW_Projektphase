@@ -26,6 +26,7 @@ public class TelekineseScript : MonoBehaviour
     private float timeAfterHit = 0;
 
     private int layerForRaycast;
+    private int layerOnlyTelekinese;
 
     [SerializeField] float activationTime = 1;
 
@@ -46,8 +47,11 @@ public class TelekineseScript : MonoBehaviour
         controller = GetComponent<ActionBasedController>();
 
         layerForRaycast = LayerMask.GetMask("GrabInteractable");
+        layerOnlyTelekinese = LayerMask.GetMask("OnlyTelekinese");
 
         //skillMenu.onTelekineseSkillTriggered
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -98,11 +102,11 @@ public class TelekineseScript : MonoBehaviour
     
     void TelekineseBegin()
     {
-        audioSource.clip = telekineseSoundClip;
-        audioSource.loop = true;
+        //audioSource.clip = telekineseSoundClip;
+        //audioSource.loop = true;
         audioSource.Play();
         isItemGrabbed = true;
-        telekineseDragObject.gameObject.AddComponent<AudioSource>();
+        //telekineseDragObject.gameObject.AddComponent<AudioSource>();
         telekineseDragObject.SetActive(true);
         telekineseDragObject.GetComponent<TelekineseDragAndPull>().SetTelekineseHand(hand);
         telekineseRigidbody = telekineseObj.GetComponent<Rigidbody>();
@@ -235,7 +239,7 @@ public class TelekineseScript : MonoBehaviour
 
             Ray ray = new Ray(transform.position, transform.forward);
 
-            if (Physics.Raycast(ray, out hit, range, layerForRaycast))
+            if (Physics.Raycast(ray, out hit, range, layerForRaycast) || Physics.Raycast(ray, out hit, range, layerOnlyTelekinese))  //layerforraycast anpassen
             {
                 if (!isItemGrabbed && (hit.collider.CompareTag(neeededTag) || hit.collider.CompareTag("kindleBig") || hit.collider.CompareTag("Telekinese") || hit.collider.CompareTag("WaterBottle")))
                     HighLightObject(hit.collider.gameObject);
