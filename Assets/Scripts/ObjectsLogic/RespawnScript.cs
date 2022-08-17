@@ -8,6 +8,8 @@ public class RespawnScript : MonoBehaviour
     private GameObject player;
     private Transform playerCam;
 
+    private GameObject respawnPoint;
+
     [SerializeField] private string playerGameObjectName = "XR Origin";
     [SerializeField] private float teleportDelay = 1f;
     [SerializeField] private GameObject teleportEffect;
@@ -21,6 +23,9 @@ public class RespawnScript : MonoBehaviour
 
         this.player = GameObject.Find(playerGameObjectName);
         if (player == null) Debug.Log("Objektname vom Spieler ist falsch oder nicht angegeben");
+
+        this.respawnPoint = GameObject.Find("RespawnPoint");
+
     }
     public void respawn()
     {
@@ -28,7 +33,12 @@ public class RespawnScript : MonoBehaviour
     }
     public void keyTeleport() {
         if (!this.firstTime) return;
-        StartCoroutine(this.teleport(this.transform.position));
+        Vector3 position = this.transform.position;
+        if (respawnPoint != null)
+            position = respawnPoint.transform.position;
+
+
+        StartCoroutine(this.teleport(position));
         firstTime = false;
 
     }
