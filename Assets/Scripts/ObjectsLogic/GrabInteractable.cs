@@ -39,6 +39,16 @@ public class GrabInteractable : MonoBehaviour
     public delegate void OnObjectLost();
     public event OnObjectLost onObjectLost;
 
+    public AudioClip clip;
+    private AudioSource source;
+
+    public float minVelocity = 0;
+    public float maxVelocity = 2;
+
+
+    public bool randomizePitch = true;
+    public float minPitch = 0.8f;
+    public float maxPitch = 1.2f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,6 +61,18 @@ public class GrabInteractable : MonoBehaviour
         }
 
         defaultMass = rb.mass;
+        this.gameObject.AddComponent<AudioSource>();
+        if (this.gameObject.name.Equals("GobletSilver_Grabbable"))
+        {
+            clip = Resources.Load<AudioClip>("Kollision5");
+
+        }
+        else
+        {
+            clip = Resources.Load<AudioClip>("Kollision1");
+
+        }
+        source = GetComponent<AudioSource>();
     }
 
     public void TeleportToController(Transform followObj)
@@ -155,6 +177,7 @@ public class GrabInteractable : MonoBehaviour
 
     public void GrabEnd(HandType hand)
     {
+
         onObjectReleased.Invoke();
 
         if (shouldObjectBeReplaced)
@@ -179,6 +202,31 @@ public class GrabInteractable : MonoBehaviour
             rightHand.gameObject.SetActive(false);
         }
         
+    }
+
+    public void OnCollisionEnter(Collision other)
+    {
+
+        if (other.gameObject.CompareTag("GrabInteractable"))
+        {
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                float v = rb.velocity.magnitude;
+                float volume = Mathf.InverseLerp(minVelocity, maxVelocity, v);
+                if (randomizePitch)
+                {
+                    source.pitch = Random.Range(minPitch, maxPitch);
+                }
+                source.PlayOneShot(clip, volume);
+            }
+            else
+            {
+                source.PlayOneShot(clip);
+
+            }
+
+        }
     }
 
 

@@ -106,7 +106,9 @@ public class TelekineseScript : MonoBehaviour
         telekineseDragObject.SetActive(true);
         telekineseDragObject.GetComponent<TelekineseDragAndPull>().SetTelekineseHand(hand);
         telekineseRigidbody = telekineseObj.GetComponent<Rigidbody>();
-        
+
+
+
         if (telekineseRigidbody == null)
         {
             telekineseRigidbody = telekineseObj.transform.parent.GetComponent<Rigidbody>();
