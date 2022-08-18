@@ -62,6 +62,7 @@ public class GrabInteractable : MonoBehaviour
 
         defaultMass = rb.mass;
         this.gameObject.AddComponent<AudioSource>();
+
         if (this.gameObject.name.Equals("GobletSilver_Grabbable"))
         {
             clip = Resources.Load<AudioClip>("Kollision5");

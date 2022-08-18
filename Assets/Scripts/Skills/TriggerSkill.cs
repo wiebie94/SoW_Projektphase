@@ -63,7 +63,6 @@ public class TriggerSkill : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if(skillMenu.menuHandLeft == true)
         {
             if (other.CompareTag("RightHand"))
