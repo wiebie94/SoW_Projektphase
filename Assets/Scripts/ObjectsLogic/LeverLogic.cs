@@ -93,6 +93,10 @@ public class LeverLogic : MonoBehaviour
     }
     public void SetToClosed()
     {
+        if (!this.gameObject.activeSelf)
+        {
+            return;
+        }
         hingeJoint.spring = CreateSpring(minLimit);
         open = false;
     }
