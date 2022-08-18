@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Level1FrontObjective : MonoBehaviour
 {
     GameObject light;
+    public GameObject altar;
     [SerializeField] UnityEvent Complete;
     [SerializeField] UnityEvent Incomplete;
 
@@ -17,8 +18,9 @@ public class Level1FrontObjective : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if(other.gameObject.transform.parent.gameObject.name == "Wood" && other.gameObject.transform.parent.gameObject.transform.GetChild(0).gameObject.activeSelf) {
             light.SetActive(true);
-            Debug.Log("Wood Complete");
             Complete.Invoke();
+            other.gameObject.transform.parent.gameObject.SetActive(false);
+            altar.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 

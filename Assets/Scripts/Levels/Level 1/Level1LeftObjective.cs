@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Level1LeftObjective : MonoBehaviour
 {
     GameObject light;
+    public GameObject altar;
     [SerializeField] UnityEvent Complete;
     [SerializeField] UnityEvent Incomplete;
 
@@ -19,6 +20,8 @@ public class Level1LeftObjective : MonoBehaviour
             {
                 light.SetActive(true);
                 Complete.Invoke();
+                other.gameObject.SetActive(false);
+                altar.transform.GetChild(0).gameObject.SetActive(true);
             }            
         }
     }
