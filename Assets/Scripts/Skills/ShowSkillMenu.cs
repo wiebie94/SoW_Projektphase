@@ -141,7 +141,7 @@ public class ShowSkillMenu : MonoBehaviour
         if (!lCircle.isActiveAndEnabled)
         {
             Debug.Log("lCircle is not active!");
-            yield break;
+            lCircle.enabled = true;
         }
 
         _isDone = false;
