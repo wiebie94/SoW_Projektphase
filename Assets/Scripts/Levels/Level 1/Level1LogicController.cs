@@ -9,6 +9,9 @@ public class Level1LogicController : MonoBehaviour
     public GameObject objectiveRight;
     public GameObject trophy;
 
+    private bool win = false;
+    private bool trophyactive = false;
+
     bool objLeftCompleted = false;
     bool objFrontCompleted = false;
     bool objRightCompleted = false;
@@ -34,8 +37,13 @@ public class Level1LogicController : MonoBehaviour
             if(trophy != null)
             {
                 trophy.SetActive(true);
+                trophyactive = true;
             }            
             Debug.Log("Win");
+        }
+        if(trophyactive && !win){
+            win = true;
+            trophy.GetComponent<AudioSource>().Play();
         }
     }
 

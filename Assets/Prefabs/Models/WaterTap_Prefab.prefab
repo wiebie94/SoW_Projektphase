@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 56312717822224486}
   - component: {fileID: 7034861481291775129}
   - component: {fileID: 945626920529277428}
+  - component: {fileID: 40069200162455991}
   m_Layer: 0
   m_Name: WaterTap_Prefab
   m_TagString: Untagged
@@ -195,6 +196,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &40069200162455991
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002109993176713651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4997179235876961226, guid: e68f128316ef1dd40bab799d6ac1efb9, type: 3}
 --- !u!1 &8897864916691400056
 GameObject:
   m_ObjectHideFlags: 0

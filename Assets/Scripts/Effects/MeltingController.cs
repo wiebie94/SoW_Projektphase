@@ -10,9 +10,13 @@ public class MeltingController : MonoBehaviour
     private float meltingthreshold = -3.0f;
     public float meltingspeed = 0.5f; 
 
+    AudioSource meltSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        meltSound = GetComponent<AudioSource>();
+        meltSound.Play();
         icewall = GetComponent<Renderer>().material;
         melting = icewall.GetFloat("_melting");
         col = GetComponent<Collider>();
