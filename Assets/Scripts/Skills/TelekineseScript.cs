@@ -47,7 +47,7 @@ public class TelekineseScript : MonoBehaviour
         controller = GetComponent<ActionBasedController>();
 
         layerForRaycast = LayerMask.GetMask("GrabInteractable");
-        layerOnlyTelekinese = LayerMask.GetMask("OnlyTelekinese");
+        layerOnlyTelekinese = LayerMask.GetMask("Telekinese");
 
         //skillMenu.onTelekineseSkillTriggered
 
