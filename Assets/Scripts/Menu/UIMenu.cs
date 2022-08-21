@@ -65,7 +65,7 @@ public class UIMenu : MonoBehaviour
 
         isMenuOpened = true;
         content.SetActive(true);
-        resetButton.SetActive(true);
+        //resetButton.SetActive(true);
 
         OpenPauseScreen();
     }
