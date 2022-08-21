@@ -15,6 +15,11 @@ public class SliderScript : MonoBehaviour
         Reset();
     }
 
+    private void Update()
+    {
+        //Debug.Log("Slider z: " + transform.localPosition.z);
+    }
+
     private void Reset()
     {
         Vector3 oldPos = transform.localPosition;
