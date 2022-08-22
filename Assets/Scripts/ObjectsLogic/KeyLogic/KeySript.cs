@@ -7,6 +7,7 @@ public class KeySript : MonoBehaviour
     public Color color;
     private LevelKeyController keyController;
     private DissolveController dissolveController;
+    private AudioSource audio;
     private void Start()
     {
         this.dissolveController = this.GetComponent<DissolveController>();
@@ -15,6 +16,7 @@ public class KeySript : MonoBehaviour
             Debug.LogWarning("kein KeyManager in der Scene");
         this.GetComponentInChildren<Renderer>().material.SetColor("_KeyLockColor", color);
 
+        audio = this.GetComponent<AudioSource>();
     }
     public void setColor(Color color) { 
         this.color = color;
@@ -23,6 +25,8 @@ public class KeySript : MonoBehaviour
     public void grabKey() 
     {
         this.keyController.OnLockKeySave(this.color);
+        audio.Play();
+
     }
     public void startDissolve() 
     {

@@ -20,6 +20,8 @@ public class LeverLogic : MonoBehaviour
     [SerializeField] UnityEvent eventUp;
     [SerializeField] UnityEvent eventDown;
 
+    private AudioSource audio;
+
     bool open = false;
 
     void Start()
@@ -39,6 +41,8 @@ public class LeverLogic : MonoBehaviour
             hingeJoint.spring = CreateSpring(0.0f);
 
         StartCoroutine(LeverStateCheck());
+
+        audio = this.GetComponent<AudioSource>();
     }
 
     IEnumerator LeverStateCheck()
@@ -50,7 +54,8 @@ public class LeverLogic : MonoBehaviour
                 if(!open)
                 {
                     open = true;
-                    eventUp.Invoke();                    
+                    eventUp.Invoke();
+                    audio.Play();
                 }
                 if (open)
                 {
@@ -65,6 +70,7 @@ public class LeverLogic : MonoBehaviour
                 {
                     open = false;
                     eventDown.Invoke();
+                    audio.Play();
                 }
                 if (!open)
                 {
