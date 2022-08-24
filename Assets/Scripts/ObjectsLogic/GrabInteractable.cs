@@ -42,13 +42,20 @@ public class GrabInteractable : MonoBehaviour
     public AudioClip clip;
     private AudioSource source;
 
-    public float minVelocity = 0;
-    public float maxVelocity = 2;
+    private float minVelocity = 0;
+    private float maxVelocity = 2f;
 
 
     public bool randomizePitch = true;
     public float minPitch = 0.8f;
     public float maxPitch = 1.2f;
+
+    [SerializeField] bool isAKey = false;
+
+    private bool canPlaySound = false;
+    private Coroutine soundCooldownCoroutine;
+    private float soundCooldownTime = 0.3f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -74,6 +81,9 @@ public class GrabInteractable : MonoBehaviour
 
         }
         source = GetComponent<AudioSource>();
+        source.spatialBlend = 1;
+
+        Invoke(nameof(EnableSound), 1f);
     }
 
     public void TeleportToController(Transform followObj)
@@ -207,28 +217,50 @@ public class GrabInteractable : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
+        if (isAKey || other.gameObject.CompareTag("RightHand") || other.gameObject.CompareTag("LeftHand") || !canPlaySound)
+            return;
 
-        if (other.gameObject.CompareTag("GrabInteractable"))
+        Debug.Log("Sound!");
+
+        Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                float v = rb.velocity.magnitude;
-                float volume = Mathf.InverseLerp(minVelocity, maxVelocity, v);
-                if (randomizePitch)
-                {
-                    source.pitch = Random.Range(minPitch, maxPitch);
-                }
-                source.PlayOneShot(clip, volume);
-            }
-            else
-            {
-                source.PlayOneShot(clip);
+            float v = rb.velocity.magnitude;
+            float volume = Mathf.InverseLerp(minVelocity, maxVelocity, v);
+            volume = Mathf.Clamp(0, 0.6f, volume);
 
+            if (randomizePitch)
+            {
+                source.pitch = Random.Range(minPitch, maxPitch);
             }
-
+            source.PlayOneShot(clip, volume);
         }
+        else
+        {
+            source.PlayOneShot(clip);
+        }
+
+        canPlaySound = false;
+        StartSoundCooldown();
     }
 
+    private void StartSoundCooldown()
+    {
+        if (soundCooldownCoroutine != null)
+            StopCoroutine(soundCooldownCoroutine);
 
+        soundCooldownCoroutine = StartCoroutine(SoundCooldown(soundCooldownTime));
+    }
+
+    private IEnumerator SoundCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        canPlaySound = true;
+    }
+
+    private void EnableSound()
+    {
+        canPlaySound = true;
+    }
 }
