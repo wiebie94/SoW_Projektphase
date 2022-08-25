@@ -14,11 +14,6 @@ public class UIMenu : MonoBehaviour
     [SerializeField] GameObject optionsScreen;
     [SerializeField] GameObject exitScreen;
     [SerializeField] GameObject resetScreen;
-    [SerializeField] GameObject resetButton;
-    [SerializeField] GameObject resetGameButton;
-
-    [SerializeField] SliderScript playerHeightSlider;
-    [SerializeField] SliderScript volumeSlider;
 
     private GameObject content;
     private ResetPlayer rPlayer;
@@ -42,13 +37,7 @@ public class UIMenu : MonoBehaviour
             Debug.Log("gameSave not set!");
         }
 
-        if (playerHeightSlider == null || volumeSlider == null)
-        {
-            Debug.Log("playerHeightSlider or volumeSlider not set!");
-        }
-
         content = transform.GetChild(0).gameObject;
-        rPlayer = resetGameButton.GetComponent<ResetPlayer>();
         followScript = GetComponent<UIPLayerFollow>();
 
         allScreens = new List<GameObject>();
