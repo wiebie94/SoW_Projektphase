@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0.59, z: -0.1036}
+  light: {fileID: 5509698554217057914}
 --- !u!65 &934717855683338273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -322,6 +323,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7557df9f6ba895499dd7ca5ede3260e, type: 3}
+--- !u!1 &5509698554217057914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9221734992935498543, guid: f7557df9f6ba895499dd7ca5ede3260e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3714430356483669333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1506971629459867390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2838842320683465643, guid: f7557df9f6ba895499dd7ca5ede3260e,

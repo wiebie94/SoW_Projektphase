@@ -95,7 +95,7 @@ public class FireballController : MonoBehaviour
             kindleFlame.transform.Rotate(Vector3.up, other.gameObject.GetComponent<Transform>().rotation.eulerAngles.y);
             kindleFlame.transform.Translate(offsetforward, Space.Self);
             other.transform.GetChild(other.transform.childCount-1).gameObject.SetActive(true);
-            candleFlame = Instantiate(candleLight_prefab, kindleFlame.transform.position, Quaternion.identity);
+            if(other.transform.GetComponent<KindleOffset>().light == null) candleFlame = Instantiate(candleLight_prefab, kindleFlame.transform.position, Quaternion.identity);
 
             Debug.Log("kindle stuff");
         }
