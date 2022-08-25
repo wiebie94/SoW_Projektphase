@@ -33686,6 +33686,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1330435851}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1340248584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980b4daa32078424d93b13be203e7d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1342174199
 GameObject:
   m_ObjectHideFlags: 0
@@ -34108,6 +34120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361104009}
   - component: {fileID: 1361104010}
+  - component: {fileID: 1361104011}
   m_Layer: 0
   m_Name: ManualController
   m_TagString: Untagged
@@ -34219,6 +34232,23 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 3974866473437807090, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  uiMenu: {fileID: 1340248584}
+--- !u!114 &1361104011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361104008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c6bad4cf5d94b49a47cbd9e21196ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportationEffect: {fileID: 5777882420780731719, guid: 503ed32342dfbf74a94264ddd3213cec,
+    type: 3}
+  teleportDelay: 2
+  SaveDataJson: {fileID: 1664646143}
 --- !u!1001 &1365787282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37576,11 +37606,6 @@ PrefabInstance:
       propertyPath: gameSave
       value: 
       objectReference: {fileID: 1664646145}
-    - target: {fileID: 8363487391582860839, guid: 2c835572f61275a4ca7006ca2dbf036d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8486591823457170952, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: gameSave
@@ -52354,7 +52379,7 @@ MonoBehaviour:
   teleportationEffect: {fileID: 5777882420780731719, guid: 4a38cacc051cc2c4c80d88593e5b03a8,
     type: 3}
   teleportDelay: 2
-  SaveDataJson: {fileID: 0}
+  SaveDataJson: {fileID: 1664646143}
 --- !u!65 &2103959826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52366,8 +52391,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 30.149797, z: 1}
+  m_Center: {x: 0, y: -14.574899, z: 0}
 --- !u!4 &2103959827
 Transform:
   m_ObjectHideFlags: 0

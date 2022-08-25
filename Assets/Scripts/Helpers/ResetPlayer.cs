@@ -11,7 +11,9 @@ public class ResetPlayer : MonoBehaviour
     private Coroutine startAnimation;
     private Transform playerCam;
     private GameSave gSave;
-    // Start is called before the first frame update
+
+    bool isActivated = false;
+
     void Start()
     {
         playerCam = Camera.main.transform;
@@ -24,8 +26,21 @@ public class ResetPlayer : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("MainCamera"))
+        {
+            respawnPlayer();
+        }
+    }
+
     public void respawnPlayer()
     {
+        if (isActivated)
+            return;
+
+        isActivated = true;
+
         Debug.Log("startAnimationRoute" + startAnimation);
 
         Debug.Log("StarteAnimation");
@@ -34,6 +49,11 @@ public class ResetPlayer : MonoBehaviour
 
     public void respawnPlayerAndResetData()
     {
+        if (isActivated)
+            return;
+
+        isActivated = true;
+
         Debug.Log("startAnimationRoute" + startAnimation);
 
         Debug.Log("StarteAnimation");

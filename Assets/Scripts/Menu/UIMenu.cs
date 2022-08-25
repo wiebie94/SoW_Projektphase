@@ -48,11 +48,14 @@ public class UIMenu : MonoBehaviour
         allScreens.Add(exitScreen);
 
         menuAction.action.performed += MenuButtonPressed;
-
-        Invoke(nameof(OpenMenu), 0.1f);
     }
 
     private void MenuButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        MenuToggle();
+    }
+
+    public void MenuToggle()
     {
         if (!isMenuOpened)
             OpenMenu();

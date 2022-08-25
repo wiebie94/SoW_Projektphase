@@ -15,13 +15,28 @@ public class ManualController : MonoBehaviour
 
     PlayerController player;
 
+    [SerializeField] UIMenu uiMenu;
+
+    private ResetPlayer resetScript;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        resetScript = GetComponent<ResetPlayer>();
+
+        if (resetScript == null)
+        {
+            Debug.LogError("resetScript not set!");
+        }
 
         if (player == null)
         {
             Debug.LogError("player not set!");
+        }
+
+        if (uiMenu == null)
+        {
+            Debug.LogError("UI Menu not set!");
         }
 
         playerHeightUp.action.performed += PlayerHeightUp;
@@ -30,6 +45,8 @@ public class ManualController : MonoBehaviour
         menuToggle.action.performed += MenuToggle;
         sceneReset.action.performed += SceneReset;
         progressReset.action.performed += ProgressReset;
+
+        
     }
 
     void PlayerHeightUp(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -49,16 +66,21 @@ public class ManualController : MonoBehaviour
 
     void MenuToggle(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("MenuToggle!");
+        if (uiMenu == null)
+        {
+            Debug.LogError("UI Menu not set!");
+        }
+
+        uiMenu.MenuToggle();
     }
 
     void SceneReset(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("SceneReset!");
+        resetScript.respawnPlayer();
     }
 
     void ProgressReset(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Debug.Log("ProgressReset!");
+        resetScript.respawnPlayerAndResetData();
     }
 }
