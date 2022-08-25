@@ -64,15 +64,49 @@ public class FireballScript : MonoBehaviour
 
     private void FireballSkillTriggered()
     {
+        
         if (skillMenu.menuHandLeft)
         {
             controllerRight.activateAction.action.performed += activateAction_performed;
+
         }
         else
         {
             controllerLeft.activateAction.action.performed += activateAction_performed;
 
         }
+    }
+
+    private bool checkForFireEnable()
+    {
+
+
+        RaycastHit hit;
+        Ray ray;
+        int layerMask = 1 << 14;
+
+
+        if (skillMenu.menuHandLeft)
+        {
+            if (Physics.Raycast(rightHandRef.transform.position, rightHandRef.transform.forward,1.5f, layerMask))  //layerforraycast anpassen
+            {
+                Debug.Log("Fire.False");
+                return false;
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(leftHandRef.transform.position, leftHandRef.transform.forward,1.5f, layerMask))  //layerforraycast anpassen
+            {
+                Debug.Log("Fire.False");
+                return false;
+            }
+
+        }
+        Debug.DrawRay(rightHandRef.transform.position, rightHandRef.transform.forward * 1.5f, Color.green);
+
+        return true;
+
     }
 
     private void FireballSkillUntriggered()
@@ -88,42 +122,55 @@ public class FireballScript : MonoBehaviour
     }
 
     private void activateAction_performed(InputAction.CallbackContext obj)
+
     {
-        if (skillMenu._isFireBallActive)
+        bool fireOk = checkForFireEnable();
+        Debug.Log(fireOk);
+
+        if (fireOk)
         {
-
-
-            if (skillMenu.menuHandLeft)
+            Debug.Log("FireOK");
+            if (skillMenu._isFireBallActive)
             {
-                if (Time.time >= timestamp)
+
+
+                if (skillMenu.menuHandLeft)
                 {
+                    if (Time.time >= timestamp)
+                    {
 
 
-                    StartCoroutine(fadeAimHelp());
-                    g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward, Quaternion.identity);
+                        StartCoroutine(fadeAimHelp());
+                        g1 = Instantiate(fireBall, rightHandRef.transform.position + rightHandRef.transform.forward, Quaternion.identity);
 
-                    //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
-                    g1.GetComponent<Rigidbody>().AddForce(rightHandRef.transform.forward * 100, ForceMode.Impulse);
-                    Destroy(g1, waitTillDespawn);
-                    fired = true;
-                    timestamp = Time.time + waitTillFireAgain;
+                        //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
+                        g1.GetComponent<Rigidbody>().AddForce(rightHandRef.transform.forward * 100, ForceMode.Impulse);
+                        Destroy(g1, waitTillDespawn);
+                        fired = true;
+                        timestamp = Time.time + waitTillFireAgain;
+                    }
+                }
+                else
+                {
+                    if (Time.time >= timestamp)
+                    {
+
+                        StartCoroutine(fadeAimHelp());
+                        g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward, Quaternion.identity);
+                        //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
+                        g1.GetComponent<Rigidbody>().AddForce(leftHandRef.transform.forward * 100, ForceMode.Impulse);
+                        Destroy(g1, waitTillDespawn);
+                        fired = true;
+                        timestamp = Time.time + waitTillFireAgain;
+                    }
+
                 }
             }
-            else
-            {
-                if (Time.time >= timestamp)
-                {
+        }
+        else
+        {
+            Debug.Log("OnlyTelekineseAllowed");
 
-                    StartCoroutine(fadeAimHelp());
-                    g1 = Instantiate(fireBall, leftHandRef.transform.position + leftHandRef.transform.forward, Quaternion.identity);
-                    //TODO:JAN-> Hier weiterer Code f�r den Fireball einf�gen
-                    g1.GetComponent<Rigidbody>().AddForce(leftHandRef.transform.forward * 100, ForceMode.Impulse);
-                    Destroy(g1, waitTillDespawn);
-                    fired = true;
-                    timestamp = Time.time + waitTillFireAgain;
-                }
-
-            }
         }
     }
     IEnumerator fadeAimHelp()
@@ -138,7 +185,7 @@ public class FireballScript : MonoBehaviour
         {
 
 
-            float clamValue =+ (((1 / waitTillFireAgain) / 10) * x)*10;
+            float clamValue = +(((1 / waitTillFireAgain) / 10) * x) * 10;
             Debug.Log(clamValue);
             if (clamValue >= 0.1f)
             {

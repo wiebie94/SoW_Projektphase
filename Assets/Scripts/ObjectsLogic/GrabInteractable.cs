@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -82,6 +83,7 @@ public class GrabInteractable : MonoBehaviour
         }
         source = GetComponent<AudioSource>();
         source.spatialBlend = 1;
+        source.outputAudioMixerGroup = Resources.Load<AudioMixer>("AudioMixer").FindMatchingGroups("Effects")[0];
 
         Invoke(nameof(EnableSound), 1f);
     }
