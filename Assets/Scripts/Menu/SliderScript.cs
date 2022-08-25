@@ -12,22 +12,42 @@ public class SliderScript : MonoBehaviour
 
     [SerializeField] AudioMixer mixer;
 
+    [SerializeField] bool isForPlayerHeight = false;
+    [SerializeField] PlayerController player;
+
+    private float playerHeigthRange = 0.65f;
+
     // Start is called before the first frame update
     void Start()
     {
         cj = GetComponent<ConfigurableJoint>();
         sliderZLimit = cj.linearLimit.limit + sliderZLimitCorrection;
-
-        Debug.Log("limit: " + sliderZLimit);
     }
 
     private void OnEnable()
     {
-        Debug.Log("mixer val: " + GetConvertedValueFromMixer());
+        StartCoroutine(LateOnEnable());
+    }
 
-        float valueFromMixer = GetConvertedValueFromMixer();
+    IEnumerator LateOnEnable()
+    {
+        yield return new WaitForSeconds(0.1f);
 
-        float valueForSlider = ConvertToSliderValue(valueFromMixer);
+        float valueForSlider;
+
+        if (isForPlayerHeight)
+        {
+            Debug.Log("player height : " + GetConvertedValueFromPlayerHeight());
+            float valueFromPlayerHeight = GetConvertedValueFromPlayerHeight();
+            valueForSlider = ConvertToSliderValue(valueFromPlayerHeight);
+        }
+        else
+        {
+            Debug.Log("mixer val: " + GetConvertedValueFromMixer());
+
+            float valueFromMixer = GetConvertedValueFromMixer();
+            valueForSlider = ConvertToSliderValue(valueFromMixer);
+        }
 
         SetLocalZ(valueForSlider);
     }
@@ -39,7 +59,10 @@ public class SliderScript : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        SetMasterVolume(GetSliderConvertedValue(transform.localPosition.z));
+        if (isForPlayerHeight)
+            SetPlayerHeight(GetSliderConvertedValue(transform.localPosition.z));
+        else
+            SetMasterVolume(GetSliderConvertedValue(transform.localPosition.z));
     }
 
     private float GetSliderConvertedValue(float localX)
@@ -47,6 +70,21 @@ public class SliderScript : MonoBehaviour
         float result = (localX * -1) / sliderZLimit;
 
         return result;
+    }
+
+    private void SetPlayerHeight(float value)
+    {
+        if (player == null)
+        {
+            Debug.LogError("No player set!");
+            return;
+        }
+
+        float valueForHeight;
+
+        valueForHeight = value * playerHeigthRange;
+
+        player.SetPlayerHeight(valueForHeight);
     }
 
     private void SetMasterVolume(float value)
@@ -68,7 +106,7 @@ public class SliderScript : MonoBehaviour
     {
         if (mixer == null)
         {
-            Debug.LogError("mixer is null!");
+            Debug.LogError("mixer not set!");
             return 0;
         }
 
@@ -76,6 +114,17 @@ public class SliderScript : MonoBehaviour
         mixer.GetFloat("MasterVolume", out value);
 
         return value / 15 + 1;
+    }
+
+    private float GetConvertedValueFromPlayerHeight()
+    {
+        if (player == null)
+        {
+            Debug.LogError("player not set!");
+            return 0;
+        }
+
+        return player.GetPlayerHeight() / playerHeigthRange;
     }
 
     private float ConvertToSliderValue(float value)

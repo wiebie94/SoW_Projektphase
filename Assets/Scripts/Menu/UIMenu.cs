@@ -6,6 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIMenu : MonoBehaviour
 {
+    [SerializeField] PlayerController player;
+
     [SerializeField] InputActionProperty menuAction;
 
     [SerializeField] GameObject pauseScreen;
@@ -25,6 +27,11 @@ public class UIMenu : MonoBehaviour
 
     private void Start()
     { 
+        if (player == null)
+        {
+            Debug.Log("Player not set!");
+        }
+
         content = transform.GetChild(0).gameObject;
         rPlayer = resetGameButton.GetComponent<ResetPlayer>();
         followScript = GetComponent<UIPLayerFollow>();
@@ -37,6 +44,8 @@ public class UIMenu : MonoBehaviour
         allScreens.Add(exitScreen);
 
         menuAction.action.performed += MenuButtonPressed;
+
+        Invoke(nameof(OpenMenu), 0.1f);
     }
 
     private void MenuButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -54,6 +63,8 @@ public class UIMenu : MonoBehaviour
 
         content.SetActive(false);
         followScript.StopFollowingPlayer();
+
+        player.DisableFingerTrigger();
     }
 
     public void OpenMenu()
@@ -68,6 +79,11 @@ public class UIMenu : MonoBehaviour
         //resetButton.SetActive(true);
 
         OpenPauseScreen();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void ResetGame()

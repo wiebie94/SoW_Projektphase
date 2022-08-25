@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving = false;
 
+    [SerializeField] UIPLayerFollow uIMenu;
+
+    [SerializeField] Hand rightHand;
+    [SerializeField] Hand leftHand;
+
+    private Coroutine disableTeleportCoroutine;
     void Start()
     {
         xrRig = GetComponent<XROrigin>();
@@ -39,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveVector != Vector2.zero)
         {
-           if (!isMoving && Physics.Raycast(camObj.transform.position, Vector3.down, cameraToFloorLength, LayerMask.GetMask("Default")))
+            if (!isMoving && Physics.Raycast(camObj.transform.position, Vector3.down, cameraToFloorLength, LayerMask.GetMask("Default")))
                 TeleportBodyToLastColliderPosition();
 
             isMoving = true;
@@ -58,7 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             isMoving = false;
         }
-        
+
         Vector3 playerVel = rb.velocity;
 
         if (rb.velocity.x != 0)
@@ -80,5 +86,49 @@ public class PlayerController : MonoBehaviour
         Vector3 newBodyPosition = transform.position - cameraColliderDifference;
 
         transform.position = new Vector3(newBodyPosition.x, transform.localPosition.y, newBodyPosition.z);
+    }
+
+    public float GetPlayerHeight()
+    {
+        return xrRig.CameraYOffset;
+    }
+
+    public void SetPlayerHeight(float val)
+    {
+        if (rightHand == null || leftHand == null)
+        {
+            Debug.LogError("right or left hand not set!");
+        }
+
+        if (uIMenu == null)
+        {
+            Debug.LogError("UIMenu is not set!");
+        }
+
+        xrRig.CameraYOffset = val;
+
+        uIMenu.SetShouldTeleport(true);
+        rightHand.SetShouldTeleport(true);
+        leftHand.SetShouldTeleport(true);
+
+        if (disableTeleportCoroutine != null)
+            StopCoroutine(disableTeleportCoroutine);
+
+        disableTeleportCoroutine = StartCoroutine(DisableTeleport());
+    }
+
+    IEnumerator DisableTeleport()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        uIMenu.SetShouldTeleport(false);
+        rightHand.SetShouldTeleport(false);
+        leftHand.SetShouldTeleport(false);
+    }
+    
+    public void DisableFingerTrigger()
+    {
+        rightHand.FingerTriggerExit();
+        leftHand.FingerTriggerExit();
     }
 }

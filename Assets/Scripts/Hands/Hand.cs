@@ -49,6 +49,9 @@ public class Hand : MonoBehaviour
     [SerializeField] float handToBodyDistanceLimit = 3f;
     [SerializeField] Transform playerTransform;
 
+    private bool shouldTeleport = false;
+
+    private bool isInFingerTrigger = false;
     void Start()
     {
         //Animation
@@ -246,8 +249,17 @@ public class Hand : MonoBehaviour
     {
         // Position
         var positionWithOffset = followTarget.TransformPoint(positionOffset);
-        var distance = Vector3.Distance(positionWithOffset, rb.position);
-        rb.velocity = (positionWithOffset - rb.position).normalized * (followSpeed * distance);
+
+        if (shouldTeleport)
+        {
+            rb.position = positionWithOffset;
+        }
+        else
+        {
+            var distance = Vector3.Distance(positionWithOffset, rb.position);
+            rb.velocity = (positionWithOffset - rb.position).normalized * (followSpeed * distance);
+        }
+
 
         // Rotation
         var rotationWithOffset = followTarget.rotation * Quaternion.Euler(rotationOffset);
@@ -277,8 +289,12 @@ public class Hand : MonoBehaviour
 
     void AnimateHand()
     {
-        SetGrip(controller.selectActionValue.action.ReadValue<float>());
         SetTrigger(controller.activateActionValue.action.ReadValue<float>());
+
+        if (isInFingerTrigger)
+            SetGrip(1);
+        else
+            SetGrip(controller.selectActionValue.action.ReadValue<float>());
 
         if (gripCurrent != gripTarget)
         {
@@ -299,9 +315,24 @@ public class Hand : MonoBehaviour
         animator.SetFloat(animatorTriggerParam, 0);
     }
 
+    public void SetShouldTeleport(bool value)
+    {
+        shouldTeleport = value;
+    }
+
     public void VisibilityTurnOff()
     {
         mesh.enabled = false;
+    }
+
+    public void FingerTriggerEnter()
+    {
+        isInFingerTrigger = true;
+    }
+
+    public void FingerTriggerExit()
+    {
+        isInFingerTrigger = false;
     }
 
     public void VisibilityTurnOn()

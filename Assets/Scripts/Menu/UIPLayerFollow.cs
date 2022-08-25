@@ -21,6 +21,8 @@ public class UIPLayerFollow : MonoBehaviour
 
     private bool shouldFollowPlayer = false;
 
+    private bool shouldTeleport = false;
+
     void Start()
     {
         if (xrRig == null)
@@ -41,10 +43,20 @@ public class UIPLayerFollow : MonoBehaviour
             float targetY = playerCam.position.y + cameraYOffset + Mathf.Sin(Time.time * floatingFrequence) * floatingStrength;
             float newY = Mathf.Lerp(transform.position.y, targetY, yPositionFollowSpeed * Time.deltaTime);
 
-            Vector3 newPosition = new Vector3(xrRig.position.x, newY, xrRig.position.z) + positionOffset;
+            Vector3 newPosition;
+            if (shouldTeleport)
+                newPosition = new Vector3(xrRig.position.x, targetY, xrRig.position.z) + positionOffset;
+            
+            else
+                newPosition = new Vector3(xrRig.position.x, newY, xrRig.position.z) + positionOffset;
 
             transform.position = newPosition;
         }
+    }
+
+    public void SetShouldTeleport(bool value)
+    {
+        shouldTeleport = value;
     }
 
     public void StartFollowingPlayer()
@@ -66,6 +78,21 @@ public class UIPLayerFollow : MonoBehaviour
         Vector3 startPosition = new Vector3(transform.position.x, playerCam.position.y + cameraYOffset + yStartOffset, transform.position.z);
 
         transform.position = startPosition;
+    }
+
+    public void TeleportToPlayerSomeTime()
+    {
+
+    }
+
+    private IEnumerator TeleportingCoroutine()
+    {
+        yield break;
+    }
+
+    public void TeleportToTarget()
+    {
+        transform.position = new Vector3(transform.position.x, playerCam.position.y + cameraYOffset, transform.position.z);
     }
 
    public void StopFollowingPlayer()
