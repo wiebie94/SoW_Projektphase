@@ -17,6 +17,9 @@ public class UIMenu : MonoBehaviour
     [SerializeField] GameObject resetButton;
     [SerializeField] GameObject resetGameButton;
 
+    [SerializeField] SliderScript playerHeightSlider;
+    [SerializeField] SliderScript volumeSlider;
+
     private GameObject content;
     private ResetPlayer rPlayer;
     List<GameObject> allScreens;
@@ -25,11 +28,23 @@ public class UIMenu : MonoBehaviour
 
     private bool isMenuOpened = false;
 
+    [SerializeField] GameSave gameSave;
+
     private void Start()
     { 
         if (player == null)
         {
             Debug.Log("Player not set!");
+        }
+
+        if (gameSave == null)
+        {
+            Debug.Log("gameSave not set!");
+        }
+
+        if (playerHeightSlider == null || volumeSlider == null)
+        {
+            Debug.Log("playerHeightSlider or volumeSlider not set!");
         }
 
         content = transform.GetChild(0).gameObject;
@@ -39,7 +54,7 @@ public class UIMenu : MonoBehaviour
         allScreens = new List<GameObject>();
 
         allScreens.Add(pauseScreen);
-        allScreens.Add(resetScreen);
+        allScreens.Add(resetScreen); 
         allScreens.Add(optionsScreen);
         allScreens.Add(exitScreen);
 
@@ -65,6 +80,7 @@ public class UIMenu : MonoBehaviour
         followScript.StopFollowingPlayer();
 
         player.DisableFingerTrigger();
+        gameSave.SaveData();
     }
 
     public void OpenMenu()

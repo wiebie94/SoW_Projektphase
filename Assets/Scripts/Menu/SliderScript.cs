@@ -17,6 +17,8 @@ public class SliderScript : MonoBehaviour
 
     private float playerHeigthRange = 0.65f;
 
+    [SerializeField] GameSave gameSave;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,13 +87,14 @@ public class SliderScript : MonoBehaviour
         valueForHeight = value * playerHeigthRange;
 
         player.SetPlayerHeight(valueForHeight);
+        gameSave.getGameData().playerHeight = valueForHeight;
     }
 
     private void SetMasterVolume(float value)
     {
-        if (mixer == null)
+        if (mixer == null || gameSave == null)
         {
-            Debug.LogError("mixer is null!");
+            Debug.LogError("mixer or gameSave is null!");
             return;
         }
 
@@ -100,6 +103,7 @@ public class SliderScript : MonoBehaviour
         valueForMixer = (value - 1) * 15; 
 
         mixer.SetFloat("MasterVolume", valueForMixer);
+        gameSave.getGameData().volume = valueForMixer;
     }
 
     private float GetConvertedValueFromMixer()

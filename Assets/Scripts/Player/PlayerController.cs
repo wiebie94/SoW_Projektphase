@@ -115,6 +115,8 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(disableTeleportCoroutine);
 
         disableTeleportCoroutine = StartCoroutine(DisableTeleport());
+
+        Debug.Log("Setting player Height! " + val);
     }
 
     IEnumerator DisableTeleport()

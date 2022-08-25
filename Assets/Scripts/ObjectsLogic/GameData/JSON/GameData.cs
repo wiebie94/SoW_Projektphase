@@ -12,15 +12,21 @@ public class GameData {
     }*/
     public List<Color> keySave;
 
-    public GameData(List<Color> hasKeyIndex)
+    public float playerHeight;
+    public float volume;
+
+    public GameData(List<Color> hasKeyIndex, float playerHeight, float volume)
     {
         this.keySave = hasKeyIndex;
+        this.playerHeight = playerHeight;
+        this.volume = volume;
     }
 
     public GameData()
     {
         keySave = new List<Color>();
-
+        playerHeight = 0;
+        volume = 0;
     }
     public void resetKey() {
         keySave.Clear();
