@@ -24,17 +24,6 @@ public class ResetPlayer : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Trigger Entered Respawn");
-        if(other.gameObject.name.Equals("XR Origin"))
-        {
-            
-            
-            respawnPlayer();
-        }
-    }
-
     public void respawnPlayer()
     {
         Debug.Log("startAnimationRoute" + startAnimation);
