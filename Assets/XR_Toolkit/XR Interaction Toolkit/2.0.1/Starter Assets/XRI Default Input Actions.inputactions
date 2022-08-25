@@ -1093,6 +1093,134 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ManualControlls",
+            "id": "2e72be88-2c02-4edd-8267-7b78ab1d4296",
+            "actions": [
+                {
+                    "name": "PlayerHeightUp",
+                    "type": "Button",
+                    "id": "031f5e34-7f65-4938-b434-4ab67b256dd4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerHeightDown",
+                    "type": "Button",
+                    "id": "d894152f-cb87-4298-810d-c57e04a001fc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerHeightReset",
+                    "type": "Button",
+                    "id": "eb574656-831e-4e33-ab88-2e2e78b7c590",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MenuToggle",
+                    "type": "Button",
+                    "id": "da5dde1b-901c-48b0-b571-a2d8073f4814",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SceneReset",
+                    "type": "Button",
+                    "id": "6a2097e2-1e81-4c00-b855-061b12f4e927",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ProgressReset",
+                    "type": "Button",
+                    "id": "0c5ba767-f587-44d6-acba-60277f591a7c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a899388e-a6ca-439b-a6e2-18c839306271",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerHeightUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33c37468-c63a-44ed-b1d4-5f8fbe2b203c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerHeightDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f023363-c27f-4937-abdf-7376e7612b13",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a47a0a39-88d1-4214-a453-9e16b1f24e52",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SceneReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2de47f35-2e99-4fcc-8b8f-28573f4c198c",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ProgressReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4af5b570-816c-4f00-8c75-35eef41e900c",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerHeightReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

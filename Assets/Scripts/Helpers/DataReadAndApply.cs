@@ -20,7 +20,7 @@ public class DataReadAndApply : MonoBehaviour
             Debug.LogError("player not set!");
         }
 
-        Invoke(nameof(LateStart), 0.05f);
+        Invoke(nameof(LateStart), 0.1f);
     }
 
     void LateStart()

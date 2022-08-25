@@ -13,12 +13,14 @@ public class GameData {
     public List<Color> keySave;
 
     public float playerHeight;
+    public float playerHeightOffset;
     public float volume;
 
-    public GameData(List<Color> hasKeyIndex, float playerHeight, float volume)
+    public GameData(List<Color> hasKeyIndex, float playerHeight, float playerHeightOffset, float volume)
     {
         this.keySave = hasKeyIndex;
         this.playerHeight = playerHeight;
+        this.playerHeightOffset = playerHeightOffset;
         this.volume = volume;
     }
 
@@ -26,6 +28,7 @@ public class GameData {
     {
         keySave = new List<Color>();
         playerHeight = 0;
+        playerHeightOffset = 0;
         volume = 0;
     }
     public void resetKey() {

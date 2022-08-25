@@ -30,11 +30,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Hand leftHand;
 
     private Coroutine disableTeleportCoroutine;
+
+    private float playerHeight;
+    private float playerHeightOffset = 0;
+
+    [SerializeField] GameSave gameSave;
+
     void Start()
     {
+        if (gameSave == null)
+        {
+            Debug.LogError("gameSave not set!");
+        }
+
         xrRig = GetComponent<XROrigin>();
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+
+        playerHeight = xrRig.CameraYOffset;
+        playerHeightOffset = gameSave.getGameData().playerHeightOffset;
+
+        SetPlayerHeight(playerHeight);
     }
 
     private void FixedUpdate()
@@ -90,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     public float GetPlayerHeight()
     {
-        return xrRig.CameraYOffset;
+        return playerHeight;
     }
 
     public void SetPlayerHeight(float val)
@@ -105,7 +121,9 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("UIMenu is not set!");
         }
 
-        xrRig.CameraYOffset = val;
+        playerHeight = val;
+
+        xrRig.CameraYOffset = playerHeight + playerHeightOffset;
 
         uIMenu.SetShouldTeleport(true);
         rightHand.SetShouldTeleport(true);
@@ -116,7 +134,26 @@ public class PlayerController : MonoBehaviour
 
         disableTeleportCoroutine = StartCoroutine(DisableTeleport());
 
-        Debug.Log("Setting player Height! " + val);
+        gameSave.getGameData().playerHeightOffset = playerHeightOffset;
+        gameSave.SaveData();
+    }
+
+    public void AddPlayerHeightOffset(float value)
+    {
+        playerHeightOffset = playerHeightOffset + value;
+
+        SetPlayerHeight(playerHeight);
+    }
+
+    public void ResetPlayerHeightOffset()
+    {
+        playerHeightOffset = 0;
+        playerHeight = 0;
+
+        gameSave.getGameData().playerHeight = 0;
+        gameSave.SaveData();
+
+        SetPlayerHeight(playerHeight);
     }
 
     IEnumerator DisableTeleport()
