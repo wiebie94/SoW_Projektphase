@@ -8,10 +8,15 @@ using UnityEngine.InputSystem;
 public class TelekineseScript : MonoBehaviour
 {
     [SerializeField] Material highLightMaterial;
+    [SerializeField] Material highLightWoodMat1;
+    [SerializeField] Material highLightWoodMat11;
+    [SerializeField] Material highLightWoodMat2;
+    [SerializeField] Material highLightWoodMat21;
     [SerializeField] float range = 15.0f;
     [SerializeField] Transform followTarget;
 
     private GameObject telekineseObj;
+    private GameObject telekineseObjOld;
     private Rigidbody telekineseRigidbody;
     private string neeededTag = "GrabInteractable";
     private bool isItemGrabbed = false;
@@ -41,6 +46,7 @@ public class TelekineseScript : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip telekineseSoundClip;
     ActionBasedController controller;
+
 
     void Start()
     {
@@ -167,6 +173,46 @@ public class TelekineseScript : MonoBehaviour
         telekineseObj = gObj;
     }
 
+    void HighLightObjectWood(GameObject gObj){
+        if(telekineseObj == gObj)
+            return;
+
+        //telekineseObjOld = gObj;
+
+        ClearHighLightWood();
+
+        telekineseObj = gObj;
+
+        Material[] materials = new Material[2];
+        if(gObj.name == "Log_1_Prefab")
+        {
+            materials[0] = highLightWoodMat1;
+            materials[1] = highLightWoodMat11;
+        }
+        else
+        {
+            materials[0] = highLightWoodMat2;
+            materials[1] = highLightWoodMat21;
+        }
+
+        gObj.GetComponent<Renderer>().materials = materials;
+        telekineseObj = gObj;
+    }
+
+    void ClearHighLightWood(){
+        if (telekineseObj == null)
+            return;
+
+        Material[] materials = new Material[2];
+        materials[0] = telekineseObj.GetComponent<Renderer>().materials[0];
+        materials[1] = telekineseObj.GetComponent<Renderer>().materials[1];
+        telekineseObj.GetComponent<Renderer>().materials = materials;
+
+        telekineseObj = null;
+        telekineseObjOld = null;
+        ClearTimer();
+    }
+
     void ClearHighLight()
     {
         if (telekineseObj == null)
@@ -231,8 +277,8 @@ public class TelekineseScript : MonoBehaviour
 
     IEnumerator TelekineseRayCast(float interval)
     {
-        
-        while(true)
+
+        while (true)
         {
             RaycastHit hit;
             Debug.DrawRay(transform.position, transform.forward * range, Color.red);
@@ -241,29 +287,37 @@ public class TelekineseScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, range, layerForRaycast) || Physics.Raycast(ray, out hit, range, layerOnlyTelekinese))  //layerforraycast anpassen
             {
-                if (!isItemGrabbed && (hit.collider.CompareTag(neeededTag) || hit.collider.CompareTag("Telekinese") || hit.collider.CompareTag("WaterBottle"))){
+                if (!isItemGrabbed && (hit.collider.CompareTag(neeededTag) || hit.collider.CompareTag("Telekinese") || hit.collider.CompareTag("WaterBottle")))
+                {
                     HighLightObject(hit.collider.gameObject);
                 }
-                if(!isItemGrabbed && hit.collider.CompareTag("KindleBig")){
-                    foreach(Transform child in hit.collider.gameObject.transform.parent.transform){
-                        if(child.GetComponent<MeshRenderer>() != null){
-                            HighLightObject(child.gameObject);
+                if (!isItemGrabbed && hit.collider.CompareTag("KindleBig"))
+                {
+                    foreach (Transform child in hit.collider.gameObject.transform.parent.transform)
+                    {
+                        if (child.GetComponent<MeshRenderer>() != null)
+                        {
+                            HighLightObjectWood(child.gameObject);
                         }
                     }
                 }
-                    
-
             }
 
             else if (telekineseObj != null && isItemGrabbed == false)
             {
+                /*if (telekineseObj.tag == "KindleBig")
+                {
+                    ClearHighLightWood();
+                }
+                else
+                {*/
                 ClearHighLight();
             }
 
-            yield return new WaitForSeconds(interval);
+                yield return new WaitForSeconds(interval);
+  //          }
         }
     }
-
 
     public void PushAndPullObject(float dragForce)
     {
