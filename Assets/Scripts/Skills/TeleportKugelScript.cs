@@ -117,7 +117,7 @@ public class TeleportKugelScript : MonoBehaviour
         this.startingTelportAnimation();
         yield return new WaitForSeconds(this.teleportDelay);
   
-        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y * 2 + 0.1f; // 0.1f da sonst spieler durch den boden f�llt
+        float playerColiderOffsetY = this.player.GetComponent<Collider>().bounds.extents.y * 2 + 0.5f; // 0.1f da sonst spieler durch den boden f�llt
         //Debug.Log(playerColiderOffsetY);
 
         this.player.transform.position = (point + this.player.transform.position - this.playerCam.transform.position) + Vector3.up * playerColiderOffsetY;
