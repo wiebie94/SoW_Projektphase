@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using KATVR;
+using System;
+using System.Diagnostics;
+
 public class KATDevice : MonoBehaviour {
 
     #region Common Variable - 通用变量
@@ -89,7 +92,7 @@ public class KATDevice : MonoBehaviour {
                         target_Rig = targetMoveObject.GetComponent<Rigidbody>();
                     else {
                         MovementStyle = MovementStyleList.Translate;
-                        Debug.LogWarning("未能找到目标移动对象上的Rigidbody组件,移动方式将转换为Translate。\nCan not find Rigidbody component in Movement Object, the Movement Style will be changed to Translate.");
+                        //Debug.LogWarning("未能找到目标移动对象上的Rigidbody组件,移动方式将转换为Translate。\nCan not find Rigidbody component in Movement Object, the Movement Style will be changed to Translate.");
                     }
                 break;
             case DeviceTypeList.ComingSoon:
@@ -129,7 +132,12 @@ public class KATDevice : MonoBehaviour {
             case MovementStyleList.Translate:
                 //targetMoveObject.Translate(targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
                 targetMoveObject.position += (targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
+                UnityEngine.Debug.Log("-------------------------------------------------------------------------------------");
+                UnityEngine.Debug.Log("targetRotation: " + targetRotateObject.forward);
+                UnityEngine.Debug.Log("targetMove Position: " + targetMoveObject.position);
                 targetRotateObject.localEulerAngles = new Vector3(targetRotateObject.localEulerAngles.x, KATDevice_Walk.Instance.data_bodyYaw, targetRotateObject.localEulerAngles.z);
+                UnityEngine.Debug.Log("targetRotation EulerAngle: " + targetRotateObject.localEulerAngles);
+                UnityEngine.Debug.Log("-------------------------------------------------------------------------------------");
                 break;
             #endregion
             #region Velocity

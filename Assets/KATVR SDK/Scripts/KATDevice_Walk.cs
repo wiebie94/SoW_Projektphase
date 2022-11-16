@@ -24,6 +24,7 @@ namespace KATVR
         public bool Launched;
 
         /* 身体转向角度 */
+        //rotation angle of the body
         //public static int bodyYaw;
         public int bodyYaw;
 
@@ -32,10 +33,12 @@ namespace KATVR
         public int isMoving;
 
         /* 前进方向 -1 为前进 0 为停止 1 为倒退 */
+        // 1 forward, 0 stop, -1 backwards
         //public static int moveDirection;
         public int moveDirection;
 
         /* 默认移动速度 从0到1*/
+        //movespeed from 0 to 1
         //public static float moveSpeed;
         public float moveSpeed;
 
@@ -44,6 +47,7 @@ namespace KATVR
         public double WalkPower;
 
         /* 玩家在现实中行走的距离 单位是米 */
+        //real walking distance in in meters
         //public static float meter;
         public float meter;
 
