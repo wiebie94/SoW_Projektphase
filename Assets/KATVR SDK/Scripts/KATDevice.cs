@@ -31,6 +31,8 @@ public class KATDevice : MonoBehaviour {
     [HideInInspector]
     public KeyCode ResetCameraKey;
 
+    private bool TreadmillOn = false;
+
     void Awake()
     {
         SetupDevice(device);
@@ -123,28 +125,47 @@ public class KATDevice : MonoBehaviour {
 
     void TargetTransform(MovementStyleList Type)
     {
-        //vrCameraRig.position = targetRotateObject.position;
-        if (KATDevice_Walk.Instance.data_moveDirection > 0) KATDevice_Walk.Instance.data_moveSpeed *= multiply;
-        else if (KATDevice_Walk.Instance.data_moveDirection < 0) KATDevice_Walk.Instance.data_moveSpeed *= multiplyBack;
-        switch (Type)
+        if (TreadmillOn)
         {
-            #region Translate
-            case MovementStyleList.Translate:
-                //targetMoveObject.Translate(targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
-                targetMoveObject.position += (targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
-                targetRotateObject.localEulerAngles = new Vector3(targetRotateObject.localEulerAngles.x, KATDevice_Walk.Instance.data_bodyYaw, targetRotateObject.localEulerAngles.z);
+            //vrCameraRig.rotation = targetRotateObject.rotation;
+            if (KATDevice_Walk.Instance.data_moveDirection > 0) KATDevice_Walk.Instance.data_moveSpeed *= multiply;
+            else if (KATDevice_Walk.Instance.data_moveDirection < 0) KATDevice_Walk.Instance.data_moveSpeed *= multiplyBack;
+            switch (Type)
+            {
+                #region Translate
+                case MovementStyleList.Translate:
+                    //targetMoveObject.Translate(targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
+                    targetMoveObject.position += (targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
+                    targetRotateObject.localEulerAngles = new Vector3(targetRotateObject.localEulerAngles.x, KATDevice_Walk.Instance.data_bodyYaw, targetRotateObject.localEulerAngles.z) + vrCameraRig.transform.localRotation.eulerAngles;    //add potetial rotation from controllstick
+                    UnityEngine.Debug.Log(vrCameraRig.transform.localRotation.eulerAngles);
 
-                break;
-            #endregion
-            #region Velocity
-            case MovementStyleList.Velocity:
-                target_Rig.velocity = targetRotateObject.forward * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection;
-                targetRotateObject.localEulerAngles = new Vector3(targetRotateObject.localEulerAngles.x, KATDevice_Walk.Instance.data_bodyYaw, targetRotateObject.localEulerAngles.z);
-                break;
-            #endregion
-            default:
-                break;
+                    break;
+                #endregion
+                #region Velocity
+                case MovementStyleList.Velocity:
+                    target_Rig.velocity = targetRotateObject.forward * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection;
+                    targetRotateObject.localEulerAngles = new Vector3(targetRotateObject.localEulerAngles.x, KATDevice_Walk.Instance.data_bodyYaw, targetRotateObject.localEulerAngles.z);
+                    break;
+                #endregion
+                default:
+                    break;
+            }
         }
     }
+
+    public void setTreadmillOn()
+    {
+        TreadmillOn = true;
+    }
+    public void setTreadmillOff()
+    {
+        TreadmillOn = false;
+    }
+
+    public void rotateWithStick()
+    {
+
+    }
+
     #endregion
 }

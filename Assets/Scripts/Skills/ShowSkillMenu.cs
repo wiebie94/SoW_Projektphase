@@ -97,7 +97,7 @@ public class ShowSkillMenu : MonoBehaviour
             //Wenn das Skill Menü geschlossen ist und die 2 Sekunden noch nicht abgelaufen sind
             if (!isSkillMenuOpen && !isCoroutineFinished && !_isFireBallActive && !_isTeleportActive && !_isTelekinesisActive)
             {
-                Debug.Log("showMenuCoroutine:");
+                //Debug.Log("showMenuCoroutine:");
 
                 showMenuCoroutine = StartCoroutine(waitForMenuShow());
                 //Starte die zwei Sekunden und zeige das Skillmenu
@@ -222,9 +222,9 @@ public class ShowSkillMenu : MonoBehaviour
             SkillMenu.transform.GetChild(i).GetComponent<ParticleController>().deactivateParticles();
         }
         yield return new WaitForSeconds(fadeOut);
-        Debug.Log("Setting Skillmenu Active false");
+        //Debug.Log("Setting Skillmenu Active false");
         SkillMenu.SetActive(false);
-        Debug.Log("Setting Skillmenu Active false2");
+        //Debug.Log("Setting Skillmenu Active false2");
 
         isSkillMenuOpen = false;
         isCoroutineFinished = false;

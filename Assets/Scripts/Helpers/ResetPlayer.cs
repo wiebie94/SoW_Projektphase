@@ -41,9 +41,9 @@ public class ResetPlayer : MonoBehaviour
 
         isActivated = true;
 
-        Debug.Log("startAnimationRoute" + startAnimation);
+        //Debug.Log("startAnimationRoute" + startAnimation);
 
-        Debug.Log("StarteAnimation");
+        //Debug.Log("StarteAnimation");
         startAnimation = StartCoroutine(startNewSceneAnimation());
     }
 
@@ -54,9 +54,9 @@ public class ResetPlayer : MonoBehaviour
 
         isActivated = true;
 
-        Debug.Log("startAnimationRoute" + startAnimation);
+        //Debug.Log("startAnimationRoute" + startAnimation);
 
-        Debug.Log("StarteAnimation");
+        //Debug.Log("StarteAnimation");
         gSave = SaveDataJson.GetComponent<GameSave>();
         gSave.resetKey();
         startAnimation = StartCoroutine(startNewSceneAnimation());

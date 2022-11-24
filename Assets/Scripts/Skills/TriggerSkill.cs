@@ -24,29 +24,29 @@ public class TriggerSkill : MonoBehaviour
         skillMenu = GameObject.Find("Player").GetComponent<ShowSkillMenu>();
        controllerArray = ActionBasedController.FindObjectsOfType<ActionBasedController>();
 
-        Debug.Log("ON ENABLE SETTING CONTROLLER");
+       // Debug.Log("ON ENABLE SETTING CONTROLLER");
 
         if (controllerArray[0].name.Equals("LeftHand Controller"))
         {
-            Debug.Log("Setting Left to 0");
+            //Debug.Log("Setting Left to 0");
             controllerLeft = controllerArray[0];
 
         }
         if (controllerArray[1].name.Equals("LeftHand Controller"))
         {
-            Debug.Log("Setting Left to 1");
+            //Debug.Log("Setting Left to 1");
 
             controllerLeft = controllerArray[1];
         }
         if (controllerArray[0].name.Equals("RightHand Controller"))
         {
-            Debug.Log("Setting Right to 0");
+            //Debug.Log("Setting Right to 0");
 
             controllerRight = controllerArray[0];
         }
         if (controllerArray[1].name.Equals("RightHand Controller"))
         {
-            Debug.Log("Setting Right to 1");
+            //Debug.Log("Setting Right to 1");
 
             controllerRight = controllerArray[1];
         }

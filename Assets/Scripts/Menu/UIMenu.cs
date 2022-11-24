@@ -1,8 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 
 public class UIMenu : MonoBehaviour
 {
@@ -15,6 +17,14 @@ public class UIMenu : MonoBehaviour
     [SerializeField] GameObject exitScreen;
     [SerializeField] GameObject resetScreen;
 
+    [SerializeField] GameObject TreadmillButton;
+    [SerializeField] GameObject ControllerButton;
+    [SerializeField] private Texture greenButtonTex;
+    [SerializeField] private Texture redButtonTex;
+
+    [SerializeField] GameObject XROriginGO;
+    [SerializeField] GameObject XRLocoMotion;
+
     private GameObject content;
     private ResetPlayer rPlayer;
     List<GameObject> allScreens;
@@ -22,6 +32,8 @@ public class UIMenu : MonoBehaviour
     private UIPLayerFollow followScript;
 
     private bool isMenuOpened = false;
+
+    private bool treadmillOn = false;
 
     [SerializeField] GameSave gameSave;
 
@@ -48,6 +60,9 @@ public class UIMenu : MonoBehaviour
         allScreens.Add(exitScreen);
 
         menuAction.action.performed += MenuButtonPressed;
+
+        TreadmillButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", redButtonTex);
+        ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", greenButtonTex);
     }
 
     private void MenuButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -134,9 +149,29 @@ public class UIMenu : MonoBehaviour
         //ResetButtons(optionsScreen.transform);
     }
 
-    public void ChangeMoveInput()
+    public void TreadmillButtonPressed()
     {
-        Debug.Log("pressed");
+        if (!treadmillOn)
+        {
+            treadmillOn = true;
+            TreadmillButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", greenButtonTex);
+            ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", redButtonTex);
+            this.GetComponentInParent<KATDevice>().setTreadmillOn();
+            XROriginGO.GetComponent<PlayerController>().setControllerOff();
+            XRLocoMotion.GetComponent<SnapTurnProviderBase>().enabled = false;
+        }
+    } 
+    public void ControllerButtonPressed()
+    {
+        if (treadmillOn)
+        {
+            treadmillOn = false;
+            TreadmillButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", redButtonTex);
+            ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", greenButtonTex);
+            this.GetComponentInParent<KATDevice>().setTreadmillOff();
+            XROriginGO.GetComponent<PlayerController>().setControllerOn();
+            XRLocoMotion.GetComponent<SnapTurnProviderBase>().enabled = true;
+        }
     }
 
     private void ResetButtons(Transform parent)

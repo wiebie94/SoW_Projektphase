@@ -9910,6 +9910,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 405526553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &415355366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295320616196714313, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &415355370 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3295320616196714312, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &417405231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24580,7 +24592,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1507039485}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 415355366}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbe5cf2e645295e45ab71711b08a49b2, type: 3}
@@ -26047,6 +26059,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4808570894283890227, guid: d9b8eb6fb22690547b09986b870b6d2b,
     type: 3}
   m_PrefabInstance: {fileID: 1033079321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1035734348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6553833547293720542, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1040833046
 PrefabInstance:
@@ -32297,6 +32315,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1296989475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1298154160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295320616112934458, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1302558969
 GameObject:
   m_ObjectHideFlags: 0
@@ -37722,6 +37746,36 @@ PrefabInstance:
       propertyPath: gameSave
       value: 
       objectReference: {fileID: 1664646145}
+    - target: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: XROriginGO
+      value: 
+      objectReference: {fileID: 415355366}
+    - target: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: XRLocoMotion
+      value: 
+      objectReference: {fileID: 1298154160}
+    - target: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: redButtonTex
+      value: 
+      objectReference: {fileID: 2800000, guid: 7d8d8c8f7db8b4a41861d48970bb35a9, type: 3}
+    - target: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: greenButtonTex
+      value: 
+      objectReference: {fileID: 2800000, guid: 3e286b820bf60174a836428f59ac6ebf, type: 3}
+    - target: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: TreadmillButton
+      value: 
+      objectReference: {fileID: 1035734348}
+    - target: {fileID: 4647437421142434716, guid: 2c835572f61275a4ca7006ca2dbf036d,
+        type: 3}
+      propertyPath: ControllerButton
+      value: 
+      objectReference: {fileID: 1570356227}
     - target: {fileID: 4647437422124151665, guid: 2c835572f61275a4ca7006ca2dbf036d,
         type: 3}
       propertyPath: m_IsActive
@@ -39186,6 +39240,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1570356227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5091796834789073212, guid: 2c835572f61275a4ca7006ca2dbf036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507039485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1572351225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52461,7 +52521,7 @@ MonoBehaviour:
   displayLanguage: 1
   targetMoveObject: {fileID: 2088379674}
   targetRotateObject: {fileID: 438112899}
-  vrCameraRig: {fileID: 0}
+  vrCameraRig: {fileID: 415355370}
   vrHandset: {fileID: 0}
   multiply: 0.75
   multiplyBack: 0.75

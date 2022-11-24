@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private float playerHeight;
     private float playerHeightOffset = 0;
 
+    private bool ControllerOn = true;
+
     [SerializeField] GameSave gameSave;
 
     void Start()
@@ -70,11 +72,12 @@ public class PlayerController : MonoBehaviour
             Vector3 right = Vector3.ProjectOnPlane(camObj.transform.right, Vector3.up).normalized;
 
             Vector3 moveForce = (forward * moveVector.y + right * moveVector.x) * moveSpeed * Time.deltaTime;
-
-            rb.AddForce(moveForce);
-
-            Vector3 center = xrRig.CameraInOriginSpacePos;
-            collider.center = new Vector3(center.x, collider.center.y, center.z);
+            Debug.Log(ControllerOn);
+            if (ControllerOn) {
+                rb.AddForce(moveForce);
+                Vector3 center = xrRig.CameraInOriginSpacePos;
+                collider.center = new Vector3(center.x, collider.center.y, center.z);
+            }
         }
         else
         {
@@ -170,4 +173,16 @@ public class PlayerController : MonoBehaviour
         rightHand.FingerTriggerExit();
         leftHand.FingerTriggerExit();
     }
+
+    public void setControllerOn()
+    {
+        ControllerOn = true;
+    }
+
+    public void setControllerOff()
+    {
+        ControllerOn = false;
+    }
+
+
 }
