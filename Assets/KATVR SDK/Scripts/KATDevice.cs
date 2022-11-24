@@ -132,12 +132,8 @@ public class KATDevice : MonoBehaviour {
             case MovementStyleList.Translate:
                 //targetMoveObject.Translate(targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
                 targetMoveObject.position += (targetRotateObject.forward / 100 * KATDevice_Walk.Instance.data_moveSpeed * KATDevice_Walk.Instance.data_moveDirection);
-                UnityEngine.Debug.Log("-------------------------------------------------------------------------------------");
-                UnityEngine.Debug.Log("targetRotation: " + targetRotateObject.forward);
-                UnityEngine.Debug.Log("targetMove Position: " + targetMoveObject.position);
                 targetRotateObject.localEulerAngles = new Vector3(targetRotateObject.localEulerAngles.x, KATDevice_Walk.Instance.data_bodyYaw, targetRotateObject.localEulerAngles.z);
-                UnityEngine.Debug.Log("targetRotation EulerAngle: " + targetRotateObject.localEulerAngles);
-                UnityEngine.Debug.Log("-------------------------------------------------------------------------------------");
+
                 break;
             #endregion
             #region Velocity

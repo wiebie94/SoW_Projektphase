@@ -65,6 +65,8 @@ public class UIMenu : MonoBehaviour
 
     public void CloseMenu()
     {
+
+
         isMenuOpened = false;
         CloseAllScreens();
 
@@ -130,6 +132,11 @@ public class UIMenu : MonoBehaviour
 
         optionsScreen.SetActive(true);
         //ResetButtons(optionsScreen.transform);
+    }
+
+    public void ChangeMoveInput()
+    {
+        Debug.Log("pressed");
     }
 
     private void ResetButtons(Transform parent)

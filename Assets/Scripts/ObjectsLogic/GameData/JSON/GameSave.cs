@@ -39,9 +39,9 @@ public class GameSave : MonoBehaviour
     {
         string savePath = persistentPath;
 
-        Debug.Log("Saving Data at " + savePath);
+        //Debug.Log("Saving Data at " + savePath);
         string json = JsonUtility.ToJson(gameData);
-        Debug.Log(json);
+       // Debug.Log(json);
 
         using StreamWriter writer = new StreamWriter(savePath);
         writer.Write(json);
