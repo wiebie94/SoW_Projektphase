@@ -37,11 +37,12 @@ public class LockScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("LockScript triggerEnter");
         KeySript keySript = other.GetComponent<KeySript>();
         if (keySript == null) return;
         Color otherColor = keySript.color;
         if (this.keyColor != otherColor) return;
-
+        Debug.Log("glkh");
         animator.SetTrigger("UnLock");
         audio.Play();
         keySript.startDissolve();

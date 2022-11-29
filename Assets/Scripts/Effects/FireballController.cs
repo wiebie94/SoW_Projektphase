@@ -45,7 +45,6 @@ public class FireballController : MonoBehaviour
     public void OnCollisionEnter(Collision other) {
 
         if (this.firstHit || other.gameObject.tag == "Reflect") return;
-        Debug.Log("reflect tag");
         this.firstHit = true;
         explosion = Instantiate(explosion_prefab, other.GetContact(0).point, Quaternion.identity);
         Destroy(explosion, explosionDuration);

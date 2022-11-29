@@ -9,7 +9,6 @@ public class TargetLogic : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Fireball") {
-            Debug.Log("Target hit");
             hitEvent.Invoke();
         }
     }

@@ -38,6 +38,7 @@ public class KeyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //movment to lock (destroy later)
         if(move){
             transform.position += new Vector3(-1,0,0) * Time.deltaTime;
@@ -78,6 +79,7 @@ public class KeyController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        Debug.Log("KeyController CollisionEnter");
         if(getCurrentColor() == other.gameObject.GetComponent<LockController>().getCurrentColor()){
             gameObject.GetComponent<Collider>().enabled = false;
             //key destroy, but safe the hands

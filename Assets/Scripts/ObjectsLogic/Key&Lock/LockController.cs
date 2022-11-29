@@ -40,6 +40,7 @@ public class LockController : MonoBehaviour
             gameObject.transform.GetComponent<Renderer>().material.SetFloat("_DissolveAmount", oldDissolve + (dissolveSpeed * Time.deltaTime));
             if(oldDissolve > leverSpawnTimer){
                 gameObject.GetComponent<Collider>().enabled = false;
+                Debug.Log("leverObjekt: " + lever);
                 lever.gameObject.active = true;
                 dissolve = false;
                 leverAppear = true;
@@ -66,6 +67,7 @@ public class LockController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        Debug.Log("LockController collisionEnter");
         if(getCurrentColor() == other.gameObject.GetComponent<KeyController>().getCurrentColor()){
             other.gameObject.GetComponent<Transform>().position = transform.position + keyOffset;
             openTimer = other.transform.GetComponent<KeyController>().rotationTime;

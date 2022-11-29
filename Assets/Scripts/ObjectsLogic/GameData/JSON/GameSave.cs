@@ -22,6 +22,7 @@ public class GameSave : MonoBehaviour
     private void CheckJsonData()
     {
         if (!File.Exists(persistentPath)) {
+            Debug.Log("create new gamedata");
             gameData = new GameData();
             SaveData();
             return;
@@ -53,7 +54,7 @@ public class GameSave : MonoBehaviour
         string json = reader.ReadToEnd();
 
         this.gameData = JsonUtility.FromJson<GameData>(json);
-        Debug.Log(gameData.ToString());
+        //Debug.Log(gameData.ToString());
     }
     public GameData getGameData() 
     {

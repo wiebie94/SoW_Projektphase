@@ -125,11 +125,9 @@ public class FireballScript : MonoBehaviour
 
     {
         bool fireOk = checkForFireEnable();
-        Debug.Log(fireOk);
 
         if (fireOk)
         {
-            Debug.Log("FireOK");
             if (skillMenu._isFireBallActive)
             {
 
@@ -186,7 +184,7 @@ public class FireballScript : MonoBehaviour
 
 
             float clamValue = +(((1 / waitTillFireAgain) / 10) * x) * 10;
-            Debug.Log(clamValue);
+            
             if (clamValue >= 0.1f)
             {
                 AimHelpLeft.transform.GetChild(1).transform.gameObject.SetActive(true);

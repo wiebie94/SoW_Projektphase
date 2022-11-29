@@ -17,17 +17,20 @@ public class GateController : MonoBehaviour
 
     // Oeffnet ein Tor zum dazugehoerigen Hebel und schliesst alle anderen Tore
     public void Open(GameObject lever) {
+
         for(int i = 0; i < gates.Length; i++) {
             if(lever == levers[i]) {
+                Debug.Log("Lever found: " + levers[i]);
                 gates[i].GetComponent<GateLogic>().OpenGate();
                 // Zerstoert das vorherig instantiierte Level
                 Destroy(activeGate);
                 // Instantiieren des Levels
                 activeGate = Instantiate(levels[i], levelPostitions[i].transform, false);
                 rbOfLever = lever.GetComponent<Rigidbody>();
-                //StartCoroutine(StopLever(rbOfLever));
+                StartCoroutine(StopLever(rbOfLever));
             }
             else {
+                Debug.Log("Lever not found: " + levers[i]);
                 // Schliessen der anderen 
                 levers[i].GetComponent<LeverLogic>().SetToClosed();
                 gates[i].GetComponent<GateLogic>().CloseGate();                
@@ -40,7 +43,7 @@ public class GateController : MonoBehaviour
             if(lever == levers[i]) {
                 gates[i].GetComponent<GateLogic>().CloseGate();
                 rbOfLever = lever.GetComponent<Rigidbody>();
-                //StartCoroutine(StopLever(rbOfLever));
+                StartCoroutine(StopLever(rbOfLever));
                 // Checkt ob ein Level bereits in einem Positions Objekt instantiiert wurde
                 if(levelPostitions[i].transform.childCount > 0){
                     StartCoroutine(HideLevel());
@@ -59,7 +62,7 @@ public class GateController : MonoBehaviour
 
     //stops the lever for 2.5 seconds to prevent 
     private IEnumerator StopLever(Rigidbody rb){
-        
+
         rb.isKinematic = true;
         yield return new WaitForSeconds(leverStopTime);
         rb.isKinematic = false;

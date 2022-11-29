@@ -222,7 +222,6 @@ public class GrabInteractable : MonoBehaviour
         if (isAKey || other.gameObject.CompareTag("RightHand") || other.gameObject.CompareTag("LeftHand") || !canPlaySound)
             return;
 
-        Debug.Log("Sound!");
 
         Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
         if (rb != null)

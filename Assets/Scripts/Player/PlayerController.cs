@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
             Vector3 right = Vector3.ProjectOnPlane(camObj.transform.right, Vector3.up).normalized;
 
             Vector3 moveForce = (forward * moveVector.y + right * moveVector.x) * moveSpeed * Time.deltaTime;
-            Debug.Log(ControllerOn);
             if (ControllerOn) {
                 rb.AddForce(moveForce);
                 Vector3 center = xrRig.CameraInOriginSpacePos;

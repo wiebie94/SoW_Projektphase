@@ -34,6 +34,7 @@ public class UIMenu : MonoBehaviour
     private bool isMenuOpened = false;
 
     private bool treadmillOn = false;
+    private bool controllerOn = true;
 
     [SerializeField] GameSave gameSave;
 
@@ -149,28 +150,40 @@ public class UIMenu : MonoBehaviour
         //ResetButtons(optionsScreen.transform);
     }
 
+    //Treadmill Steuerung an und aus stellen
     public void TreadmillButtonPressed()
     {
         if (!treadmillOn)
         {
             treadmillOn = true;
             TreadmillButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", greenButtonTex);
-            ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", redButtonTex);
             this.GetComponentInParent<KATDevice>().setTreadmillOn();
-            XROriginGO.GetComponent<PlayerController>().setControllerOff();
-            XRLocoMotion.GetComponent<SnapTurnProviderBase>().enabled = false;
         }
-    } 
-    public void ControllerButtonPressed()
-    {
-        if (treadmillOn)
+        else
         {
             treadmillOn = false;
             TreadmillButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", redButtonTex);
-            ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", greenButtonTex);
             this.GetComponentInParent<KATDevice>().setTreadmillOff();
+        }
+    } 
+
+    //Controller Steuerung an und aus stellen
+    public void ControllerButtonPressed()
+    {
+        if (!controllerOn)
+        {
+            
+            controllerOn = true;
+            ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", greenButtonTex);
             XROriginGO.GetComponent<PlayerController>().setControllerOn();
             XRLocoMotion.GetComponent<SnapTurnProviderBase>().enabled = true;
+        }
+        else
+        {
+            controllerOn = false;
+            ControllerButton.GetComponent<Renderer>().material.SetTexture("_BaseMap", redButtonTex);
+            XROriginGO.GetComponent<PlayerController>().setControllerOff();
+            XRLocoMotion.GetComponent<SnapTurnProviderBase>().enabled = false;
         }
     }
 
